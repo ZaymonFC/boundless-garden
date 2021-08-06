@@ -3,9 +3,10 @@ import { Canvas } from "@react-three/fiber";
 import Head from "next/head";
 import React from "react";
 import AtomFlower from "../components/AtomFlower";
+import { Fade } from "../components/Fade";
 import styles from "../styles/Home.module.css";
 
-const ThreeD = () => {
+const ThreeWithStars = () => {
   return (
     <Canvas>
       <OrthographicCamera makeDefault zoom={40} position={[0, 0, 10]} />
@@ -20,7 +21,7 @@ const Header = () => {
   const height = "100vh";
   return (
     <div style={{ position: "relative", height: height }}>
-      <ThreeD />
+      <ThreeWithStars />
       <main
         style={{
           position: "absolute",
@@ -47,7 +48,9 @@ export default function Home() {
         <meta name="description" content="Step into the boundless garden" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header></Header>
+      <Fade>
+        <Header></Header>
+      </Fade>
     </>
   );
 }

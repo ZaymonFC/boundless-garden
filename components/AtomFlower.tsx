@@ -1,11 +1,12 @@
-export default function AtomFlower(props: any) {
+export default function AtomFlower(props: { small?: boolean | undefined }) {
   return (
     <svg
-      width={114}
-      height={178}
+      width={props.small ? 48 : 114}
+      height={props.small ? 48 : 178}
+      viewBox={props.small ? "0, 0, 124, 124" : undefined}
+      scale={props.small ? "50%" : 0}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
     >
       <ellipse
         cx={57.392}
