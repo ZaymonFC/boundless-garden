@@ -115,6 +115,7 @@ export default function Home() {
       <main className={styles.main}>
         <Icon />
         <h1 className={styles.title}>the Boundless Garden</h1>
+        <p>the writings of Zan</p>
       </main>
     </div>
   );
