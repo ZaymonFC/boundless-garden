@@ -8,6 +8,8 @@ body {
   color: white
 }
 
+h1 { font-family: Georgia, 'Times New Roman', Times, serif;}
+
 a {
   color: inherit;
   text-decoration: none;

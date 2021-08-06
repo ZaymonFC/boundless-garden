@@ -3,7 +3,7 @@ import Head from "next/head";
 import React, { useMemo, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { NoToneMapping, Vector2, Vector3 } from "three";
-import { OrthographicCamera, Stars, Torus } from "@react-three/drei";
+import { OrthographicCamera, Sky, Stars, Torus } from "@react-three/drei";
 import { MathUtils } from "three";
 
 function Icon(props: any) {
@@ -249,7 +249,6 @@ const Header = () => {
           right: 0,
           top: 0,
           height: height,
-          pointerEvents: "none",
         }}
         className={styles.main}
       >
