@@ -119,3 +119,7 @@
     flex-direction: column;
   }
 }
+
+.byLine {
+  font-size: 2rem;
+}

@@ -254,7 +254,7 @@ const Header = () => {
       >
         <Icon />
         <h1 className={styles.title}>the Boundless Garden</h1>
-        <p>the writings of Zan</p>
+        <p className={styles.byLine}>the writings of Zan</p>
       </main>
     </div>
   );
