@@ -3,7 +3,7 @@ import Head from "next/head";
 import React, { useMemo, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { NoToneMapping, Vector2, Vector3 } from "three";
-import { OrthographicCamera, Torus } from "@react-three/drei";
+import { OrthographicCamera, Stars, Torus } from "@react-three/drei";
 import { MathUtils } from "three";
 
 function Icon(props: any) {
@@ -163,7 +163,7 @@ const MyRing = () => {
 
 const Atom = (props: any) => {
   return (
-    <group scale={0.6} {...props}>
+    <group scale={0.7} {...props}>
       <MyRing />
       <Sphere />
     </group>
@@ -218,9 +218,10 @@ const Atoms = () => {
 
   return (
     <group position={[0, 0, 0]}>
-      {points.map((position, idx) => (
+      {/* {points.map((position, idx) => (
         <Atom key={idx} position={position} />
-      ))}
+      ))} */}
+      <Stars radius={50} depth={10} count={10000} factor={2} fade></Stars>
     </group>
   );
 };
