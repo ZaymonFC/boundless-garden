@@ -79,6 +79,20 @@ const blogStyles = css`
     font-size: 1.2rem;
     line-height: 170%;
   }
+
+  a:hover > * {
+    cursor: pointer;
+    color: #7d8aff;
+  }
+
+  a:target > * {
+    border-bottom: solid 2px #ff8f8f;
+  }
+
+  div:target > p {
+    border-bottom: solid 1px #ff8f8f;
+    padding-bottom: 8px;
+  }
 `;
 
 const divider = css`
