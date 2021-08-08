@@ -63,9 +63,11 @@ const blogStyles = css`
   h2 {
     font-size: 1.94rem;
     color: #ff8f8f;
+    padding-top: 1.94rem;
   }
   h3 {
     font-size: 1.2rem;
+    padding-top: 1.2rem;
     color: #ff8f8f;
   }
   & {

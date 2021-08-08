@@ -7,6 +7,7 @@ export type Source = {
   url?: string;
   author?: string;
   title?: string;
+  publisher?: string;
 };
 
 export const References = ({ id, references }: ReferencesProps) => {
@@ -41,7 +42,7 @@ export const Inline = ({ id, citation }: InlineReferenceProps) => {
 
   return (
     <a id={`${citation}-inline`} href={`#${citation}-source`}>
-      <sup>{position}</sup>
+      <sup>[{position}]</sup>
     </a>
   );
 };
@@ -58,14 +59,11 @@ const SourceLine = ({ id, citation }: SourceLineProps) => {
     <div id={`${citation}-source`}>
       {position !== undefined && source && (
         <p>
-          {position}. {source.year ? `${source.year}, ` : ""}
+          {position}. {source.publisher ? `${source.publisher}, ` : ""}
+          {source.year ? `${source.year}, ` : ""}
           {source.title ? `${source.title}. ` : ""}
           {source.author}{" "}
-          {source.url ? (
-            <>
-              —<a href={source.url}>{source.url}</a>
-            </>
-          ) : null}{" "}
+          {source.url ? <a href={source.url}>—{source.url}</a> : null}{" "}
           <a href={`#${citation}-inline`}>
             <sup>[In text]</sup>
           </a>
