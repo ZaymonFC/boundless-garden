@@ -1,8 +1,13 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { css, cx } from "@emotion/css";
+import React, { useEffect, useState } from "react";
 import { ReferenceSet, useReferenceLinker } from "../hooks/useReferenceLinker";
 
-export type Source = { year?: number; url?: string; author?: string };
+export type Source = {
+  year?: number;
+  url?: string;
+  author?: string;
+  title?: string;
+};
 
 export const References = ({ id, references }: ReferencesProps) => {
   const addReferences = useReferenceLinker((s) => s.addReferences);
@@ -50,15 +55,23 @@ const SourceLine = ({ id, citation }: SourceLineProps) => {
   const { position, source } = useCitation(references, citation);
 
   return (
-    <a href={`#${citation}-inline`}>
-      <div id={`${citation}-source`}>
-        {position !== undefined && source && (
-          <p>
-            {position}. {source.year}, {source.author} —{source.url}
-          </p>
-        )}
-      </div>
-    </a>
+    <div id={`${citation}-source`}>
+      {position !== undefined && source && (
+        <p>
+          {position}. {source.year ? `${source.year}, ` : ""}
+          {source.title ? `${source.title}. ` : ""}
+          {source.author}{" "}
+          {source.url ? (
+            <>
+              —<a href={source.url}>{source.url}</a>
+            </>
+          ) : null}{" "}
+          <a href={`#${citation}-inline`}>
+            <sup>[In text]</sup>
+          </a>
+        </p>
+      )}
+    </div>
   );
 };
 
@@ -75,16 +88,34 @@ const useReferences = (id: string) => {
   return references;
 };
 
+const bibliographyStyles = css`
+  /* Force wrapping of long URLs */
+  a {
+    white-space: pre; /* CSS 2.0 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3.0 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: -moz-pre-wrap; /* Mozilla */
+    word-wrap: break-word;
+  }
+`;
+
 export const Bibliography = ({ id }: { id: string }) => {
   const references = useReferences(id);
 
-  return (
-    <>
-      <h2>Sources</h2>
-      {references &&
-        Object.keys(references).map((citation, idx) => (
-          <SourceLine key={idx} id={id} citation={citation} />
-        ))}
-    </>
-  );
+  if (references) {
+    return (
+      <>
+        <h2>References</h2>
+        <div className={cx(bibliographyStyles)}>
+          {Object.keys(references).map((citation, idx) => (
+            <SourceLine key={idx} id={id} citation={citation} />
+          ))}
+        </div>
+      </>
+    );
+  } else {
+    return null;
+  }
 };

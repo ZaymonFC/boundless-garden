@@ -80,11 +80,20 @@ const blogStyles = css`
     line-height: 170%;
   }
 
+  a:hover,
   a:hover > * {
     cursor: pointer;
     color: #7d8aff;
   }
 
+  blockquote {
+    border-left: solid 4px #ff8f8f;
+    padding-left: 1rem;
+    margin-left: 0;
+    font-style: italic;
+  }
+
+  /* Bibliography */
   a:target > * {
     border-bottom: solid 2px #ff8f8f;
   }
