@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 import { Inline, References } from "../components/References";
-
+import D3Graph from "../components/D3Graph"
 
 export const id = "7ae609e8-57d3-43b8-9779-ea46d250acf6";
 export const meta = {
@@ -11,6 +11,8 @@ export const meta = {
 
 export const references = {
   "open-ai": {
+    title: "AlphaFold: Using AI for scientific discovery",
+    year: 2020,
     url: "https://deepmind.com/blog/article/AlphaFold-Using-AI-for-scientific-discovery",
   },
   "mimetic-traps": {
@@ -32,7 +34,20 @@ export const references = {
     author: "Hugo Mercier, Dan Sperber",
     publisher: "Havard University Press",
   },
-  "instant-communication": {
+  "hedgehog-and-the-fox": {
+    url: "https://en.wikipedia.org/wiki/The_Hedgehog_and_the_Fox",
+    author: "Isaiah Berlin",
+    year: 1953,
+    title: "The Hedgehog and the Fox: An Essay on Tolstoy's View of History",
+    publisher: "Weidenfeld & Nicolson"
+  },
+  "fox-and-the-hedgehog-conaw": {
+    url: "https://twitter.com/Conaw/status/1200649503684079616",
+    year: 2019,
+    author: "Conor White-Sullivan",
+    title: "The fox and the hedgehog"
+  },
+  "instant-messaging": {
     url: "https://letterdesk.substack.com/p/introducing-letterdesk",
     title: "What's wrong with instant communication?",
     year: 2021,
@@ -42,40 +57,48 @@ export const references = {
   "extended-mind": {
     url: "https://en.wikipedia.org/wiki/Extended_mind_thesis",
     title: "The Extended Mind Thesis",
+  },
+  "dream-machine": {
+    url: "http://gen.lib.rus.ec/book/index.php?md5=264a042633277e170b734f580eee0465",
+    title: "The Dream Machine",
+    author: "M. Mitchell Waldrop",
+    publisher: "Stripe Press",
+    year: 2018,
   }
 };
 
-### The cycle of writing.
-
-- Thoughts and ideas onto the page.
-- Reformulate into a central argument.
-- Make the argument fit into a narrative.
-- Don't spend time waffling, progress the audiences understanding of you and the topic.
-- Don't push it if it's not working, rethink, journal and come back.
-
-<br />
+export const data = {
+  nodes: [{ id: "Harry" }, { id: "Sally" }, { id: "Alice" }],
+  links: [
+    { source: "Harry", target: "Sally" },
+    { source: "Harry", target: "Alice" },
+  ],
+};
 
 > The following post is a talk I gave to the Broadwater Southport Rotary.
 > Back in my last year of high school the club generously offered to fund my trip to the National Youth Science Forum across the country in Perth at the start of 2014 —my final year of high school.
 
-<br />
+## Looking up 🔭
 
-## Looking up
+Ever since I was a toddler I wanted to be a scientist; as a naturally curious person it seemed like a wonderful fit.
+Ever since seeing a documentary series about the internal processes of the human body I was hooked on wanting to understand the nature of things.
+I loved asking, '*why?*' so to get to do so for a living seemed like a dream.
 
-Ever since I was a toddler I wanted to be a scientist. As a naturally curious person it seemed like a wonderful fit. I loved asking, 'why?' so to get to ask 'why?' for a living seemed like a dream.
+Growing up I was obsessed with space, biology, computers.
+I definitely saw myself as a bit of an outsider. People around me didn't seem as interested in questioning common assumptions about our world and the society we live in.
 
-Growing up I was obsessed with space, biology, computers. I definitely saw myself as a bit of an outsider. People around me didn't seem as interested in questioning common assumptions about our world and the society we live in.
+I continued to pursue an interest in science throughout school.
+By the time I reached high school my choice hadn't wavered —apart from a couple of months when I wanted to be "an actor".
+I remember turning up to science club every Friday lunchtime to learn about something new and exciting.
+Whether it was setting off small amounts of thermite or scaring the chemistry teacher in the next period because we left a few grams of Nitrogen Triiodide —a highly sensitive compound called known as *touch powder*— in the fume hood, which exploded unexpectedly.
 
-Transition this 🔼 to this 🔽
-
-
-I heard about the National Youth Science Forum (NYSF) and I was excited.
+In my penultimate year of schooling I heard about the National Youth Science Forum (NYSF) and I was intrigued.
 Here was a real opportunity to peek into the lives and workplaces of scientists, and meet with hundreds of other young people that were as curious as I was.
 
-There was a process to get selected to go. First you had to address a rotary club —an international community organisation with many local chapters— and explain your passions; talk about why it might be valuable to go, not just for individual growth, but impact on the community. Then you had to go to a selection day with 300 other kids to present on a topic of interest.
-_Finish me_
+There was a process to get selected to go.
+First you had to address a rotary club —an international community organisation with many local chapters— and explain your passions; talk about why it might be valuable to go, not just for individual growth, but impact on the community.
+Then you had to go to a regional selection day with many other students to present on a topic of interest and pass a few interviews. Needless to say my passion for science got me through the door.
 
-...
 
 ## The Dovetail Moment
 
@@ -87,18 +110,16 @@ I felt like, for the first time I was surrounded by a group of people on my wave
 Everyone around me was passionate and had ambitions for science, research, intellectual pursuits.
 I felt like I could open up and be my unashamedly nerdy self. This was a freeing and self-reinforcing experience.
 
-In environment like that you form so many close bonds in such a short time, it hurts to leave. People nicknamed the feeling, 'post NYSF depression' and I can definitely attest to having felt it.
-However, I came home, with a feeling of kinship that I'd never felt before.
+In environment like that you form so many close bonds in such a short time, it hurts to leave. People nicknamed the feeling, '*post NYSF depression*' and I can definitely attest to having felt it.
+However, I came home, with a feeling of kinship and belonging that I'd never felt before.
 
 ## Eject!
 
 For 2-3 years leading up to my entrance to university I wanted to study **bioinformatics**.
 Bioinformatics is the merging of computational techniques with biology research, a new and massively important field.
-I'd read about interesting developments coming out of bioinformatics like: personalised polypeptide antibiotics, the protein folding problem —recently solved by Open.AI <Inline id={id} citation="open-ai" />.
+I'd read about interesting developments coming out of bioinformatics like: personalised polypeptide antibiotics, the protein folding problem —recently solved by Open.AI <Inline id={id} citation="open-ai" />. and I thought this was the field for me.
 
-<!-- TODO: Finish Me -->
-
-Post high school I got accepted into Griffith university to study a double degree in Bachelors of IT and Science.
+Upon finishing high school I got accepted into Griffith university to study a double degree in Bachelors of IT and Science.
 I quickly started to realise that despite being intensely interested in the developments in biotech, the career and work style research in the space offered wasn't for me.
 The bureaucracy and politics of academia, the stale working environments, '_mimetic traps_'<Inline id={id} citation="mimetic-traps" /> and the pressure to publish with perverse incentives of funding pushing people to claim —even unintentionally— positive results<Inline id={id} citation="publish-or-perish" /> repelled me like an opposing magnet.
 
@@ -114,9 +135,9 @@ This decision massively changed the shape of my future and I embarked on a new u
 Studying computer science, I felt the glowing embers of something that hadn't been there before.
 Entering a new domain, with so many intellectual threads to pull on I was excited. I learned to program. I learned how to push myself. Most importantly I learned how to learn on my own. The degree was the track, but my own exploration of programming and computation was powering this train.
 
-Fortunately my two favourite lecturers shared their ire with the current state of academia. I valued learning from their triumphs. However, invaluably, the most important thing to me was learning from their failings.
+During my time studying I had two absolutely standout professors. I valued learning from their triumphs. However, invaluably, the most important thing to me was learning from their failings.
 
-My graphics professor Ruben, regaled us with tales of starting and running a 50 million dollar tech company —that was big in the 80s! I've taken to heart his lessons on burnout, that it's not worth chasing the money, if the journey won't give you purpose. He's now tending a macadamia farm somewhere near Bundaberg.
+My graphics professor Ruben, regaled us with tales of starting and running a 50 million dollar tech company —that was big in the 80s! I've taken to heart his lessons on burnout, that it's not worth chasing the money and materialistic frames of success, if the journey won't give you purpose. He's now tending a macadamia farm somewhere near Bundaberg.
 My algorithms professor was brilliant, although his world view was bleak. He told us to prepare for the 30-year grind that our careers would become.
 That scared me. I **_listened_** to that feeling, and I knew that I couldn't be content pursuing a more conventional career path.
 
@@ -129,48 +150,88 @@ By chance at my internship I met a life-long friend, although at the time he was
 Ben was moving companies, and he suggested that I should apply. I got the job in 2018. We started working together full time.
 These are the years that I have experienced the most growth. We constantly showed each other new techniques, argued and tested our ideas and assumptions on one another. My thinking and philosophy had never advanced faster. Our minds aren't meant to reason in isolation. It's through interactions with others and our environment that we test our ideas and get exposed to new perspectives.<Inline id={id} citation="enigma-of-reason"/>
 
-## Tools for Thought
-Time for an aside.
+## The rusty filing cabinet
 
+Time for an aside. A lot of you probably take notes. Note-taking is a powerful way to extend and remix our thoughts.
+How many of you use the computer to take notes? Those of you who do, are those notes organised into folders?
+The filing cabinet metaphor is common in the software we use. We organise files into folders, making hierarchies, taxonomies and classifications to determine what file belongs where.
+
+This model has a severe limitation. The information in our world is full of relationships. Our thoughts don't fit in a filing cabinet model.
+Our brains store vast interconnected networks of information. If I say, 'New Zealand' our brains don't open our 'New Zealand' folder. Thoughts, experiences and information come to us. It's hard to look at the aggregate of the associations we form around any one thing. Our associative brains give us great intuitive power. We can see the intersections and relationships in our world, our models and within ourselves.
+
+## Sharper tools, better metaphors
+
+This is a graph. It's made of up nodes (circles). And edges (connections between circles).
+
+<D3Graph
+  id="graph-id"
+  data={data}
+/>
+
+- React D3 JS.
 - Graphs
 - Associative Thought
 - Roam Research / Graph notes
 
+## The fox and the hedgehog 🦊 🦔
+
+There's an old essay by Isaiah Berlin called, 'The Hedgehog and The Fox'. <Inline id={id} citation="hedgehog-and-the-fox" />
+It divides people with a binary classification.
+'Hedgehogs', are people who see the world predominantly through one lens or system of thinking, ie: Marxism, Christianity. 'Foxes', are more fluid, composed of lots of smaller ideas. <Inline id={id} citation="fox-and-the-hedgehog-conaw" />
+
+I used to think that I was a hedgehog under this classification. After some deep insight, I came to realise that I am much more like the fox. I don't have a guiding or consistent set of rules through which to look at the world. But I am constantly decomposing the world into ideas and models that I can understand.
+
+In the past I experienced a lot of difficulty making my ideas fit more unified vision.
+Graph based, associative note-taking changed my life. I'm not being hyperbolic, because it's true.
+
+Tools for thought allow us to apply the scientific method to our own lives. We can observe ourselves. Conduct experiments to test new things.
 
 ## 2021, the blossoming 🌸
+I started putting everything I was learning in Roam. Linking new knowledge to my journal entries. Going through the process of entering information, and deeply associating, linking concepts together, showed me a lot about the nature of my own mind. I've been able to trace the roots of anxieties I wasn't even consciously aware of having.
 
-In the last 3 years I've had a lot of important realisations about the world and myself. I became aware that programming, isn't about computers. Programming is about thinking. A formal language for *intention*.
-I now know that everything I thought I had a handle on coming out of university, I'm just starting to get comfortable with now.
+I've had healthier relationships with the people I love, the people I respect. Even the people I have a hard time dealing with.
+I'm a lot closer to understanding what I want out of life, what avenues of pursuit give me purpose.
 
-I became much more aware of the patterns within myself, and the patterns surrounding me in the world.
+I became much more aware of the patterns within myself, and the patterns surrounding me in the world. This process was so astoundingly profound, that I think these tools for thought, for communication, for self-expression and self-interaction are going to be absolutely crucial to tackling the world's hardest problems.
 
-Through observing my own experience, and talking with other's I've discovered a few concerning trends.
+Now we've caught up to the present. Let me show you where my energies are being directed.
 
-## Communication: Broken in the age of instant messaging
+Through observing my own experience, and talking with other's I've noticed a few concerning trends:
+
+## Communication: broken in the age of instant messaging
+The wide-spread ability to instantaneously communicate with people around the world has been one of the biggest breakthroughs in the last 50 years. Scientists can collaborate effortlessly. World events can be projected into the palm of anyone who owns a smartphone connected to the free internet. When it comes to personal relationships, its never been easier to, '*keep in touch*'. And I think that's becoming a problem.
 
 So that we have consistent understanding, I'm going to define instant messaging as:
 
 >A written conversation over the course of time in the form of short messages delivered immediately.
 
-- What is the problem
+About a year ago now I was thinking about why keeping in contact with my long distance friends over (instant messaging app of choice) wasn’t working out.
+For a few months I noted how each IM interaction made me feel and had a few discussions about communication and instant messaging with friends and colleagues.
+After some formative conversations and some re-synthesis of my journal and notes a few key problems stick out.
 
-- Why not email?
+### Depth of communication
+Instant message chains aren’t conducive to deep conversations. For a meaningful conversation to take place over instant messaging, the conversation either has to span a long period of time —hours to days— or the messages have to be large. Trying to find a shared hour or two between people on opposite sides of the planet is a nightmare!<Inline id={id} citation="instant-messaging"/>
 
-- Reduce the barrier to entry, and give people a real space to devote attention to communicating with someone else
+I love being engaged in interesting conversations, but I detest being chained to my phone for a few hours waiting for each short response and responding in kind. The fear of this has such a powerful effect; it stops me from beginning new conversations because I know I won’t have the time to see them through.
 
-## Attention: The trillion dollar resource
-- Dopamine treadmills
-- Optimizing goal of 'look at screen as long as possible'
-  (Show as many adds as possible without losing engagement)
+### Psychological pressure
+I have an axe to grind with read receipts. Those little indicators that show you if, or even when someone has read your message.
+Read receipts create a psychological pressure to respond __immediately__.
+People will assume that I am being rude, or not attentive if I have, '*seen*' a message and not replied in a timely manner. Generally this causes my replies to be shallower, less thought out. I want the time and space to write long, considered responses. However, I want the people I care about to feel valued.
 
-- The science of attention
+### Loss of information
+We are so accustomed to the __impermanence__ of information and communication. There isn't an instant messaging app that I've seen that's optimised for storing, archiving and retrieving information from a conversation. Messages are __obliterated__ into the void under the deluge of new ones. Platforms like Slack —that event large organisations are using for internal communication— emphasise the **ephemerality** of information. How much context are we *losing*? How much time are we *wasting* **re-seeking** instead of using effective archival retrieval?
 
-## The future of reason: against exponential progress.
+---
+If you find yourself nodding along to this section. I'd strongly encourage you to investigate the platform that I am building: [LetterDesk.app](https://www.letterdesk.app)
+
+## The future of reason: against exponential progress
 - Echo chambers
 - Exponential progress
 - Strong opinions weakly held
 - Our technology is developing much faster than our ability to reason.
-- The personal computing revolution started with people (JRR Linklader, Alan Kay et. al) wating them to be true extensions of our selves and capabilities.
+- The personal computing revolution started with people (J.C.R. Linklader, Alan Kay et. al) wanting them to be true extensions of our selves and capabilities.
+  - The intergalactic network <Inline id={id} citation="dream-machine" />
 - The modern world is attention starved
 - Communication
   - Tools for thought allow us to communicate more effectively with ourselves and others

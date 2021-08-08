@@ -61,8 +61,8 @@ const SourceLine = ({ id, citation }: SourceLineProps) => {
         <p>
           {position}. {source.publisher ? `${source.publisher}, ` : ""}
           {source.year ? `${source.year}, ` : ""}
+          {source.author ? `${source.author}, ` : ""}
           {source.title ? `${source.title}. ` : ""}
-          {source.author}{" "}
           {source.url ? <a href={source.url}>—{source.url}</a> : null}{" "}
           <a href={`#${citation}-inline`}>
             <sup>[In text]</sup>
