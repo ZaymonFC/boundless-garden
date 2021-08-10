@@ -6,7 +6,7 @@ export const d3GraphConfig = (width: number | undefined) => ({
   nodeHighlightBehavior: true,
   d3: {
     linkLength: 250,
-    gravity: -200,
+    gravity: -400,
   },
   maxZoom: 1,
   minZoom: 1,
@@ -21,6 +21,10 @@ export const d3GraphConfig = (width: number | undefined) => ({
   link: {
     color: "white",
     highlightColor: "lightblue",
+    labelProperty: "label",
+    renderLabel: true,
+    fontColor: "rgb(241, 200, 146)",
+    fontSize: 18,
   },
 });
 
