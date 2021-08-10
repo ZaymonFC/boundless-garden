@@ -1,3 +1,5 @@
+import BlogImage from "../components/BlogImage"
+import roamGraph from "../public/my-roam-graph.png"
 import Layout from "../components/Layout";
 import { Inline, References } from "../components/References";
 import D3Graph from "../components/D3Graph"
@@ -41,6 +43,13 @@ export const references = {
     title: "The Hedgehog and the Fox: An Essay on Tolstoy's View of History",
     publisher: "Weidenfeld & Nicolson"
   },
+  "dream-machine": {
+    url: "http://gen.lib.rus.ec/book/index.php?md5=264a042633277e170b734f580eee0465",
+    title: "The Dream Machine",
+    author: "M. Mitchell Waldrop",
+    publisher: "Stripe Press",
+    year: 2018,
+  },
   "fox-and-the-hedgehog-conaw": {
     url: "https://twitter.com/Conaw/status/1200649503684079616",
     year: 2019,
@@ -58,20 +67,19 @@ export const references = {
     url: "https://en.wikipedia.org/wiki/Extended_mind_thesis",
     title: "The Extended Mind Thesis",
   },
-  "dream-machine": {
-    url: "http://gen.lib.rus.ec/book/index.php?md5=264a042633277e170b734f580eee0465",
-    title: "The Dream Machine",
-    author: "M. Mitchell Waldrop",
-    publisher: "Stripe Press",
-    year: 2018,
-  }
 };
 
 export const data = {
-  nodes: [{ id: "Harry" }, { id: "Sally" }, { id: "Alice" }],
+  nodes: [
+    { id: "Australia" },
+    { id: "Brisbane" },
+    { id: "Me" },
+    { id: "Commonwealth"}],
   links: [
-    { source: "Harry", target: "Sally" },
-    { source: "Harry", target: "Alice" },
+    { source: "Australia", target: "Commonwealth" },
+    { source: "Brisbane", target: "Australia" },
+    { source: "Me", target: "Brisbane" },
+    { source: "Me", target: "Australia" },
   ],
 };
 
@@ -163,15 +171,21 @@ Our brains store vast interconnected networks of information. If I say, 'New Zea
 
 This is a graph. It's made of up nodes (circles). And edges (connections between circles).
 
-<D3Graph
-  id="graph-id"
-  data={data}
-/>
+<D3Graph id="graph-id" data={data} />
 
-- React D3 JS.
-- Graphs
-- Associative Thought
-- Roam Research / Graph notes
+Graphs can represent the relationships and associations of anything. Any mathematics problem can be reduced to graphs.
+And graphs can represent any set of information.
+
+Our brains work as graphs.
+When Vannevar Bush was thinking about building, '*the memex*' —a pre-internet system for organising massive amounts of information stored on microfilm— he spoke on the brains associative power, "The human mind ... operates by association,” he noted. “With one item in its grasp, it snaps instantly to the next that is suggested by the association of thoughts, in accordance with some intricate web of trails carried by the cells of the brain. ... The speed of action, the intricacy of trails, the detail of mental pictures [are] awe-inspiring beyond all else in nature."<Inline id={id} citation="dream-machine" />
+
+Even before the personal computing revolution, scientific thought leaders saw the power and value in creating systems with deeply linked associative knowledge.
+Platforms like Wikipedia are modern triumphs, spanning tens of millions of pages of deeply interconnected information.
+However, It's only recently that people have started applying this style of thinking to a smaller and more personal perspective.
+
+Enter __Roam Research__. Roam is a note-taking tool that lets you create a network of information and thought. The application completely abandons the broken filing cabinet metaphor, letting you reference any page from any other. You're never stuck working out which folder a piece of information belongs because that information can stand on its own.
+Roam Research, and other new competing graph note editors are taking Vannevar Bush's ideas for 'the memex', Wikipedias idea's for indexing knowledge and remixing them into a new __tool for thought__ used by individuals and teams.
+
 
 ## The fox and the hedgehog 🦊 🦔
 
@@ -179,17 +193,22 @@ There's an old essay by Isaiah Berlin called, 'The Hedgehog and The Fox'. <Inlin
 It divides people with a binary classification.
 'Hedgehogs', are people who see the world predominantly through one lens or system of thinking, ie: Marxism, Christianity. 'Foxes', are more fluid, composed of lots of smaller ideas. <Inline id={id} citation="fox-and-the-hedgehog-conaw" />
 
-I used to think that I was a hedgehog under this classification. After some deep insight, I came to realise that I am much more like the fox. I don't have a guiding or consistent set of rules through which to look at the world. But I am constantly decomposing the world into ideas and models that I can understand.
+I used to think that I was a hedgehog under this classification. After some deep insight, I came to realise that I am much more like the fox. I don't have a guiding or consistent set of rules through which to look at the world. But I am **constantly** decomposing the world into ideas and models that I can understand.
 
-In the past I experienced a lot of difficulty making my ideas fit more unified vision.
-Graph based, associative note-taking changed my life. I'm not being hyperbolic, because it's true.
+In the past I experienced a lot of difficulty making my ideas fit a more *unified* vision.
+Graph based, associative note-taking changed my life. I'm not being hyperbolic, because it's true. Here's the graph of knowledge that I've built up over the last 12 months.
 
-Tools for thought allow us to apply the scientific method to our own lives. We can observe ourselves. Conduct experiments to test new things.
+<BlogImage src={roamGraph} alt="An image showing an overview of the notes in my personal roam" />
+
+Each dot represents a topic. The larger the circle, the more times a topic has been referenced.
+
+Tools for thought allow us to apply the scientific method to our own lives. We can observe ourselves. Conduct experiments to test new things. And come to new conclusions.
 
 ## 2021, the blossoming 🌸
 I started putting everything I was learning in Roam. Linking new knowledge to my journal entries. Going through the process of entering information, and deeply associating, linking concepts together, showed me a lot about the nature of my own mind. I've been able to trace the roots of anxieties I wasn't even consciously aware of having.
 
-I've had healthier relationships with the people I love, the people I respect. Even the people I have a hard time dealing with.
+I've had healthier relationships with the people I love, the people I respect.
+Even the people I have a difficult time dealing with.
 I'm a lot closer to understanding what I want out of life, what avenues of pursuit give me purpose.
 
 I became much more aware of the patterns within myself, and the patterns surrounding me in the world. This process was so astoundingly profound, that I think these tools for thought, for communication, for self-expression and self-interaction are going to be absolutely crucial to tackling the world's hardest problems.
