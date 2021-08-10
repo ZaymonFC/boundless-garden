@@ -6,6 +6,6 @@ const blogImageStyles = css`
 `;
 
 type BlogImageProps = { src: any; alt: string };
-export default function BlogImage({ src }: any) {
-  return <Image src={src} className={cx(blogImageStyles)} />;
+export default function BlogImage({ src, alt }: BlogImageProps) {
+  return <Image src={src} alt={alt} className={cx(blogImageStyles)} />;
 }
