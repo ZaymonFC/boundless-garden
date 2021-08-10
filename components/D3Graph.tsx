@@ -21,7 +21,6 @@ export const d3GraphConfig = (width: number | undefined) => ({
   link: {
     color: "white",
     highlightColor: "lightblue",
-    labelProperty: "label",
     renderLabel: true,
     fontColor: "rgb(241, 200, 146)",
     fontSize: 18,
@@ -83,7 +82,7 @@ const D3Graph = ({ id, data }: any) => {
 
   return (
     <div style={{ width: "100%" }} ref={ref}>
-      <Graph id={id} data={data} config={config} />
+      {config && data && <Graph id={id} data={data} config={config} />}
     </div>
   );
 };
