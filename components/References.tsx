@@ -7,6 +7,7 @@ export type Source = {
   url?: string;
   author?: string;
   title?: string;
+  publisher?: string;
 };
 
 export const References = ({ id, references }: ReferencesProps) => {
@@ -40,9 +41,11 @@ export const Inline = ({ id, citation }: InlineReferenceProps) => {
   const { position } = useCitation(references, citation);
 
   return (
-    <a id={`${citation}-inline`} href={`#${citation}-source`}>
-      <sup>{position}</sup>
-    </a>
+    <sup>
+      <a id={`${citation}-inline`} href={`#${citation}-source`}>
+        [{position}]
+      </a>
+    </sup>
   );
 };
 
@@ -58,14 +61,11 @@ const SourceLine = ({ id, citation }: SourceLineProps) => {
     <div id={`${citation}-source`}>
       {position !== undefined && source && (
         <p>
-          {position}. {source.year ? `${source.year}, ` : ""}
+          {position}. {source.publisher ? `${source.publisher}, ` : ""}
+          {source.year ? `${source.year}, ` : ""}
+          {source.author ? `${source.author}, ` : ""}
           {source.title ? `${source.title}. ` : ""}
-          {source.author}{" "}
-          {source.url ? (
-            <>
-              —<a href={source.url}>{source.url}</a>
-            </>
-          ) : null}{" "}
+          {source.url ? <a href={source.url}>—{source.url}</a> : null}{" "}
           <a href={`#${citation}-inline`}>
             <sup>[In text]</sup>
           </a>
@@ -98,6 +98,10 @@ const bibliographyStyles = css`
     white-space: -o-pre-wrap; /* Opera 7 */
     white-space: -moz-pre-wrap; /* Mozilla */
     word-wrap: break-word;
+  }
+
+  sup {
+    vertical-align: top;
   }
 `;
 

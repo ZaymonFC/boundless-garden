@@ -17,7 +17,7 @@ export default function AtomFlower(props: { small?: boolean | undefined }) {
         strokeWidth={3}
       />
       <path
-        d="M26.5 177.5c0-34.5 6.8-53.9 12-67.5C42.132 100.5 53 80 57 58"
+        d="M26.5 177.5c0-7.518.323-14.32.882-20.5M57 58c-4 22-14.868 42.5-18.5 52-3.28 8.58-7.198 19.468-9.643 35m-1.475 12c9.54-7 28.818-22.1 29.618-26.5M27.382 157c.388-4.288.89-8.277 1.475-12m0 0c-5.786-5.833-17.557-18.8-18.357-24"
         stroke="#000"
         strokeWidth={5}
       />
@@ -49,6 +49,8 @@ export default function AtomFlower(props: { small?: boolean | undefined }) {
         strokeWidth={3}
       />
       <circle cx={57} cy={58} r={6} fill="#E16565" />
+      <circle cx={57} cy={133} r={4} fill="#E16565" />
+      <circle cx={11} cy={123} r={4} fill="#E16565" />
       <defs>
         <radialGradient
           id="prefix__paint0_radial"

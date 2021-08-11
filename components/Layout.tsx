@@ -1,9 +1,9 @@
-import { cx, css } from "@emotion/css";
-import React, { useState } from "react";
-import AtomFlower from "./AtomFlower";
-import Link from "next/link";
-import { Fade } from "./Fade";
+import { css, cx } from "@emotion/css";
 import { format } from "date-fns";
+import Link from "next/link";
+import React from "react";
+import AtomFlower from "./AtomFlower";
+import { Fade } from "./Fade";
 import { Bibliography } from "./References";
 
 const containerStyles = css`
@@ -63,9 +63,11 @@ const blogStyles = css`
   h2 {
     font-size: 1.94rem;
     color: #ff8f8f;
+    padding-top: 1.94rem;
   }
   h3 {
     font-size: 1.2rem;
+    padding-top: 1.2rem;
     color: #ff8f8f;
   }
   & {
