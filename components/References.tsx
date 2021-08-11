@@ -41,9 +41,11 @@ export const Inline = ({ id, citation }: InlineReferenceProps) => {
   const { position } = useCitation(references, citation);
 
   return (
-    <a id={`${citation}-inline`} href={`#${citation}-source`}>
-      <sup>[{position}]</sup>
-    </a>
+    <sup>
+      <a id={`${citation}-inline`} href={`#${citation}-source`}>
+        [{position}]
+      </a>
+    </sup>
   );
 };
 
@@ -96,6 +98,10 @@ const bibliographyStyles = css`
     white-space: -o-pre-wrap; /* Opera 7 */
     white-space: -moz-pre-wrap; /* Mozilla */
     word-wrap: break-word;
+  }
+
+  sup {
+    vertical-align: top;
   }
 `;
 
