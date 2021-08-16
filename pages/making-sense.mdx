@@ -1,0 +1,37 @@
+import Layout from "../components/Layout";
+import { Inline, References } from '../components/References'
+
+export const meta = {
+  id: '01',
+  title: "Making sense of it.",
+  date: new Date("2021-08"),
+};
+
+export const references = {
+  'ref': {url: "Yes!"},
+  'what': {year: 2008, url: "www.whatever.com", author: 'Michael Scott'},
+  'tf4u': {url: "www.twofast4u.com"},
+}
+
+## What is this?
+
+I am number one now <Inline id={meta.id} citation="ref" />
+
+Boundless Garden is a place for me to let my guard down and tend to my thoughts.
+Currently this comprises of a series of essays documenting my personal journey.
+
+These essays will be considered 'ever-green'. <Inline id={meta.id} citation="what" />
+
+Second reference here: <Inline id={meta.id} citation="tf4u" />
+
+## Exploring
+
+- Hello
+- There
+
+export default ({ children }) => (
+  <Layout meta={meta}>
+    <References id={meta.id} references={references} />
+    {children}
+  </Layout>
+);
