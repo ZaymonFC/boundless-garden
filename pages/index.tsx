@@ -1,6 +1,7 @@
 import { OrthographicCamera, Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 import AtomFlower from "../components/AtomFlower";
 import { Fade } from "../components/Fade";
@@ -35,6 +36,8 @@ const Header = () => {
         <AtomFlower />
         <h1 className={styles.title}>the Boundless Garden</h1>
         <p className={styles.byLine}>the writings of Zan</p>
+
+        <Link href="/intro">begin here</Link>
       </main>
     </div>
   );
