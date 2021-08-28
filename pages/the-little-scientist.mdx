@@ -1,7 +1,7 @@
 import BlogImage from "../components/BlogImage";
 import roamGraph from "../public/my-roam-graph.png";
 import Layout from "../components/Layout";
-import { Inline, References } from "../components/References";
+import { Inline, References, ReferenceProvider } from "../components/References";
 import D3Graph from "../components/D3Graph";
 
 export const id = "7ae609e8-57d3-43b8-9779-ea46d250acf6";
@@ -91,10 +91,12 @@ export const data = {
 };
 
 export default ({ children }) => (
-  <Layout meta={meta}>
-    <References id={id} references={references} />
-    {children}
-  </Layout>
+  <ReferenceProvider value={id}>
+    <Layout meta={meta}>
+      <References references={references} />
+      {children}
+    </Layout>
+  </ReferenceProvider>
 );
 
 > The following post is a talk I gave to the Broadwater Southport Rotary.
@@ -137,12 +139,12 @@ However, I came home, with a feeling of kinship and belonging that I'd never fel
 ## Eject!
 
 For 2-3 years leading up to my entrance to university I wanted to study **bioinformatics**.
-Bioinformatics is the merging of computational techniques with biology research, an emerging and important field. I knew I had an affinity for computers, loved biology and had read about interesting developments coming out of bioinformatics like: personalised polypeptide antibiotics and the protein folding problem—recently solved by Open.AI <Inline id={id} citation="open-ai" />—. I thought, "*this is the field for me*".
+Bioinformatics is the merging of computational techniques with biology research, an emerging and important field. I knew I had an affinity for computers, loved biology and had read about interesting developments coming out of bioinformatics like: personalised polypeptide antibiotics and the protein folding problem—recently solved by Open.AI<Inline citation="open-ai" />—. I thought, "*this is the field for me*".
 
 I finished high school and got accepted into Griffith university to study a double degree in IT and Science.
 Biotech had captured my imagination but as I learned more about the nature of research I found myself hesitant to commit to a life of academia.
 
-Navigating the bureaucracy and politics, the stale working environments, '_mimetic traps_'<Inline id={id} citation="mimetic-traps" /> and the pressure to publish with incentives of grant funding pushing people to claim —even unintentionally— positive results<Inline id={id} citation="publish-or-perish" /> repelled me like an opposing magnet. I think traditional research is critically important, but realised I required a path with a greater degree of freedom.
+Navigating the bureaucracy and politics, the stale working environments, '_mimetic traps_'<Inline citation="mimetic-traps" /> and the pressure to publish with incentives of grant funding pushing people to claim —even unintentionally— positive results<Inline citation="publish-or-perish" /> repelled me like an opposing magnet. I think traditional research is critically important, but realised I required a path with a greater degree of freedom.
 
 For 6 months I floundered trying to understand what I wanted.
 My image of myself was _shattered_. I had always envisioned myself pursuing a path in research and I didn't know what to do.
@@ -171,7 +173,7 @@ Finally, after the most stressful semester of my life. I finished my degree. I w
 By chance at my internship I met a life-long friend —although at the time he was just a guy named Ben. Ben quickly became my mentor. Here was a person, whose zest for understanding was so infectious. He drove me to think deeper about what we were doing, what it all meant.
 
 Ben was moving companies and suggested that I should apply. I got the job at the end of 2018. We started working together full time.
-The following three years I felt my growth compound. We constantly showed each other new techniques, argued and tested our ideas and assumptions on one another. My thinking and philosophy had never advanced faster. Our minds aren't meant to reason in isolation. According to the modern interactionist view of reason, it's through interactions with others and our environment that we test our ideas and improve the way we understand the world.<Inline id={id} citation="enigma-of-reason"/>
+The following three years I felt my growth compound. We constantly showed each other new techniques, argued and tested our ideas and assumptions on one another. My thinking and philosophy had never advanced faster. Our minds aren't meant to reason in isolation. According to the modern interactionist view of reason, it's through interactions with others and our environment that we test our ideas and improve the way we understand the world.<Inline citation="enigma-of-reason"/>
 
 ## Tools for thought
 
@@ -196,7 +198,7 @@ This is a graph. It's made of up nodes (circles) and edges (connections between 
 Any mathematics problem can be represented as a graph and, in fact, graphs can represent any set of information.
 
 Our brains work as graphs. Of course, I am not the first to observe this associative structure.
-Vannevar Bush, head of the US Office of Scientific Research and Development during WWII theorised, '_the memex_', a system for organising massive amounts of information stored on microfilm. "The human mind ... operates by association,” he noted. “With one item in its grasp, it snaps instantly to the next that is suggested by the association of thoughts, in accordance with some intricate web of trails carried by the cells of the brain. ... The speed of action, the intricacy of trails, the detail of mental pictures [are] awe-inspiring beyond all else in nature."<Inline id={id} citation="dream-machine" /> Bush understood the nature of thought and imagined his system working *with* the natural patterns of the human mind.
+Vannevar Bush, head of the US Office of Scientific Research and Development during WWII theorised, '_the memex_', a system for organising massive amounts of information stored on microfilm. "The human mind ... operates by association,” he noted. “With one item in its grasp, it snaps instantly to the next that is suggested by the association of thoughts, in accordance with some intricate web of trails carried by the cells of the brain. ... The speed of action, the intricacy of trails, the detail of mental pictures [are] awe-inspiring beyond all else in nature."<Inline citation="dream-machine" /> Bush understood the nature of thought and imagined his system working *with* the natural patterns of the human mind.
 
 Even before the personal computing revolution, scientific thought-leaders saw power in creating systems with deeply linked associative knowledge.
 Wikipedia is a modern triumph, spanning tens of millions of pages of deeply interconnected information. It's only recently that people have started to apply this thinking to a smaller and more personal perspective.
@@ -204,14 +206,14 @@ Wikipedia is a modern triumph, spanning tens of millions of pages of deeply inte
 Enter **Roam Research**, a note-taking tool that lets you create a network of information. Roam completely abandons the filing cabinet metaphor letting you reference any page from any other. You're never stuck with the dilema of working out which conceptual bucket any piece of information belongs in.
 Roam Research, and the emerging competition are taking Vannevar Bush's ideas for 'the memex', Wikipedia's idea's for indexing knowledge and remixing them into a new **tool for thought**.
 
-Computational tools enable us to externalise our concepts and see them in front of us. We can explore our own minds like walking through a rose garden of ideas. <Inline id={id} citation="extended-mind" />
+Computational tools enable us to externalise our concepts and see them in front of us. We can explore our own minds like walking through a rose garden of ideas. <Inline citation="extended-mind" />
 As your perspective changes it's possible to revisit and re-synthesise old ideas forming new insights. The patterns and relationships in your own thoughts become evident.
 
 ## The fox and the hedgehog 🦊 🦔
 
-In Isaiah Berlins essay '*The Hedgehog and The Fox*', <Inline id={id} citation="hedgehog-and-the-fox" />
+In Isaiah Berlins essay '*The Hedgehog and The Fox*', <Inline citation="hedgehog-and-the-fox" />
 he divides people into two camps, surprise, hedgehogs and foxes.
-'*Hedgehogs*', are people who see the world predominantly through one lens or system of thinking, i.e. Marxism or Christianity. '*Foxes*', are more fluid, composing their worldview from a pool of smaller ideas. <Inline id={id} citation="fox-and-the-hedgehog-conaw" />
+'*Hedgehogs*', are people who see the world predominantly through one lens or system of thinking, i.e. Marxism or Christianity. '*Foxes*', are more fluid, composing their worldview from a pool of smaller ideas. <Inline citation="fox-and-the-hedgehog-conaw" />
 
 I used to think that I was a hedgehog under this classification; but, after seeing my thoughts sprawled before me, I realised that I am most like the fox. I don't have a consistent set of rules through which to look at the world.
 I **constantly** decompose the world into ideas and models that I can understand.
@@ -256,8 +258,7 @@ For a few months I noted how each IM interaction made me feel and had a few disc
 After some formative conversations and some re-synthesis of notes a few key problems stick out:
 
 ### Depth of communication
-
-Instant message chains aren’t conducive to deep conversations. For a meaningful conversation to take place over instant messaging, the conversation either has to span a long period of time —hours to days— or the messages have to be large. Trying to find a shared hour or two between people on opposite sides of the planet is a nightmare!<Inline id={id} citation="instant-messaging"/>
+Instant message chains aren’t conducive to deep conversations. For a meaningful conversation to take place over instant messaging, the conversation either has to span a long period of time —hours to days— or the messages have to be large. Trying to find a shared hour or two between people on opposite sides of the planet is a nightmare!<Inline citation="instant-messaging"/>
 
 I love being engaged in interesting conversations, but I detest being chained to my phone for a few hours waiting for each short response and responding in kind. The fear of this has such a powerful effect; it stops me from beginning new conversations because I know I won’t have the time to see them through.
 
@@ -292,14 +293,10 @@ The strongest factor of my growth has been: writing, connecting and re-synthesis
 
 Today our world is changing faster than we can keep track of, and yet we find ourselves stuck using linear, inexpressive 20th century ideas to solve 21st century problems.
 We're drowning in information with no way to make sense of it, both COVID-19 and climate change highlight this struggle with alarming urgency.
-We have to be able to augment our thinking to generate fresh perspectives and see problems with fresh eyes <Inline id={id} citation="camerata" />.
+We have to be able to augment our thinking to generate fresh perspectives and see problems with fresh eyes <Inline citation="camerata" />.
 Just as we've built advanced and powerful tools to examine our universe, our challenge now is to build advanced and powerful tools to examine ourselves.
-
---
 
 ## Key Takeaways
 
 This one is mainly for you Tanya. If along your journey you experience this deep gut sense that what you're pursuing isn't right for you. Change. Explore. I've seen so many people push through a degree in something they actively resent because they think it's what they _should_ be doing. It's never ended well. Almost all of those people have either hated their jobs, or switched to new pursuits after floundering for years. The right thing can still be hard, frustrating and gruelling at times. Most good things in life are. But if you have that feeling, no matter what anyone thinks, no matter what expectations exist around yourself, even expectations you've cultivated. Have the courage to change. Because every day you pursue something, that deep down you know isn't aligned with what you want, is a day wasted on this Earth.
-
----
 

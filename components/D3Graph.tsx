@@ -70,8 +70,6 @@ const D3Graph = ({ id, data }: any) => {
 
   const onResize = useCallback(() => {
     if (!state.isResizing) {
-      console.log("Starting");
-
       dispatch("startedResizing");
     }
   }, [state, dispatch]);

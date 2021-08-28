@@ -1,6 +1,11 @@
 import { css, cx } from "@emotion/css";
-import React, { useEffect, useState } from "react";
-import { ReferenceSet, useReferenceLinker } from "../hooks/useReferenceLinker";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useContext } from "react";
+import {
+  InlinePosition,
+  ReferenceSet,
+  useReferenceLinker,
+} from "../hooks/useReferenceLinker";
 
 export type Source = {
   year?: number;
@@ -10,38 +15,64 @@ export type Source = {
   publisher?: string;
 };
 
-export const References = ({ id, references }: ReferencesProps) => {
+const ReferenceContext = React.createContext("");
+export const ReferenceProvider = ReferenceContext.Provider;
+
+export const References = ({ references }: ReferencesProps) => {
+  const id = useContext(ReferenceContext);
+
   const addReferences = useReferenceLinker((s) => s.addReferences);
   addReferences(id, references);
   return null;
 };
 
-type InlineReferenceProps = { id: string; citation: string };
+const useCitation = (citation: string) => {
+  const id = useContext(ReferenceContext);
+  const inlinePositions = useReferenceLinker((s) => s.inlinePositions[id]);
+  const references = useReferenceLinker((s) => s.references[id]);
 
-const useCitation = (references: ReferenceSet, citation: string) => {
   const [position, setPosition] = useState<number>(-1);
   const [source, setSource] = useState<Source | undefined>();
 
   useEffect(() => {
-    if (references) {
+    if (inlinePositions && references) {
       const source = references[citation];
-      const index = Object.keys(references).indexOf(citation);
+      const index = inlinePositions.findIndex(([c, _]) => {
+        return c === citation;
+      });
+
+      console.log(source, index);
       if (source && index >= 0) {
         setSource(source);
         setPosition(index + 1);
       }
     }
-  }, [references, setSource, citation, setPosition]);
+  }, [references, id, inlinePositions, setSource, citation, setPosition]);
 
   return { position, source };
 };
 
-export const Inline = ({ id, citation }: InlineReferenceProps) => {
-  const references = useReferenceLinker((s) => s.references[id]);
-  const { position } = useCitation(references, citation);
+type InlineReferenceProps = { citation: string };
+
+export const Inline = ({ citation }: InlineReferenceProps) => {
+  const id = useContext(ReferenceContext);
+
+  const addInlineReferencePosition = useReferenceLinker(
+    (s) => s.addInlineReferencePosition
+  );
+
+  const { position } = useCitation(citation);
+  const posRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    if (posRef.current) {
+      const { left, top } = posRef.current.getBoundingClientRect();
+      addInlineReferencePosition(id, [citation, [left, top]]);
+    }
+  }, [id, posRef, citation]);
 
   return (
-    <sup>
+    <sup ref={posRef}>
       <a id={`${citation}-inline`} href={`#${citation}-source`}>
         [{position}]
       </a>
@@ -51,11 +82,10 @@ export const Inline = ({ id, citation }: InlineReferenceProps) => {
 
 type ReferencesProps = { id: string; references: ReferenceSet };
 
-type SourceLineProps = { id: string; citation: string };
+type SourceLineProps = { citation: string };
 
-const SourceLine = ({ id, citation }: SourceLineProps) => {
-  const references = useReferenceLinker((s) => s.references[id]);
-  const { position, source } = useCitation(references, citation);
+const SourceLine = ({ citation }: SourceLineProps) => {
+  const { position, source } = useCitation(citation);
 
   return (
     <div id={`${citation}-source`}>
@@ -75,17 +105,19 @@ const SourceLine = ({ id, citation }: SourceLineProps) => {
   );
 };
 
-const useReferences = (id: string) => {
-  const [references, setReferences] = useState<ReferenceSet | undefined>();
-  const referenceSet = useReferenceLinker((s) => s.references[id]);
+const useInlinePositions = (id: string) => {
+  const [inlinePositions, setInlinePositions] = useState<
+    InlinePosition[] | undefined
+  >();
+  const inlinePositionArray = useReferenceLinker((s) => s.inlinePositions[id]);
 
   useEffect(() => {
-    if (referenceSet) {
-      setReferences(referenceSet);
+    if (inlinePositionArray) {
+      setInlinePositions(inlinePositionArray);
     }
-  }, [referenceSet, setReferences]);
+  }, [inlinePositionArray, setInlinePositions]);
 
-  return references;
+  return inlinePositions;
 };
 
 const bibliographyStyles = css`
@@ -105,16 +137,17 @@ const bibliographyStyles = css`
   }
 `;
 
-export const Bibliography = ({ id }: { id: string }) => {
-  const references = useReferences(id);
+export const Bibliography = () => {
+  const id = useContext(ReferenceContext);
+  const inlinePositions = useInlinePositions(id);
 
-  if (references) {
+  if (inlinePositions) {
     return (
       <>
         <h2>References</h2>
         <div className={cx(bibliographyStyles)}>
-          {Object.keys(references).map((citation, idx) => (
-            <SourceLine key={idx} id={id} citation={citation} />
+          {inlinePositions.map(([citation, _], idx) => (
+            <SourceLine key={idx} citation={citation} />
           ))}
         </div>
       </>
