@@ -51,6 +51,12 @@ export default function Home() {
         <meta name="description" content="Step into the boundless garden" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <script
+        async
+        defer
+        data-website-id="90253757-e427-4fb9-95f2-682c5f54e17c"
+        src="https://fuck-google-analytics.herokuapp.com/umami.js"
+      ></script>
       <Fade>
         <Header></Header>
       </Fade>
