@@ -130,7 +130,7 @@ export default function Layout({ meta, children }: LayoutProps) {
           <p>Zan, {format(meta.date, "MMMM, y")}</p>
           <div className={cx(divider)}></div>
           <div>{children}</div>
-          <Bibliography id={meta.id} />
+          <Bibliography />
         </div>
       </div>
     </Fade>
