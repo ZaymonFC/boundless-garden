@@ -20,16 +20,10 @@ const navStyles = css`
   }
 `;
 
-const HomeLinkStyles = css`
-  & :hover {
-    cursor: pointer;
-  }
-`;
-
 const HomeLink = ({ children }: any) => (
-  <div className={cx(HomeLinkStyles)}>
-    <Link href="/">{children}</Link>
-  </div>
+  <Link href="/">
+    <a>{children}</a>
+  </Link>
 );
 
 const Nav = () => {
