@@ -42,17 +42,14 @@ const Nav = () => {
   );
 };
 
-// Font Scale
-// Text 1.2 rem
-// h3 1.94
-// h2 3.1
-
 const blogStyles = css`
   & {
     padding: 1.3rem;
   }
   h1 {
-    color: #ff8181;
+    font-family: Cardo;
+    font-weight: 700;
+    color: #ff8f8f;
     font-size: 3rem;
   }
   h2 {
