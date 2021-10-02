@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { AnimatePresence } from "framer-motion";
 import React from "react";
 import Head from "next/head";
+import "../styles/fonts.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
