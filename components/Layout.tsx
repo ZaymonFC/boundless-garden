@@ -69,11 +69,16 @@ const blogStyles = css`
     margin: auto;
     max-width: 720px;
   }
+
   p,
   li {
     color: rgb(241, 200, 146);
     font-size: 1.2rem;
     line-height: 170%;
+  }
+
+  li + li {
+    margin-top: 12px;
   }
 
   a:hover,
@@ -134,7 +139,9 @@ const FrontMatter = ({ title, date, wordCount }: Meta) => (
   <div className={cx(FrontMatterStyles)}>
     <h1>{title}</h1>
     <p>
-      <Emoji symbol="⏇" label="Unicode Thingy" /> Zan. {format(date, "MMMM, y")}
+      <Emoji symbol="⏇" label="Unicode Thingy" /> Zan. <Emoji symbol="⊱" label="Unicode Thingy" />
+      {format(date, "MMMM, y")}
+      <Emoji symbol="⊰" label="Unicode Thingy" />
     </p>
     {wordCount && (
       <p>

@@ -1,11 +1,7 @@
 import { css, cx } from "@emotion/css";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useContext } from "react";
-import {
-  InlinePosition,
-  ReferenceSet,
-  useReferenceLinker,
-} from "../hooks/useReferenceLinker";
+import { InlinePosition, ReferenceSet, useReferenceLinker } from "../hooks/useReferenceLinker";
 
 export type Source = {
   year?: number;
@@ -17,6 +13,8 @@ export type Source = {
 
 const ReferenceContext = React.createContext("");
 export const ReferenceProvider = ReferenceContext.Provider;
+
+type ReferencesProps = { id: string; references: ReferenceSet };
 
 export const References = ({ references }: ReferencesProps) => {
   const id = useContext(ReferenceContext);
@@ -57,9 +55,7 @@ type InlineReferenceProps = { citation: string };
 export const Inline = ({ citation }: InlineReferenceProps) => {
   const id = useContext(ReferenceContext);
 
-  const addInlineReferencePosition = useReferenceLinker(
-    (s) => s.addInlineReferencePosition
-  );
+  const addInlineReferencePosition = useReferenceLinker((s) => s.addInlineReferencePosition);
 
   const { position } = useCitation(citation);
   const posRef = useRef<HTMLElement>(null);
@@ -80,7 +76,14 @@ export const Inline = ({ citation }: InlineReferenceProps) => {
   );
 };
 
-type ReferencesProps = { id: string; references: ReferenceSet };
+const SourceLineStyles = css`
+  p {
+    font-family: "Cardo";
+  }
+  strong {
+    font-weight: 700;
+  }
+`;
 
 type SourceLineProps = { citation: string };
 
@@ -88,13 +91,13 @@ const SourceLine = ({ citation }: SourceLineProps) => {
   const { position, source } = useCitation(citation);
 
   return (
-    <div id={`${citation}-source`}>
+    <div id={`${citation}-source`} className={cx(SourceLineStyles)}>
       {position !== undefined && source && (
         <p>
-          {position}. {source.publisher ? `${source.publisher}, ` : ""}
+          <strong>{position}</strong>. {source.publisher ? `${source.publisher}, ` : ""}
           {source.year ? `${source.year}, ` : ""}
           {source.author ? `${source.author}, ` : ""}
-          {source.title ? `${source.title}. ` : ""}
+          <em>{source.title ? `${source.title}. ` : ""}</em>
           {source.url ? <a href={source.url}>—{source.url}</a> : null}{" "}
           <a href={`#${citation}-inline`}>
             <sup>[In text]</sup>
@@ -106,9 +109,7 @@ const SourceLine = ({ citation }: SourceLineProps) => {
 };
 
 const useInlinePositions = (id: string) => {
-  const [inlinePositions, setInlinePositions] = useState<
-    InlinePosition[] | undefined
-  >();
+  const [inlinePositions, setInlinePositions] = useState<InlinePosition[] | undefined>();
   const inlinePositionArray = useReferenceLinker((s) => s.inlinePositions[id]);
 
   useEffect(() => {

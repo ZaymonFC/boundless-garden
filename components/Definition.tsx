@@ -9,7 +9,8 @@ const DefinitionListStyles = css`
   margin-left: 4rem;
 
   li {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    font-family: "Jetbrains Mono";
   }
   li + li {
     margin-top: 10px;
