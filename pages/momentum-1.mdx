@@ -1,0 +1,109 @@
+import Layout from "../components/Layout";
+import { Inline, References, ReferenceProvider } from "../components/References";
+import Definition from "../components/Definition";
+
+export const id = "487be66f-5714-4490-80a4-9cbecc93d750";
+export const meta = {
+  id: id,
+  title: "Momentum 1",
+  date: new Date("2021-10"),
+  wordCount: 600
+};
+
+export const references = {
+  "art-of-impossible": {
+    title: "The Art of Impossible: A Peak Performance Primer",
+    author: "Steven Kotler",
+    year: 2021,
+    publisher: "HarperCollins Publishers Inc"
+  },
+   "ATLA": {
+    title: "Avatar the Last Airbender",
+    author: "Michael Dante DiMartino, Bryan Konietzko",
+    year: 2008,
+    publisher: "Nickelodeon"
+  }
+};
+
+export default ({ children }) => (
+  <ReferenceProvider value={id}>
+    <Layout meta={meta}>
+      <References references={references} />
+      {children}
+    </Layout>
+  </ReferenceProvider>
+);
+
+Dear reader,
+
+I've fallen into a bit of a slump.
+I'm writing this to document my process of getting back on track and finding momentum again.
+
+<Definition
+  word="Momentum"
+  topic="Psychology"
+  definitions={[
+    "The impetus and driving force gained by the development of a process or course of events: the investigation gathered momentum in the spring.",
+  ]}
+/>
+
+Whether it's working on personal projects, writing, making music or any other pursuit I have been finding that I am a creature of momentum.
+I find it much easier to keep working or push myself if I've got momentum behind me. Focussing when I'm in the swing of things is a breeze.
+If I fall off my habits, the virtuous cycle is broken, and I find myself starting from scratch.
+
+This is inherently a problem about flywheels. Flywheels are heavy, rotating masses that take a long time to get up to speed.
+Once they do, however, it's very hard to slow them down.
+2021 has been the first year that I have been able to effectively direct long-term, sustained effort into *any* project.
+
+<Definition
+  word="Inertia"
+  topic="Physics"
+  definitions={[
+    "A property of matter by which it continues in its existing state of rest or uniform motion in a straight line, unless that state is changed by an external force.",
+  ]}
+/>
+
+A few months ago I felt like my inertia was high. Small setbacks were absorbed and taken in stride.
+My creativity, output and fun were all running high.
+The current company I work at is being acquired.
+They're spinning up an internal team in another state to take over development, and I'll be redundant in February.
+While this is ultimately a good thing, marking time until the handover date is wreaking havoc on my motivation.
+
+My work situation can be though of as an external force being applied to my creative and motivational flywheel, draining energy at a constant rate.
+So I'm writing this blog post, I find that small wins and having fun tends to kick-start a virtuous cycle.
+
+<Definition
+  word="Virtuous cycle ◍"
+  topic="Feedback Loops"
+  definitions={[
+    "A complex chains of events that reinforce themselves through a feedback loop",
+  ]}
+/>
+
+Boundless.Garden is an outlet for me. It's a place I can explore how to hijack myself in two ways:
+
+1. Continuously foster an attitude where learning, development and exploration is happening
+2. Enjoy the process!
+
+I'm very early in this exploration. It's a daunting and challenging task to understand one's motivations.
+It's even more daunting to create a system to encourage top performance.
+Luckily there's a lot of prior art on the matter.
+
+According to *The Art of Impossible* it all starts with **intrinsic motivation**<Inline citation="art-of-impossible"/>.
+It's vital to find something that captures interest.
+When I first started programming I saw the burgeoning embers of a possible future, and I've been successfully pursuing that ever since.
+It's not enough though, in order to capture my sustained attention I need to explore and create, be exposed to diverse ideas and challenges.
+Recently I've been finding a lot of satisfaction in synthesising written works. So here we are.
+
+I was set on my path of exploration, now I seek to build a framework of extrinsic motivation around me.
+In the words of Iroh, "while it is always best to believe in oneself, a little help from others can be a great blessing"<Inline citation="ATLA" />.
+As hyper-social primates, social reinforcement can be an incredible motivational influence.
+While I try not to live my life for status or other people; it would be foolish to ignore such a powerful tool.
+
+Understanding myself, and what makes me tick, makes me effective might take years.
+As I further understand myself and my motivational complex I plan on writing more on this topic, and thus I have aspirationally titled this post **Momentum 1**.
+
+See you in the next one.
+
+~ Zan
+
