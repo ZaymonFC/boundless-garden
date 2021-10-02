@@ -1,5 +1,6 @@
 import { css, cx } from "@emotion/css";
 import { format } from "date-fns";
+import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import AtomFlower from "./AtomFlower";
@@ -115,18 +116,23 @@ type LayoutProps = {
 
 export default function Layout({ meta, children }: LayoutProps) {
   return (
-    <Fade>
-      <div className={cx(containerStyles)}>
-        <Nav></Nav>
+    <>
+      <Head>
+        <title>{meta.title} - Boundless Garden 🌸</title>
+      </Head>
+      <Fade>
+        <div className={cx(containerStyles)}>
+          <Nav></Nav>
 
-        <div className={cx(blogStyles)}>
-          <h1>{meta.title}</h1>
-          <p>Zan, {format(meta.date, "MMMM, y")}</p>
-          <div className={cx(divider)}></div>
-          <div>{children}</div>
-          <Bibliography />
+          <div className={cx(blogStyles)}>
+            <h1>{meta.title}</h1>
+            <p>Zan, {format(meta.date, "MMMM, y")}</p>
+            <div className={cx(divider)}></div>
+            <div>{children}</div>
+            <Bibliography />
+          </div>
         </div>
-      </div>
-    </Fade>
+      </Fade>
+    </>
   );
 }
