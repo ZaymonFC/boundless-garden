@@ -1,9 +1,11 @@
 import { css, cx } from "@emotion/css";
-import { format } from "date-fns";
+import { format, formatDistance } from "date-fns";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+import { colours } from "../styles/tokens";
 import AtomFlower from "./AtomFlower";
+import Emoji from "./Emoji";
 import { Fade } from "./Fade";
 import { Bibliography } from "./References";
 
@@ -104,12 +106,44 @@ const divider = css`
   border-style: solid;
 `;
 
-type Meta = { title: string; date: Date; id: string };
+type Meta = { title: string; date: Date; id: string; wordCount?: number };
 
 type LayoutProps = {
   meta: Meta;
   children: React.ReactNode;
 };
+
+const timeToRead = (words: number) => {
+  const readingSpeed = 200; // Words / minute
+  const minutesToRead = words / readingSpeed;
+  return formatDistance(0, minutesToRead * 1000 * 60, { includeSeconds: true });
+};
+
+const FrontMatterStyles = css`
+  font-size: 1rem;
+  color: ${colours.secondary};
+  font-family: "Jetbrains Mono";
+  p {
+    font-size: 1.1rem;
+    padding: 0;
+    margin: 0;
+  }
+`;
+
+const FrontMatter = ({ title, date, wordCount }: Meta) => (
+  <div className={cx(FrontMatterStyles)}>
+    <h1>{title}</h1>
+    <p>
+      <Emoji symbol="⏇" label="Unicode Thingy" /> Zan. {format(date, "MMMM, y")}
+    </p>
+    {wordCount && (
+      <p>
+        <Emoji symbol="⎇" label="Unicode Thingy" /> {wordCount} words.{" "}
+        <Emoji symbol="⪽" label="Unicode symbol for a subset with a dot" /> {timeToRead(wordCount)}
+      </p>
+    )}
+  </div>
+);
 
 export default function Layout({ meta, children }: LayoutProps) {
   return (
@@ -122,8 +156,7 @@ export default function Layout({ meta, children }: LayoutProps) {
           <Nav></Nav>
 
           <div className={cx(blogStyles)}>
-            <h1>{meta.title}</h1>
-            <p>Zan, {format(meta.date, "MMMM, y")}</p>
+            <FrontMatter {...meta} />
             <div className={cx(divider)}></div>
             <div>{children}</div>
             <Bibliography />
