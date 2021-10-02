@@ -19,7 +19,7 @@
     "@types/react-d3-graph": "^2.6.1",
     "@types/three": "^0.130.1",
     "d3": "^5.5.0",
-    "date-fns": "^2.23.0",
+    "date-fns": "^2.24.0",
     "framer-motion": "^4.1.17",
     "grey-matter": "^0.0.0",
     "leva": "^0.9.13",
