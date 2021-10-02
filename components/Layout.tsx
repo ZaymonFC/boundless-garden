@@ -8,6 +8,7 @@ import AtomFlower from "./AtomFlower";
 import Emoji from "./Emoji";
 import { Fade } from "./Fade";
 import { Bibliography } from "./References";
+import { ThreeWithStars } from "./ThreeWithStars";
 
 const containerStyles = css`
   justify-content: center;
@@ -153,21 +154,35 @@ const FrontMatter = ({ title, date, wordCount }: Meta) => (
 );
 
 export default function Layout({ meta, children }: LayoutProps) {
+  const height = "10rem";
   return (
     <>
       <Head>
         <title>{meta.title} - Boundless Garden 🌸</title>
       </Head>
       <Fade>
-        <div className={cx(containerStyles)}>
-          <Nav></Nav>
+        <div style={{ position: "relative", height: height }}>
+          <ThreeWithStars />
+          <main
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: 0,
+              height: height,
+            }}
+          >
+            <div className={cx(containerStyles)}>
+              <Nav></Nav>
 
-          <div className={cx(blogStyles)}>
-            <FrontMatter {...meta} />
-            <div className={cx(divider)}></div>
-            <div>{children}</div>
-            <Bibliography />
-          </div>
+              <div className={cx(blogStyles)}>
+                <FrontMatter {...meta} />
+                <div className={cx(divider)}></div>
+                <div>{children}</div>
+                <Bibliography />
+              </div>
+            </div>
+          </main>
         </div>
       </Fade>
     </>

@@ -5,18 +5,8 @@ import Link from "next/link";
 import React from "react";
 import AtomFlower from "../components/AtomFlower";
 import { Fade } from "../components/Fade";
+import { ThreeWithStars } from "../components/ThreeWithStars";
 import styles from "../styles/Home.module.css";
-
-const ThreeWithStars = () => {
-  return (
-    <Canvas>
-      <OrthographicCamera makeDefault zoom={40} position={[0, 0, 10]} />
-      <ambientLight />
-      <Stars radius={50} depth={10} count={10000} factor={2} fade></Stars>
-      <pointLight position={[10, 15, 10]} />
-    </Canvas>
-  );
-};
 
 const Header = () => {
   const height = "100vh";
