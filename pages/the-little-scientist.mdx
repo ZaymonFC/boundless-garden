@@ -1,6 +1,7 @@
 import BlogImage from "../components/BlogImage";
 import roamGraph from "../public/my-roam-graph.png";
 import Layout from "../components/Layout";
+import Definition from "../components/Definition";
 import { Inline, References, ReferenceProvider } from "../components/References";
 import D3Graph from "../components/D3Graph";
 
@@ -36,7 +37,7 @@ export const references = {
     author: "Hugo Mercier, Dan Sperber",
     publisher: "Havard University Press",
   },
-  "dream-machine":{
+  "dream-machine": {
     url: "http://gen.lib.rus.ec/book/index.php?md5=264a042633277e170b734f580eee0465",
     title: "The Dream Machine",
     author: "M. Mitchell Waldrop",
@@ -67,21 +68,16 @@ export const references = {
     publisher: "The LetterDesk Blog",
     author: "Zaymon Antonio",
   },
-  "camerata": {
+  camerata: {
     url: "http://nickcammarata.com/writing/everything-is-fertile",
     title: "Everything is Fertile",
     year: 2019,
-    author: "Nick Camerata"
-  }
+    author: "Nick Camerata",
+  },
 };
 
 export const data = {
-  nodes: [
-    { id: "Australia" },
-    { id: "Brisbane" },
-    { id: "Me" },
-    { id: "Commonwealth" },
-  ],
+  nodes: [{ id: "Australia" }, { id: "Brisbane" }, { id: "Me" }, { id: "Commonwealth" }],
   links: [
     { source: "Australia", target: "Commonwealth" },
     { source: "Brisbane", target: "Australia" },
@@ -129,17 +125,17 @@ NYSF was exhilarating. A two-week whirlwind of laboratory visits, careers worksh
 
 The laboratories and experiments were _cool_ but the most exciting thing was being around wonderful, curious young minds.
 Staying on campus at the University of Western Australia in a large, co-ed dormitory, we quickly opened up about ourselves.
-I felt like, for the first time I was surrounded by a group of people __on my wavelength__ ⏆.
+I felt like, for the first time I was surrounded by a group of people **on my wavelength** ⏆.
 Everyone around me was passionate and had ambitions for science, research, intellectual pursuits.
 I felt like I could open up and be my unashamedly nerdy self.
 
-In environment like that you form so many close bonds in such a short time *it hurts to leave*. People nicknamed the feeling, '_post NYSF depression_' and I can definitely attest to having felt it.
+In environment like that you form so many close bonds in such a short time _it hurts to leave_. People nicknamed the feeling, '_post NYSF depression_' and I can definitely attest to having felt it.
 However, I came home, with a feeling of kinship and belonging that I'd never felt before.
 
 ## Eject!
 
 For 2-3 years leading up to my entrance to university I wanted to study **bioinformatics**.
-Bioinformatics is the merging of computational techniques with biology research, an emerging and important field. I knew I had an affinity for computers, loved biology and had read about interesting developments coming out of bioinformatics like: personalised polypeptide antibiotics and the protein folding problem—recently solved by Open.AI<Inline citation="open-ai" />—. I thought, "*this is the field for me*".
+Bioinformatics is the merging of computational techniques with biology research, an emerging and important field. I knew I had an affinity for computers, loved biology and had read about interesting developments coming out of bioinformatics like: personalised polypeptide antibiotics and the protein folding problem—recently solved by Open.AI<Inline citation="open-ai" />—. I thought, "_this is the field for me_".
 
 I finished high school and got accepted into Griffith university to study a double degree in IT and Science.
 Biotech had captured my imagination but as I learned more about the nature of research I found myself hesitant to commit to a life of academia.
@@ -149,7 +145,7 @@ Navigating the bureaucracy and politics, the stale working environments, '_mimet
 For 6 months I floundered trying to understand what I wanted.
 My image of myself was _shattered_. I had always envisioned myself pursuing a path in research and I didn't know what to do.
 In my first year the only courses that really intrigued me were the courses on programming.
-Fortuitously, someone mentioned to me that Griffith was booting up a new __Computer Science__ course.
+Fortuitously, someone mentioned to me that Griffith was booting up a new **Computer Science** course.
 We're in the age of individuals and small teams being able to create astounding value, working from anywhere.
 Technological innovation is no longer confined to large institutions and companies with deep pockets, the limit is only defined by your ability to be creative.
 I quickly enrolled to start the next year studying CS.
@@ -179,15 +175,15 @@ The following three years I felt my growth compound. We constantly showed each o
 
 Recently, I've been devoting a lot of my spare time to thinking about human computer symbiosis.
 The world has experienced a long period of exponential progress.
-The complexity of the problems we face have been moving in lock-step with the ever-increasing amount of information we collect. In order to progress we need to leverage technology to build advanced __tools for thought__.
-
+The complexity of the problems we face have been moving in lock-step with the ever-increasing amount of information we collect. In order to progress we need to leverage technology to build advanced **tools for thought**.
 
 ## The rusty filing cabinet
+
 The filing cabinet metaphor is common in the software we use. We organise files into folders, making hierarchies, taxonomies and classifications to determine where information belongs.
 
 How many of you take notes? How many of you take notes digitally?
 Note-taking is a powerful way to extend and remix our thoughts. However, we're being limited by our tools.
-Information in reality is full of *relationships*. Thoughts don't __fit__ cleanly in a filing cabinet since our brains operate on vast networks of interconnected information. If I say, 'New Zealand' our brains don't open the 'New Zealand' folder, experiences and related information come forth.
+Information in reality is full of _relationships_. Thoughts don't **fit** cleanly in a filing cabinet since our brains operate on vast networks of interconnected information. If I say, 'New Zealand' our brains don't open the 'New Zealand' folder, experiences and related information come forth.
 
 ## Sharper tools
 
@@ -198,7 +194,7 @@ This is a graph. It's made of up nodes (circles) and edges (connections between 
 Any mathematics problem can be represented as a graph and, in fact, graphs can represent any set of information.
 
 Our brains work as graphs. Of course, I am not the first to observe this associative structure.
-Vannevar Bush, head of the US Office of Scientific Research and Development during WWII theorised, '_the memex_', a system for organising massive amounts of information stored on microfilm. "The human mind ... operates by association,” he noted. “With one item in its grasp, it snaps instantly to the next that is suggested by the association of thoughts, in accordance with some intricate web of trails carried by the cells of the brain. ... The speed of action, the intricacy of trails, the detail of mental pictures [are] awe-inspiring beyond all else in nature."<Inline citation="dream-machine" /> Bush understood the nature of thought and imagined his system working *with* the natural patterns of the human mind.
+Vannevar Bush, head of the US Office of Scientific Research and Development during WWII theorised, '_the memex_', a system for organising massive amounts of information stored on microfilm. "The human mind ... operates by association,” he noted. “With one item in its grasp, it snaps instantly to the next that is suggested by the association of thoughts, in accordance with some intricate web of trails carried by the cells of the brain. ... The speed of action, the intricacy of trails, the detail of mental pictures [are] awe-inspiring beyond all else in nature."<Inline citation="dream-machine" /> Bush understood the nature of thought and imagined his system working _with_ the natural patterns of the human mind.
 
 Even before the personal computing revolution, scientific thought-leaders saw power in creating systems with deeply linked associative knowledge.
 Wikipedia is a modern triumph, spanning tens of millions of pages of deeply interconnected information. It's only recently that people have started to apply this thinking to a smaller and more personal perspective.
@@ -211,9 +207,9 @@ As your perspective changes it's possible to revisit and re-synthesise old ideas
 
 ## The fox and the hedgehog 🦊 🦔
 
-In Isaiah Berlins essay '*The Hedgehog and The Fox*', <Inline citation="hedgehog-and-the-fox" />
+In Isaiah Berlins essay '_The Hedgehog and The Fox_', <Inline citation="hedgehog-and-the-fox" />
 he divides people into two camps, surprise, hedgehogs and foxes.
-'*Hedgehogs*', are people who see the world predominantly through one lens or system of thinking, i.e. Marxism or Christianity. '*Foxes*', are more fluid, composing their worldview from a pool of smaller ideas. <Inline citation="fox-and-the-hedgehog-conaw" />
+'_Hedgehogs_', are people who see the world predominantly through one lens or system of thinking, i.e. Marxism or Christianity. '_Foxes_', are more fluid, composing their worldview from a pool of smaller ideas. <Inline citation="fox-and-the-hedgehog-conaw" />
 
 I used to think that I was a hedgehog under this classification; but, after seeing my thoughts sprawled before me, I realised that I am most like the fox. I don't have a consistent set of rules through which to look at the world.
 I **constantly** decompose the world into ideas and models that I can understand.
@@ -221,10 +217,7 @@ I **constantly** decompose the world into ideas and models that I can understand
 In the past I experienced difficulty making my ideas fit into a more _unified_ vision.
 Graph based, associative note-taking changed my life; it's true. Here's the graph of knowledge that I've built up over the last 12 months.
 
-<BlogImage
-  src={roamGraph}
-  alt="An image showing an overview of the notes in my personal roam"
-/>
+<BlogImage src={roamGraph} alt="An image showing an overview of the notes in my personal roam" />
 
 Each dot represents a topic. The larger the dot, the more times a topic has been referenced.
 
@@ -232,12 +225,12 @@ Tools for thought allow us to apply the scientific method to our own lives. We c
 
 ## 2021, the blossoming 🌸
 
-I started putting __everything__ I was learning in Roam. Linking new knowledge to my journal entries. Going through the process of entering information, and deeply associating, linking concepts together, showed me a lot about the nature of my own mind.
+I started putting **everything** I was learning in Roam. Linking new knowledge to my journal entries. Going through the process of entering information, and deeply associating, linking concepts together, showed me a lot about the nature of my own mind.
 
 I've been able to trace the roots of anxieties I wasn't even consciously aware of having. I've had healthier relationships with the people I love, the people I respect.
 Even the people I have a difficult time dealing with.
 
-Thinking back on my decision to abandon bio-informatics I realised that it wasn't enough for me to just 'do science' if I didn't have a reason *why*.
+Thinking back on my decision to abandon bio-informatics I realised that it wasn't enough for me to just 'do science' if I didn't have a reason _why_.
 I couldn't blindly work at progress for progress' sake without identifying a guiding North Star.
 
 Now we've caught up to the present. Let me show you where my energies are being directed.
@@ -249,15 +242,20 @@ Through observing my own experience, and talking with other's I've noticed a few
 The ability to instantaneously communicate with people around the world has been transformative. Scientists can collaborate effortlessly. World events can be projected into the palm of anyone who owns a smartphone.
 When it comes to personal relationships its never been easier to, '_keep in touch_' and I think that's becoming a problem.
 
-So that we have consistent understanding, I'm going to define instant messaging as:
-
-> A written conversation over the course of time in the form of short messages delivered immediately.
+<Definition
+  word="Instant Messaging"
+  topic="Technology"
+  definitions={[
+    "A written conversation over the course of time in the form of short messages delivered immediately."
+  ]}
+/>
 
 About a year ago now I was thinking about why keeping in contact with my long distance friends over (instant messaging app of choice) wasn’t working out.
 For a few months I noted how each IM interaction made me feel and had a few discussions about communication and instant messaging with friends and colleagues.
-After some formative conversations and some re-synthesis of notes a few key problems stick out:
+After some formative conversations and some re-synthesis of notes a few key problems stick out.
 
 ### Depth of communication
+
 Instant message chains aren’t conducive to deep conversations. For a meaningful conversation to take place over instant messaging, the conversation either has to span a long period of time —hours to days— or the messages have to be large. Trying to find a shared hour or two between people on opposite sides of the planet is a nightmare!<Inline citation="instant-messaging"/>
 
 I love being engaged in interesting conversations, but I detest being chained to my phone for a few hours waiting for each short response and responding in kind. The fear of this has such a powerful effect; it stops me from beginning new conversations because I know I won’t have the time to see them through.
@@ -275,6 +273,7 @@ Messages are **obliterated** into the void under the deluge of new ones.
 Popular platforms like Slack —a successful app for internal communication— emphasise the **ephemerality** of information. How much context are we _losing_? How much time are we _wasting_ **re-seeking** instead of using effective archival retrieval?
 
 ## LetterDesk.app
+
 If you found yourself agreeing with my criticisms of instant communication; I'm building a platform for you. [LetterDesk.app](https://letterdesk.app) is what I've been spending most of my productive free time on for the last eight months. It's an experiment aiming to bring the practice of letter writing and emotive, vulnerable communication into the internet age. [LetterDesk](https://letterdesk.app) makes a few simple design decisions to take the pressure out of communication while fostering self-examination.
 
 1. Letters are delivered after a random duration of 1-4 days
@@ -299,4 +298,3 @@ Just as we've built advanced and powerful tools to examine our universe, our cha
 ## Key Takeaways
 
 This one is mainly for you Tanya. If along your journey you experience this deep gut sense that what you're pursuing isn't right for you. Change. Explore. I've seen so many people push through a degree in something they actively resent because they think it's what they _should_ be doing. It's never ended well. Almost all of those people have either hated their jobs, or switched to new pursuits after floundering for years. The right thing can still be hard, frustrating and gruelling at times. Most good things in life are. But if you have that feeling, no matter what anyone thinks, no matter what expectations exist around yourself, even expectations you've cultivated. Have the courage to change. Because every day you pursue something, that deep down you know isn't aligned with what you want, is a day wasted on this Earth.
-
