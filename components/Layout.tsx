@@ -154,7 +154,7 @@ const FrontMatter = ({ title, date, wordCount }: Meta) => (
 );
 
 export default function Layout({ meta, children }: LayoutProps) {
-  const height = "10rem";
+  const height = "20rem";
   return (
     <>
       <Head>
