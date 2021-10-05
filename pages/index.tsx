@@ -1,5 +1,3 @@
-import { OrthographicCamera, Stars } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";

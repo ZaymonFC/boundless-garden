@@ -1,6 +1,5 @@
 import { css, cx } from "@emotion/css";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { InlinePosition, ReferenceSet, useReferenceLinker } from "../hooks/useReferenceLinker";
 
 export type Source = {
@@ -60,7 +59,7 @@ export const Inline = ({ citation }: InlineReferenceProps) => {
   const { position } = useCitation(citation);
   const posRef = useRef<HTMLElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (posRef.current) {
       const { left, top } = posRef.current.getBoundingClientRect();
       addInlineReferencePosition(id, [citation, [left, top]]);
