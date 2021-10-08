@@ -61,8 +61,8 @@ const blogStyles = css`
     padding-top: 1.94rem;
   }
   h3 {
-    font-size: 1.2rem;
-    padding-top: 1.2rem;
+    font-size: 1.4rem;
+    padding-top: 1.4rem;
     color: #ff8f8f;
   }
   & {
@@ -90,8 +90,9 @@ const blogStyles = css`
 
   blockquote {
     border-left: solid 4px #ff8f8f;
-    padding-left: 1rem;
-    margin-left: 0;
+    padding-left: 1.1rem;
+    margin-left: -20px;
+    margin-right: -20px;
     font-style: italic;
   }
 
@@ -103,6 +104,13 @@ const blogStyles = css`
   div:target > p {
     border-bottom: solid 1px #ff8f8f;
     padding-bottom: 8px;
+  }
+  sup {
+    line-height: 0;
+  }
+  hr {
+    margin: 2.2rem 0;
+    border-color: ${colours.secondary};
   }
 `;
 
