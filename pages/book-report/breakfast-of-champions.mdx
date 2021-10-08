@@ -1,0 +1,135 @@
+import Layout from "../../components/Layout";
+import { Inline, References, ReferenceProvider } from "../../components/References";
+import AtomFlower from "../../components/AtomFlower";
+import Definition from "../../components/Definition";
+
+export const meta = {
+  id: "d8b6c66a-ea2f-429d-81c7-8dcdec84f7fb",
+  title: "Book Report - Breakfast of Champions",
+  date: new Date("2021-10"),
+  wordCount: 1100,
+};
+
+export const references = {
+  "awareness": {
+    author: "Anthony de Mello",
+    year: 1990,
+    title: "Awareness",
+    publisher: "Bantam Doubleday Dell",
+  }
+};
+
+export default ({ children }) => (
+  <ReferenceProvider value={meta.id}>
+    <Layout meta={meta}>
+      <References references={references} />
+      {children}
+    </Layout>
+  </ReferenceProvider>
+);
+
+## Introduction
+
+Written in 1973 by Kurt Vonnegut, _Breakfast of Champions_ is the authors seventh novel.
+The novel is a postmodern and metafictional exploration of the collective American psyche and a vehicle for Vonnegut's own self exploration.
+
+<Definition
+  word="Postmodernism"
+  topic="literature"
+  definitions={[
+    "a form of literature that is characterized by the use of metafiction, unreliable narration, self-reflexivity, intertextuality, and which often thematizes both historical and political issues",
+  ]}
+/>
+
+_Kurt Vonnegut_ was a pioneer of postmodern literature and _Breakfast of Champions_ is certainly true to form.
+
+## Themes
+I'm not going to talk about everything covered in the book. Here are the themes that I found most thought-provoking to explore.
+
+### Suicide
+
+Vonnegut places himself as a character in the story and draws comparrisons between himself and his creation: the character Dwayne Hoover.
+Hover's wife had committed suicide:
+
+> "... by eating Drāno—a mixture of sodium hydroxide and aluminum flakes, which was meant to clear drains. Celia became a small volcano, since she was composed of the same sorts of substances which commonly clogged drains."
+
+In a demonstration of meta-narrative the character of Vonnegut talks about how his mother had committed suicide.
+It's likely that he created Dwayne Hoover as a device through which to explore his relationship to his mothers death.
+It's also apparent that Vonnegut has himself struggled with suicidal thoughts in the past:
+
+> “This is a very bad book you’re writing,” I said to myself behind my leaks.<br />
+> “I know,” I said.<br />
+> “You’re afraid you’ll kill yourself the way your mother did,” I said. <br />
+> “I know,” I said.
+
+The self-reflexive nature of this exchange is fascinating.
+Throughout the book it's clear that Vonnegut is trying to gain perspective and insight into a few of life's deepest questions:
+- Are we destined to follow the patterns of those that came before us?
+- Can we ever truly exert control over our experience or are we biological machines subject to the malignment of 'bad ideas' and 'bad chemicals'?
+
+In more traditional fiction, authors use their characters to explore themes they've been having trouble with in their own lives.
+The character of Vonnegut reifies this previously implicit relationship, by concretely using his character, interleaved with the narrative itself as a device for self exploration.
+
+
+### Free thinking
+
+Throughout the novel, Vonnegut explores themes of free-will and free thinking.
+Vonnegut makes a commentary on how people have a tendency to defend and hold ideas with little to no grounding in reality due to social pressures.
+
+> "Ideas on Earth were badges of friendship or enmity. Their content did not matter. Friends agreed with friends, in order to express friendliness. Enemies disagreed with enemies, in order to express enmity."
+
+<Definition
+  word="Enmity"
+  topic="relationships"
+  definitions={["a state or feeling of active opposition or hostility"]}
+/>
+
+This hits on an issue that's prevalent in modern society with disinformation rampant.
+People seek truth far less often, instead latching on to ideas as tokens of membership to various groups.
+This is prescient in modern society where the holding and defending of harmful ideals is even more prevalent in the time of social media echo-chambers.
+
+
+### Perceptions bound
+The people of the fictional town of Midland City have very limited perspective.
+In small towns, dominant ideologies crush individual thinking through ostracization and group-think.
+When an individual in a group changes, experiences growth or attempts to cast off popular ideals,
+it's often the perception of the group which keeps the person locked in a particular way of thinking.
+
+> "It didn’t matter much what most people in Midland City said out loud.
+> Every person had a clearly defined part to play.
+> If a person stopped living up to expectations, because of bad chemicals or one thing or another, everybody went on imagining that the person was living up to expectations anyway."
+
+This excerpt reminds me of some wisdom from Anthony de Mello's *Awareness*<Inline citation="awareness" />:
+
+> A religious sister from India goes out to make a retreat.
+> Everybody in the community is saying, “Oh, we know, that’s part of her
+> charism; she’s always attending workshops and going to retreats; nothing will ever
+> change her.” Now, it so happens that the sister does change at this particular workshop, or
+> therapy group, or whatever it is. She changes; everyone notices the difference. Everyone
+> says, “My, you’ve really come to some insights, haven’t you?” She has, and they can see
+> the difference in her behavior, in her body, in her face. You always do when there’s an
+> inner change. It always registers in your face, in your eyes, in your body. Well, the sister
+> goes back to her community, and since the community has a prejudiced, fixed idea about
+> her, they’re going to continue to look at her through the eyes of that prejudice. They’re
+> the only ones who don’t see any change in her. They say, “Oh well, she seems a little
+> more spirited, but just wait, she’ll be depressed again.” And within a few weeks she is
+> depressed again; she’s reacting to their reaction. And they all say, “See, we told you so;
+> she hadn’t changed.” But the tragedy is that she had, only they didn’t see it. Perception
+> has devastating consequences in the matter of love and human relationships.
+
+
+These commentaries point to the tendency to form our perceptions quickly and only re-evaluate them when something striking happens.
+It's fascinating to me that our perceptions of people often work to shape their reality to some extent.
+
+I've fallen prey to this behaviour in the past—and sometimes still do it against my best intentions.
+I used to frequently cast people into groups or categories and then not re-evaluate that assessment.
+When I reconnect with people I haven't seen in a while, I actively attempt to decouple my idea of who they were from the person sitting in front of me.
+It's astounding how much growth and change does happen within people. I was missing out on that fact for so long.
+
+For the people of Midland City, people are cast into roles that become self-fulfilling prophecies.
+Attempts to change have to push against the collective perception of the individual and their place in society.
+This effect isn't contained to *small town thinking*, it happens all around us.
+
+## In closing
+
+> "I won’t know myself until I find out whether life is serious or not,” said Trout. “It’s dangerous, I know, and it can hurt a lot. That doesn’t necessarily mean it’s serious, too.”
