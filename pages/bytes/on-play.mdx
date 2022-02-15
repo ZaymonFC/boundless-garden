@@ -1,0 +1,77 @@
+import Layout from "../../components/Layout";
+import { Inline, References, ReferenceProvider } from "../../components/References";
+import Definition from "../../components/Definition";
+
+export const id = "40BDC5DF-CE8A-45FD-9B53-9408607C88AD";
+export const meta = {
+  id: id,
+  title: "On play",
+  date: new Date("2022-02"),
+  wordCount: 520,
+  tags: ["play", "neuroscience", "life-trajectory"],
+};
+
+export const references = {
+  "huberman-play": {
+    title: "Using Play to Rewire & Improve Your Brain",
+    author: "Andrew Huberman",
+    url: "https://hubermanlab.com/using-play-to-rewire-and-improve-your-brain/",
+    year: 2022,
+    publisher: "Huberman Lab Podcast",
+  },
+  "create-in-public": {
+    title: "Why you should create in public",
+    author: "Nicole",
+    year: 2022,
+    publisher: "Substack",
+    url: "https://nicoles.substack.com/p/why-you-should-create-in-public",
+  },
+};
+
+export default ({ children }) => (
+  <ReferenceProvider value={id}>
+    <Layout meta={meta}>
+      <References references={references} />
+      {children}
+    </Layout>
+  </ReferenceProvider>
+);
+
+It's recently come to my attention that play is **fundamentally** important for neuroplasticity and learning.<Inline citation="huberman-play" />
+I think I've known this to be true intuitively for some time. Whenever I'm following the fun, following my interests, I'm often in a state where I make the most lateral connections.
+Play shapes us, play is one of the driving forces of defining the people that we become. We get to test out roles, push boundaries in a low-consequence environment. People who are playful with you will often follow you to far-out places chasing a joke, a scenario and answers to impossible what-if questions.
+Play binds us together and allows our brains to change.
+
+An element of play that is void in my life is exploring the world and the people in it.
+
+Currently, I'm feeling so under-stimulated in my normal working hours that I often fill my weekends chasing my interests from home. Whether that's working on LetterDesk or learning more about programming, design, whatever.
+Recently I've been wondering:
+
+> What would my life look like if I were getting the mental stimulation and satisfaction that I need during the work week?
+
+My job is coming to a close soon—although never soon enough—and maybe I won't have to choose? I feel fomo on exploring the world because currently it's more important that I satisfy my interests on the weekends.
+
+Going forward I'm endeavouring to never work a job that I find boring and pointless ever again if I can help it.
+Don't get me wrong, I understand doing hard things come with gruelling and frustrating moments, but there's a
+special kind of apathy available to you when you find yourself working on projects that serve no one.
+Projects with a very real likelihood of just being switched off in the near future.
+
+I have my best ideas and enjoy my life the most when I'm playful. There's nothing playful about my current work reality other than
+sitting back and laughing at a cosmic level of absurdity.
+
+Cultivating and embracing the tinkerer's mindset is crucial for me ongoing.
+We only get one life, one career, why should I spend mine doing meaningless garbage.
+
+## A new mission
+
+How can I live and work in such a way that enables me to follow my curiosity and fun, but still has positive impact on people?
+
+How can I orient my work and career to better balance other aspects of life? It seems to me that meeting new people, fostering relationships and exploring the world can only be synergistically positive with my other efforts.
+
+A lot of experimentation and soul-searching will be required, that's one thing I know for sure.
+
+## Some meta
+
+Inspired an excellent post<Inline citation="create-in-public" /> by Nicole—`@startingfromnix`—I'm trying to foster my ability to write, collapse my thoughts and to some extent create in public. This post is baby's first steps at actually sharing my inner-workings and the random quandaries that I'm experiencing in life. It's probably going to take writing 10, 50, 100 of these before I really find my voice as a writer. You've got to start somewhere!
+
+For now these ramblings will be found under `/bytes`.
