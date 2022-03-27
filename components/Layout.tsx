@@ -8,6 +8,7 @@ import AtomFlower from "./AtomFlower";
 import Emoji from "./Emoji";
 import { Fade } from "./Fade";
 import { Bibliography } from "./References";
+import { Subscribe } from "./Subscribe";
 import { ThreeWithStars } from "./ThreeWithStars";
 
 const containerStyles = css`
@@ -187,6 +188,9 @@ export default function Layout({ meta, children }: LayoutProps) {
                 <FrontMatter {...meta} />
                 <div className={cx(divider)}></div>
                 <div>{children}</div>
+                <div>
+                  <Subscribe />
+                </div>
                 <Bibliography />
               </div>
             </div>
