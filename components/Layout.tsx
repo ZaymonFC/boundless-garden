@@ -188,10 +188,8 @@ export default function Layout({ meta, children }: LayoutProps) {
                 <FrontMatter {...meta} />
                 <div className={cx(divider)}></div>
                 <div>{children}</div>
-                <div>
-                  <Subscribe />
-                </div>
                 <Bibliography />
+                <Subscribe />
               </div>
             </div>
           </main>
