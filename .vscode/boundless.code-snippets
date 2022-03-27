@@ -1,0 +1,32 @@
+{
+  "boundless-post": {
+    "scope": "markdownreact,markdown",
+    "prefix": "post-skeleton",
+    "body": [
+      "import Layout from \"../../components/Layout\";",
+      "import { Inline, References, ReferenceProvider } from \"../../components/References\";",
+      "import Definition from \"../../components/Definition\";",
+      "export const id = '$1';",
+      "export const meta = {",
+      "  id: id,",
+      "  title: '$2',",
+      "  date: new Date('$0'),",
+      "  wordCount: 0,",
+      "  tags: [],",
+      "}",
+      "",
+      "export const references = {",
+      "};",
+      "",
+      "export default ({ children }) => (",
+      "  <ReferenceProvider value={id}>",
+      "    <Layout meta={meta}>",
+      "      <References references={references} />",
+      "      {children}",
+      "    </Layout>",
+      "  </ReferenceProvider>",
+      ");"
+    ],
+    "description": "Post skeleton for boundless garden"
+  }
+}
