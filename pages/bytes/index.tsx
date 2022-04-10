@@ -1,7 +1,7 @@
 import { CalendarIcon, PersonIcon } from "@radix-ui/react-icons";
-import { css } from "@stitches/react";
 import Head from "next/head";
 import React from "react";
+import { StarBackground } from "../../components/Background";
 import Nav from "../../components/Nav";
 import { styled } from "../../Stitches";
 
@@ -9,28 +9,29 @@ const IndexContainer = styled("div", {
   marginLeft: "auto",
   marginRight: "auto",
   marginBottom: 12,
+  padding: 24,
 
   maxWidth: 1264,
 });
 
 const PostTileContainer = styled("div", {
-  minWidth: 325,
-
   padding: 16,
   border: "solid 1px $salmon",
-  // boxShadow: "0 0 0 1px red",
   borderRadius: "$2",
 
-  transitionProperty: "border, padding, box-shadow, transform",
+  minWidth: 308,
+
+  transitionProperty: "border, padding, box-shadow, z-index",
   transitionTimingFunction: "cubic, cubic, ease-out, ease-out",
   transitionDuration: "400ms, 400ms, 200ms, 100ms",
 
   "&:hover": {
+    cursor: "pointer",
+
     border: "solid 4px $salmon",
     padding: 13,
+
     boxShadow: "0 0 0 100000px rgba(0, 0, 0, 0.4)",
-    // transform: "scale(1.005)",
-    cursor: "pointer",
     zIndex: 9999,
   },
   "&:active": {
@@ -39,17 +40,18 @@ const PostTileContainer = styled("div", {
 });
 
 const PostTileHeader = styled("h2", {
-  fontFamily: "Cardo",
-  fontSize: "$5",
-  color: "$salmon",
   display: "inline-block",
   padding: 0,
   margin: 0,
+
+  color: "$salmon",
+
+  fontFamily: "Cardo",
+  fontSize: "$5",
 });
 
 const PostTileSeries = styled("span", {
   padding: "1px 4px",
-  marginLeft: 4,
   verticalAlign: "top",
 
   color: "$salmon",
@@ -63,7 +65,7 @@ const PostTileSeries = styled("span", {
   fontSize: "0.8rem",
 });
 
-const PostTileDescription = styled("div", {
+const PostTagList = styled("div", {
   margin: 0,
   padding: 0,
   color: "$yellow",
@@ -139,7 +141,7 @@ const PostTile = ({ title, author, series, tags }: PostTileProps) => {
         <PostTileHeader>{title}</PostTileHeader>
         {series && <PostTileSeries>{series}</PostTileSeries>}
       </div>
-      <PostTileDescription>
+      <PostTagList>
         <PostTileTagWithLabel type="date">October 2021</PostTileTagWithLabel>
         <PostTileTagWithLabel type="author">{author}</PostTileTagWithLabel>
         {tags?.map((s, idx) => (
@@ -147,15 +149,24 @@ const PostTile = ({ title, author, series, tags }: PostTileProps) => {
             {s}
           </PostTileTagWithLabel>
         ))}
-      </PostTileDescription>
+      </PostTagList>
     </PostTileContainer>
   );
 };
 
 const PostGridContainer = styled("div", {
   display: "grid",
-  gridTemplateColumns: "repeat(3, 0.8fr)",
-  gridGap: "24px",
+
+  gridTemplateRows: "auto 1fr",
+  // gridGap: "24px",
+
+  variants: {
+    columns: {
+      single: { gridTemplateColumns: "repeat(1, 1fr)", gridGap: "16px" },
+      double: { gridTemplateColumns: "repeat(2, 1fr)", gridGap: "16px" },
+      triple: { gridTemplateColumns: "repeat(3, 1fr)", gridGap: "32px" },
+    },
+  },
 });
 
 const Page = () => (
@@ -164,11 +175,12 @@ const Page = () => (
       <title>Boundless.Garden - All posts</title>
       <meta name="description" content="Step into the boundless garden" />
     </Head>
+    <StarBackground />
     <Nav />
     <IndexContainer>
       <h1>All Posts</h1>
-      <PostGridContainer>
-        <PostTile title="Momentum 1" author="Zan" series="Bytes" tags={["tag 2", "tag 3"]} />
+      <PostGridContainer columns={{ "@initial": "single", "@bp2": "double", "@bp3": "triple" }}>
+        <PostTile title="Momentum 1" author="Zan" series="⩥ Momentum" tags={["tag 2", "tag 3"]} />
         <PostTile
           title="Momentum 1"
           author="Zan"
