@@ -1,9 +1,9 @@
 import { CalendarIcon, PersonIcon } from "@radix-ui/react-icons";
 import Head from "next/head";
 import React from "react";
-import { StarBackground } from "../../components/Background";
-import Nav from "../../components/Nav";
-import { styled } from "../../Stitches";
+import { StarBackground } from "../components/Background";
+import Nav from "../components/Nav";
+import { styled } from "../Stitches";
 
 const IndexContainer = styled("div", {
   marginLeft: "auto",
@@ -35,7 +35,7 @@ const PostTileContainer = styled("div", {
     zIndex: 9999,
   },
   "&:active": {
-    transform: "scale(1)",
+    transform: "scale(0.98)",
   },
 });
 
@@ -63,6 +63,7 @@ const PostTileSeries = styled("span", {
 
   fontFamily: "Jetbrains Mono",
   fontSize: "0.8rem",
+  wordSpacing: "-6px",
 });
 
 const PostTagList = styled("div", {
@@ -78,8 +79,6 @@ const PostTagList = styled("div", {
     marginBottom: 4,
   },
 });
-
-// Box shadow that animates all the way into the middle on hover (post tile)
 
 const PostTileTag = styled("span", {
   display: "inline-block",
@@ -187,11 +186,11 @@ const Page = () => (
           series="Bytes"
           tags={["tag 2", "tag 3", "tag 4", "tag 5"]}
         />
+        <PostTile title="Momentum 1" author="Zan" series="⟐ Bytes" tags={["tag 2", "tag 3"]} />
+        <PostTile title="Momentum 1" author="Zan" series="⟕ Bytes" tags={["tag 2", "tag 3"]} />
         <PostTile title="Momentum 1" author="Zan" series="Bytes" tags={["tag 2", "tag 3"]} />
-        <PostTile title="Momentum 1" author="Zan" series="Bytes" tags={["tag 2", "tag 3"]} />
-        <PostTile title="Momentum 1" author="Zan" series="Bytes" tags={["tag 2", "tag 3"]} />
-        <PostTile title="Momentum 1" author="Zan" series="Bytes" tags={["tag 2", "tag 3"]} />
-        <PostTile title="Momentum 1" author="Zan" series="Bytes" tags={["tag 2", "tag 3"]} />
+        <PostTile title="Momentum 1" author="Zan" series=" Bytes" tags={["tag 2", "tag 3"]} />
+        <PostTile title="Momentum 1" author="Zan" series=" Bytes" tags={["tag 2", "tag 3"]} />
       </PostGridContainer>
     </IndexContainer>
   </>
