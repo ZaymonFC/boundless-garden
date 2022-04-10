@@ -29,6 +29,9 @@ export const { styled, css, getCssText } = createStitches({
       red500: "hsl(352,100%,62%)",
       orange: "#ffaa48",
       shadowColor: "254deg 38% 3%",
+
+      yellow: "rgb(241, 200, 146)",
+      salmon: "#ff8f8f",
     },
     space: {
       1: "1px",

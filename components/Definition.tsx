@@ -45,7 +45,6 @@ const DefinitionStyles = css`
 
 const DefinitionTopic = css`
   padding: 1px 4px;
-  /* background: ${colours.primary}; */
   color: ${colours.primary};
   border-radius: 3px;
   border: 1px solid ${colours.primary};
