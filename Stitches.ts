@@ -78,11 +78,11 @@ export const { styled, css, getCssText } = createStitches({
     shadows: shadows,
     zIndices: {},
     transitions: {},
-    media: {
-      bp1: "(min-width: 640px)",
-      bp2: "(min-width: 768px)",
-      bp3: "(min-width: 1024px)",
-    },
+  },
+  media: {
+    bp1: "(min-width: 640px)",
+    bp2: "(min-width: 768px)",
+    bp3: "(min-width: 1024px)",
   },
   utils: {
     px: (value: string) => ({
