@@ -5,11 +5,11 @@ import Link from "next/link";
 import React from "react";
 import { colours } from "../styles/tokens";
 import AtomFlower from "./AtomFlower";
+import { StarBackground } from "./Background";
 import Emoji from "./Emoji";
 import { Fade } from "./Fade";
 import { Bibliography } from "./References";
 import { Subscribe } from "./Subscribe";
-import { ThreeWithStars } from "./ThreeWithStars";
 
 const containerStyles = css`
   justify-content: center;
@@ -171,28 +171,18 @@ export default function Layout({ meta, children }: LayoutProps) {
       </Head>
       <Fade>
         <div style={{ position: "relative", height: height }}>
-          <ThreeWithStars />
-          <main
-            style={{
-              position: "absolute",
-              left: 0,
-              right: 0,
-              top: 0,
-              height: height,
-            }}
-          >
-            <div className={cx(containerStyles)}>
-              <Nav></Nav>
+          <StarBackground />
+          <div className={cx(containerStyles)}>
+            <Nav></Nav>
 
-              <div className={cx(blogStyles)}>
-                <FrontMatter {...meta} />
-                <div className={cx(divider)}></div>
-                <div>{children}</div>
-                <Bibliography />
-                <Subscribe />
-              </div>
+            <div className={cx(blogStyles)}>
+              <FrontMatter {...meta} />
+              <div className={cx(divider)}></div>
+              <div>{children}</div>
+              <Bibliography />
+              <Subscribe />
             </div>
-          </main>
+          </div>
         </div>
       </Fade>
     </>
