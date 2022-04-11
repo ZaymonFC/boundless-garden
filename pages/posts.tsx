@@ -18,7 +18,7 @@ const IndexContainer = styled("div", {
   maxWidth: 1264,
 });
 
-const PostTileContainer = styled("div", {
+const PostTileContainer = styled("a", {
   padding: 16,
   border: "solid 1px $salmon",
   borderRadius: "$2",
@@ -33,14 +33,13 @@ const PostTileContainer = styled("div", {
     cursor: "pointer",
 
     border: "solid 4px $salmon",
-    padding: 13,
+    padding: 13, // Offset border growth with padding reduction
 
     boxShadow: "0 0 0 100000px rgba(0, 0, 0, 0.4)",
     zIndex: 9999,
   },
-  "&:active": {
-    transform: "scale(0.98)",
-  },
+
+  "&:active": { transform: "scale(0.98)" },
 });
 
 const PostTileHeader = styled("h2", {
@@ -111,9 +110,7 @@ const PostTileTag = styled("span", {
     transform: "scale(1.03)",
   },
 
-  "&:active": {
-    transform: "scale(0.9)",
-  },
+  "&:active": { transform: "scale(0.9)" },
 });
 
 const tagIconStyles = {
@@ -159,23 +156,21 @@ type PostTileProps = {
 
 const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => {
   return (
-    <PostTileContainer>
-      <Link href={url}>
-        <a>
-          <div>
-            <PostTileHeader>{title}</PostTileHeader>
-            {series && <PostTileSeries>{series}</PostTileSeries>}
-          </div>
-          <PostTagList>
-            <PostTileTagWithLabel type="date">{format(date, "MMMM yyyy")}</PostTileTagWithLabel>
-            <PostTileTagWithLabel type="author">{author}</PostTileTagWithLabel>
-            {tags?.map((tag, idx) => (
-              <PostTileTagWithLabel key={idx}>{tag}</PostTileTagWithLabel>
-            ))}
-          </PostTagList>
-        </a>
-      </Link>
-    </PostTileContainer>
+    <Link href={url} passHref>
+      <PostTileContainer>
+        <div>
+          <PostTileHeader>{title}</PostTileHeader>
+          {series && <PostTileSeries>{series}</PostTileSeries>}
+        </div>
+        <PostTagList>
+          <PostTileTagWithLabel type="date">{format(date, "MMMM yyyy")}</PostTileTagWithLabel>
+          <PostTileTagWithLabel type="author">{author}</PostTileTagWithLabel>
+          {tags?.map((tag, idx) => (
+            <PostTileTagWithLabel key={idx}>{tag}</PostTileTagWithLabel>
+          ))}
+        </PostTagList>
+      </PostTileContainer>
+    </Link>
   );
 };
 
@@ -189,7 +184,7 @@ const PostGridContainer = styled("div", {
     columns: {
       single: { gridTemplateColumns: "repeat(1, 1fr)", gridGap: "16px" },
       double: { gridTemplateColumns: "repeat(2, 1fr)", gridGap: "16px" },
-      triple: { gridTemplateColumns: "repeat(3, 1fr)", gridGap: "32px" },
+      triple: { gridTemplateColumns: "repeat(3, 1fr)", gridGap: "24px" },
     },
   },
 });
