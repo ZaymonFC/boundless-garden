@@ -15,7 +15,7 @@ const Meta: { [url: string]: PostMeta } = {
     date: new Date("2021-08"),
     author: "Zan",
     wordCount: 240,
-    tags: [],
+    tags: ["beginnings"],
   },
 
   "momentum-1": {
@@ -25,7 +25,7 @@ const Meta: { [url: string]: PostMeta } = {
     author: "Zan",
     wordCount: 600,
     series: "⩥ Momentum",
-    tags: [],
+    tags: ["virtuous cycles", "motivation", "productivity"],
   },
 
   "book-report/breakfast-of-champions": {
@@ -35,7 +35,7 @@ const Meta: { [url: string]: PostMeta } = {
     author: "Zan",
     wordCount: 1100,
     series: "📖 Book Report",
-    tags: [],
+    tags: ["Kurt Vonnegut"],
   },
 
   "bytes/on-play": {
@@ -45,7 +45,7 @@ const Meta: { [url: string]: PostMeta } = {
     author: "Zan",
     wordCount: 520,
     series: "⟐ Bytes",
-    tags: ["play", "neuroscience", "life-trajectory"],
+    tags: ["play", "neuroscience", "meta"],
   },
 
   "bytes/on-courage": {
@@ -55,7 +55,7 @@ const Meta: { [url: string]: PostMeta } = {
     author: "Zan",
     wordCount: 520,
     series: "⟐ Bytes",
-    tags: ["courage", "awareness"],
+    tags: ["courage", "awareness", "over-correction"],
   },
 };
 
