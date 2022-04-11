@@ -19,9 +19,17 @@ const shadows = {
       `,
 };
 
+export const colors = {
+  yellow: "rgb(241, 200, 146)",
+  salmon: "#ff8f8f",
+  background: "rgb(14, 24, 65)",
+};
+
 export const { styled, css, getCssText } = createStitches({
   theme: {
     colors: {
+      ...colors,
+
       gray500: "hsl(206,10%,76%)",
       blue500: "hsl(206,100%,50%)",
       purple500: "hsl(252,78%,60%)",
@@ -29,9 +37,6 @@ export const { styled, css, getCssText } = createStitches({
       red500: "hsl(352,100%,62%)",
       orange: "#ffaa48",
       shadowColor: "254deg 38% 3%",
-
-      yellow: "rgb(241, 200, 146)",
-      salmon: "#ff8f8f",
     },
     space: {
       1: "1px",
