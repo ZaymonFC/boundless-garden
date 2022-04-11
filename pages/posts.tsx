@@ -4,6 +4,10 @@ import React from "react";
 import { StarBackground } from "../components/Background";
 import Nav from "../components/Nav";
 import { styled } from "../Stitches";
+import Meta, { PostMeta } from "../data/Meta";
+import { format } from "date-fns";
+import Link from "next/link";
+import { Fade } from "../components/Fade";
 
 const IndexContainer = styled("div", {
   marginLeft: "auto",
@@ -43,6 +47,7 @@ const PostTileHeader = styled("h2", {
   display: "inline-block",
   padding: 0,
   margin: 0,
+  marginRight: 4,
 
   color: "$salmon",
 
@@ -69,6 +74,7 @@ const PostTileSeries = styled("span", {
 const PostTagList = styled("div", {
   margin: 0,
   padding: 0,
+  marginTop: 6,
   color: "$yellow",
 
   fontFamily: "Jetbrains Mono",
@@ -103,6 +109,10 @@ const PostTileTag = styled("span", {
     borderColor: "$salmon",
     paddingInline: 8,
   },
+
+  "&:active": {
+    transform: "scale(0.9)",
+  },
 });
 
 const tagIconStyles = {
@@ -121,34 +131,49 @@ const labels = {
   date: <TagCalendarIcon />,
 };
 
+// TODO: Eat on click and don't propagate!
 type PostTileTagProps = { type?: TagType; children: React.ReactNode };
 const PostTileTagWithLabel = ({ type, children }: PostTileTagProps) => {
+  const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
+  };
+
   return (
-    <PostTileTag>
+    <PostTileTag onClick={onClick}>
       {type && <>{labels[type]}</>}
       {children}
     </PostTileTag>
   );
 };
 
-type PostTileProps = { title: string; author: string; series?: string; tags?: string[] };
+type PostTileProps = {
+  url: string;
+  title: string;
+  author: string;
+  date: Date;
+  series?: string;
+  tags?: string[];
+};
 
-const PostTile = ({ title, author, series, tags }: PostTileProps) => {
+const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => {
   return (
     <PostTileContainer>
-      <div>
-        <PostTileHeader>{title}</PostTileHeader>
-        {series && <PostTileSeries>{series}</PostTileSeries>}
-      </div>
-      <PostTagList>
-        <PostTileTagWithLabel type="date">October 2021</PostTileTagWithLabel>
-        <PostTileTagWithLabel type="author">{author}</PostTileTagWithLabel>
-        {tags?.map((s, idx) => (
-          <PostTileTagWithLabel type="author" key={idx}>
-            {s}
-          </PostTileTagWithLabel>
-        ))}
-      </PostTagList>
+      <Link href={url}>
+        <a>
+          <div>
+            <PostTileHeader>{title}</PostTileHeader>
+            {series && <PostTileSeries>{series}</PostTileSeries>}
+          </div>
+          <PostTagList>
+            <PostTileTagWithLabel type="date">{format(date, "MMMM yyyy")}</PostTileTagWithLabel>
+            <PostTileTagWithLabel type="author">{author}</PostTileTagWithLabel>
+            {tags?.map((tag, idx) => (
+              <PostTileTagWithLabel key={idx}>{tag}</PostTileTagWithLabel>
+            ))}
+          </PostTagList>
+        </a>
+      </Link>
     </PostTileContainer>
   );
 };
@@ -168,6 +193,20 @@ const PostGridContainer = styled("div", {
   },
 });
 
+const metaToPostTile = (url: string, meta: PostMeta) => {
+  return (
+    <PostTile
+      key={url}
+      url={url}
+      title={meta.title}
+      date={meta.date}
+      author={meta.author}
+      series={meta.series}
+      tags={meta.tags}
+    />
+  );
+};
+
 const Page = () => (
   <>
     <Head>
@@ -176,24 +215,19 @@ const Page = () => (
     </Head>
     <StarBackground />
     <Nav />
-    <IndexContainer>
-      <h1>All Posts</h1>
-      <PostGridContainer columns={{ "@initial": "single", "@bp2": "double", "@bp3": "triple" }}>
-        <PostTile title="Momentum 1" author="Zan" series="⩥ Momentum" tags={["tag 2", "tag 3"]} />
-        <PostTile
-          title="Momentum 1"
-          author="Zan"
-          series="Bytes"
-          tags={["tag 2", "tag 3", "tag 4", "tag 5"]}
-        />
-        <PostTile title="Momentum 1" author="Zan" series="⟐ Bytes" tags={["tag 2", "tag 3"]} />
-        <PostTile title="Momentum 1" author="Zan" series="⟕ Bytes" tags={["tag 2", "tag 3"]} />
-        <PostTile title="Momentum 1" author="Zan" series="Bytes" tags={["tag 2", "tag 3"]} />
-        <PostTile title="Momentum 1" author="Zan" series=" Bytes" tags={["tag 2", "tag 3"]} />
-        <PostTile title="Momentum 1" author="Zan" series=" Bytes" tags={["tag 2", "tag 3"]} />
-      </PostGridContainer>
-    </IndexContainer>
+    <Fade>
+      <IndexContainer>
+        <h1>All Posts</h1>
+        <PostGridContainer columns={{ "@initial": "single", "@bp2": "double", "@bp3": "triple" }}>
+          {Object.entries(Meta)
+            .reverse()
+            .map(([url, meta]) => metaToPostTile(url, meta))}
+        </PostGridContainer>
+      </IndexContainer>
+    </Fade>
   </>
 );
+
+// TODO: Do something about tags wrapping when expanding on hover
 
 export default Page;

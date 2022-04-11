@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import { Inline, References, ReferenceProvider } from "../components/References";
 import Definition from "../components/Definition";
-import Meta from "../../Data/Meta"
+import Meta from "../data/Meta"
 
 export const meta = Meta["momentum-1"]
 
@@ -21,7 +21,7 @@ export const references = {
 };
 
 export default ({ children }) => (
-  <ReferenceProvider value={id}>
+  <ReferenceProvider value={meta.id}>
     <Layout meta={meta}>
       <References references={references} />
       {children}

@@ -4,7 +4,6 @@ import { ThreeWithStars } from "./ThreeWithStars";
 
 const Underneath = styled("div", {
   position: "fixed",
-  left: 0,
   pointerEvents: "none",
 
   height: "75vh", // Account for parallax
