@@ -34,7 +34,7 @@ const Meta: { [url: string]: PostMeta } = {
     date: new Date("2021-10"),
     author: "Zan",
     wordCount: 1100,
-    series: "Book Report",
+    series: "📖 Book Report",
     tags: [],
   },
 

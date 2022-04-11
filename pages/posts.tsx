@@ -69,6 +69,7 @@ const PostTileSeries = styled("span", {
   fontFamily: "Jetbrains Mono",
   fontSize: "0.8rem",
   wordSpacing: "-6px",
+  whiteSpace: "nowrap",
 });
 
 const PostTagList = styled("div", {
@@ -107,7 +108,7 @@ const PostTileTag = styled("span", {
   "&:hover": {
     color: "$salmon",
     borderColor: "$salmon",
-    paddingInline: 8,
+    transform: "scale(1.03)",
   },
 
   "&:active": {
