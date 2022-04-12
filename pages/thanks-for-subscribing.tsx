@@ -1,9 +1,9 @@
-import { styled } from "../Stitches";
 import Head from "next/head";
 import Emoji from "../components/Emoji";
 import { Fade } from "../components/Fade";
 import Nav from "../components/Nav";
 import { ThreeWithStars } from "../components/ThreeWithStars";
+import { styled } from "../Stitches";
 
 const height = "100vh";
 

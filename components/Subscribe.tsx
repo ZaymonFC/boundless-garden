@@ -1,6 +1,7 @@
 import { styled } from "../Stitches";
 import { Button } from "./Button";
 import Padding from "./Padding";
+import { VSpacer } from "./Spacers";
 
 const Header = styled("h2", {});
 
@@ -54,6 +55,7 @@ export const Subscribe = () => {
   return (
     <>
       <Header>Subscribe to the Boundless.Garden</Header>
+      <VSpacer />
       <Form></Form>
     </>
   );

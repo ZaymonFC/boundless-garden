@@ -39,7 +39,6 @@ const DefinitionStyles = css`
     margin: 0;
 
     font-weight: 300;
-    font-style: italic;
   }
 `;
 
