@@ -6,7 +6,7 @@ const Underneath = styled("div", {
   position: "fixed",
   pointerEvents: "none",
 
-  height: "75vh", // Account for parallax
+  height: "30vh", // Account for parallax
   width: "100vw",
 });
 

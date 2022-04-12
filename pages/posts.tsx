@@ -26,20 +26,26 @@ const PostTileContainer = styled("a", {
   minWidth: 308,
 
   transitionProperty: "border, padding, box-shadow, z-index",
-  transitionTimingFunction: "cubic, cubic, ease-out, ease-out",
-  transitionDuration: "400ms, 400ms, 200ms, 100ms",
-
-  "&:hover": {
-    cursor: "pointer",
-
-    border: "solid 4px $salmon",
-    padding: 13, // Offset border growth with padding reduction
-
-    boxShadow: "0 0 0 100000px rgba(0, 0, 0, 0.4)",
-    zIndex: 9999,
-  },
+  transitionTimingFunction: "cubic, cubic, ease-out, cubic",
+  transitionDuration: "100ms, 100ms, 200ms, 50ms",
 
   "&:active": { transform: "scale(0.98)" },
+
+  variants: {
+    hoverable: {
+      true: {
+        "&:hover": {
+          cursor: "pointer",
+
+          border: "solid 3px $salmon",
+          padding: 14, // Offset border growth with padding reduction
+
+          boxShadow: "0 0 0 100000px rgba(0, 0, 0, 0.4)",
+          zIndex: 999,
+        },
+      },
+    },
+  },
 });
 
 const PostTileHeader = styled("h2", {
@@ -157,7 +163,7 @@ type PostTileProps = {
 const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => {
   return (
     <Link href={url} passHref>
-      <PostTileContainer>
+      <PostTileContainer hoverable={{ "@initial": false, "@bp1": true }}>
         <div>
           <PostTileHeader>{title}</PostTileHeader>
           {series && <PostTileSeries>{series}</PostTileSeries>}
