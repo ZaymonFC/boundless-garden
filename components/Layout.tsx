@@ -10,6 +10,7 @@ import Emoji from "./Emoji";
 import { Fade } from "./Fade";
 import { Bibliography } from "./References";
 import { Subscribe } from "./Subscribe";
+import { Button } from "./Button";
 
 const containerStyles = css`
   justify-content: center;
@@ -19,8 +20,7 @@ const navStyles = css`
   padding: 1.25rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  h1 {
+  align-items: center h1 {
     font-size: 1.5rem;
   }
 `;
@@ -151,16 +151,24 @@ const FrontMatter = ({ title, date, wordCount }: Meta) => (
     <p>
       <Emoji symbol="⏇" label="Unicode Thingy" /> Zan. <Emoji symbol="⊱" label="Unicode Thingy" />
       {format(date, "MMMM, y")}
-      <Emoji symbol="⊰" label="Unicode Thingy" />
+      <Emoji symbol="⊰" label="Unicode swoosh symbol" />
     </p>
     {wordCount && (
       <p>
-        <Emoji symbol="⎇" label="Unicode Thingy" /> {wordCount} words.{" "}
+        <Emoji symbol="⎇" label="Unicode upside down option symbol" /> {wordCount} words.{" "}
         <Emoji symbol="⪽" label="Unicode symbol for a subset with a dot" /> {timeToRead(wordCount)}
       </p>
     )}
   </div>
 );
+
+const AllPostsButton = () => {
+  return (
+    <Link href="/posts">
+      <Button>{"<-"} All Posts</Button>
+    </Link>
+  );
+};
 
 export default function Layout({ meta, children }: LayoutProps) {
   const height = "40rem";
@@ -176,6 +184,7 @@ export default function Layout({ meta, children }: LayoutProps) {
             <Nav></Nav>
 
             <div className={cx(blogStyles)}>
+              <AllPostsButton />
               <FrontMatter {...meta} />
               <div className={cx(divider)}></div>
               <div>{children}</div>

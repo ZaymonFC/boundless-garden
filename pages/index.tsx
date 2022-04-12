@@ -2,7 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import AtomFlower from "../components/AtomFlower";
+import { Button } from "../components/Button";
 import { Fade } from "../components/Fade";
+import Stack from "../components/Stack";
 import { ThreeWithStars } from "../components/ThreeWithStars";
 import { colors } from "../Stitches";
 import styles from "../styles/Home.module.css";
@@ -27,7 +29,18 @@ const Header = () => {
         <h1 className={styles.title}>the Boundless Garden</h1>
         <p className={styles.byLine}>the writings of Zan</p>
 
-        <Link href="/intro">begin here</Link>
+        <Stack>
+          <Link href="/intro">
+            <a>
+              <Button>Begin here</Button>
+            </a>
+          </Link>
+          <Link href="/posts">
+            <a>
+              <Button>All Posts</Button>
+            </a>
+          </Link>
+        </Stack>
       </main>
     </div>
   );
