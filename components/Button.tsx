@@ -2,12 +2,10 @@ import { styled } from "../Stitches";
 
 export const Button = styled("button", {
   margin: 0,
+  borderRadius: "$2",
   padding: "$3",
 
-  borderRadius: "$2",
-
   fontFamily: "JetBrains Mono",
-  fontSize: "$3",
 
   color: "#ff8f8f",
   backgroundColor: "rgba(0, 0, 0, 0.2)",
@@ -28,5 +26,12 @@ export const Button = styled("button", {
 
   variants: {
     fullWidth: { true: { width: "100%" } },
+    size: {
+      sm: { fontSize: "$2" },
+      md: { fontSize: "$3" },
+    },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });

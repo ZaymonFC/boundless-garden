@@ -8,7 +8,6 @@ import Stack from "../components/Stack";
 import { ThreeWithStars } from "../components/ThreeWithStars";
 import { colors } from "../Stitches";
 import styles from "../styles/Home.module.css";
-import { colours } from "../styles/tokens";
 
 const Header = () => {
   const height = "100vh";
@@ -32,12 +31,12 @@ const Header = () => {
         <Stack>
           <Link href="/intro">
             <a>
-              <Button>Begin here</Button>
+              <Button size="sm">Begin here</Button>
             </a>
           </Link>
           <Link href="/posts">
             <a>
-              <Button>All Posts</Button>
+              <Button size="sm">All Posts</Button>
             </a>
           </Link>
         </Stack>
