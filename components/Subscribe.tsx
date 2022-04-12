@@ -1,6 +1,6 @@
 import { styled } from "../Stitches";
+import { Button } from "./Button";
 import Padding from "./Padding";
-import Stack from "./Stack";
 
 const Header = styled("h2", {});
 
@@ -23,31 +23,6 @@ const TextInput = styled("input", {
   borderStyle: "solid",
 });
 
-const Button = styled("button", {
-  width: "100%",
-  padding: 4,
-
-  borderRadius: "$2",
-
-  fontFamily: "JetBrains Mono",
-  fontSize: "1.2em",
-
-  color: "#ff8f8f",
-  backgroundColor: "rgba(0, 0, 0, 0.2)",
-
-  border: "1px solid rgb(241, 200, 146)",
-  boxShadow: "0px 4px 1px 0px rgb(241, 200, 146)",
-
-  "&:hover": {
-    boxShadow: "0px 3px 0px 0px rgb(241, 200, 146)",
-    transform: "translate(0, 1px)",
-  },
-  "&:active": {
-    boxShadow: "0px 1px 0px 0px rgb(241, 200, 146)",
-    transform: "translate(0, 3px)",
-  },
-});
-
 const ButtonDownLink = styled("a", {
   fontSize: "0.8em",
   fontFamily: "Jetbrains Mono",
@@ -62,7 +37,7 @@ const Form = () => (
     onSubmit={() => window.open("https://buttondown.email/zan", "popupwindow")}
   >
     <TextInput type="email" name="email" placeholder="your-email@example.com" id="bd-email" />
-    <Button type="submit" value="Subscribe">
+    <Button fullWidth type="submit" value="Subscribe">
       Subscribe
     </Button>
     <div>
