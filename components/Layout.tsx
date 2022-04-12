@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { colours } from "../styles/tokens";
 import AtomFlower from "./AtomFlower";
-import { StarBackground } from "./Background";
+import { StarBackground } from "./StarBackground";
 import Emoji from "./Emoji";
 import { Fade } from "./Fade";
 import { Bibliography } from "./References";
@@ -171,7 +171,7 @@ export default function Layout({ meta, children }: LayoutProps) {
       </Head>
       <Fade>
         <div style={{ position: "relative", height: height }}>
-          <StarBackground />
+          <StarBackground height="header" />
           <div className={cx(containerStyles)}>
             <Nav></Nav>
 

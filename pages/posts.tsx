@@ -1,7 +1,7 @@
 import { CalendarIcon, PersonIcon } from "@radix-ui/react-icons";
 import Head from "next/head";
 import React from "react";
-import { StarBackground } from "../components/Background";
+import { StarBackground } from "../components/StarBackground";
 import Nav from "../components/Nav";
 import { styled } from "../Stitches";
 import Meta, { PostMeta } from "../data/Meta";
@@ -215,7 +215,7 @@ const Page = () => (
       <title>Boundless.Garden - All posts</title>
       <meta name="description" content="Step into the boundless garden" />
     </Head>
-    <StarBackground />
+    <StarBackground height="full" />
     <Nav />
     <Fade>
       <IndexContainer>
