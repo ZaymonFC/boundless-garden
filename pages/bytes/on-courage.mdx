@@ -2,22 +2,14 @@ import Layout from "../../components/Layout";
 import { Inline, References, ReferenceProvider } from "../../components/References";
 import { Tweet} from "../../components/Twitter";
 import Definition from "../../components/Definition";
+import Meta from "../../data/Meta"
 
-export const id = "126b1704-e798-4671-a515-ed4918d5bfda";
-
-export const meta = {
-  id: id,
-  title: "On Courage",
-  subTitle: "Sdlkfj",
-  date: new Date("2022-03-27"),
-  wordCount: 520,
-  tags: ["courage", "awareness"],
-};
+export const meta = Meta["bytes/on-courage"]
 
 export const references = {};
 
 export default ({ children }) => (
-  <ReferenceProvider value={id}>
+  <ReferenceProvider value={meta.id}>
     <Layout meta={meta}>
       <References references={references} />
       {children}

@@ -1,7 +1,7 @@
 import React from "react";
 
 type EmojiProps = {
-  symbol: string;
+  symbol: string | React.ReactNode;
   label?: string;
   spaceRight?: boolean;
   spaceLeft?: boolean;

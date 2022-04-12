@@ -1,15 +1,9 @@
 import Layout from "../../components/Layout";
 import { Inline, References, ReferenceProvider } from "../../components/References";
 import Definition from "../../components/Definition";
+import Meta from "../../data/Meta"
 
-export const id = "40BDC5DF-CE8A-45FD-9B53-9408607C88AD";
-export const meta = {
-  id: id,
-  title: "On play",
-  date: new Date("2022-02"),
-  wordCount: 520,
-  tags: ["play", "neuroscience", "life-trajectory"],
-};
+export const meta = Meta["bytes/on-play"]
 
 export const references = {
   "huberman-play": {
@@ -29,7 +23,7 @@ export const references = {
 };
 
 export default ({ children }) => (
-  <ReferenceProvider value={id}>
+  <ReferenceProvider value={meta.id}>
     <Layout meta={meta}>
       <References references={references} />
       {children}
