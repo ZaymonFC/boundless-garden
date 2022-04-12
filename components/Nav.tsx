@@ -1,16 +1,16 @@
-import { css, cx } from "@emotion/css";
 import Link from "next/link";
+import { styled } from "../Stitches";
 import AtomFlower from "./AtomFlower";
+import Stack from "./Stack";
 
-const navStyles = css`
-  padding: 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  h1 {
-    font-size: 1.5rem;
-  }
-`;
+const NavContainer = styled("div", {
+  margin: 0,
+  padding: "$5",
+});
+
+const NavHeading = styled("h1", {
+  fontSize: "$5",
+});
 
 const HomeLink = ({ children }: any) => (
   <Link href="/">
@@ -20,16 +20,16 @@ const HomeLink = ({ children }: any) => (
 
 const Nav = () => {
   return (
-    <div>
-      <div className={cx(navStyles)}>
+    <NavContainer>
+      <Stack justify={"spaceBetween"} align="center">
         <HomeLink>
           <AtomFlower small />
         </HomeLink>
         <HomeLink>
-          <h1>Boundless Garden</h1>
+          <NavHeading>Boundless Garden</NavHeading>
         </HomeLink>
-      </div>
-    </div>
+      </Stack>
+    </NavContainer>
   );
 };
 

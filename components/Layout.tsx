@@ -3,117 +3,86 @@ import { format, formatDistance } from "date-fns";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
-import { colours } from "../styles/tokens";
-import AtomFlower from "./AtomFlower";
-import { StarBackground } from "./StarBackground";
+import { styled } from "../Stitches";
+import { Button } from "./Button";
 import Emoji from "./Emoji";
 import { Fade } from "./Fade";
+import Nav from "./Nav";
 import { Bibliography } from "./References";
+import { VSpacer } from "./Spacers";
+import { StarBackground } from "./StarBackground";
 import { Subscribe } from "./Subscribe";
-import { Button } from "./Button";
 
-const containerStyles = css`
-  justify-content: center;
-`;
+const containerStyles = css``;
 
-const navStyles = css`
-  padding: 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center h1 {
-    font-size: 1.5rem;
-  }
-`;
+const BlogContainer = styled("div", {
+  "&": {
+    padding: "1.3rem",
+    margin: "auto",
+    maxWidth: "720px",
+  },
+});
 
-const HomeLink = ({ children }: any) => (
-  <Link href="/">
-    <a>{children}</a>
-  </Link>
-);
+const Blog = styled("div", {
+  "h1, h2, h3, h4, h5": {
+    margin: 0,
+    padding: 0,
+    fontFamily: "$headingSerif",
+    color: "#ff8f8f",
+    fontWeight: "bold",
+  },
+  h1: {
+    fontSize: "3.4rem",
+  },
+  h2: {
+    fontSize: "$6",
+    paddingTop: "$5",
+  },
+  h3: {
+    fontSize: "$5",
+    paddingTop: "$5",
+  },
 
-const Nav = () => {
-  return (
-    <div>
-      <div className={cx(navStyles)}>
-        <HomeLink>
-          <AtomFlower small />
-        </HomeLink>
-        <HomeLink>
-          <h1>Boundless Garden</h1>
-        </HomeLink>
-      </div>
-    </div>
-  );
-};
+  "p, li": {
+    color: "rgb(241, 200, 146)",
+    fontSize: "1.2em",
+    lineHeight: "170%",
+  },
 
-const blogStyles = css`
-  & {
-    padding: 1.3rem;
-  }
-  h1 {
-    font-family: Cardo;
-    font-weight: 700;
-    color: #ff8f8f;
-    font-size: 3.4rem;
-  }
-  h2 {
-    font-size: 1.94rem;
-    color: #ff8f8f;
-    padding-top: 1.94rem;
-  }
-  h3 {
-    font-size: 1.4rem;
-    padding-top: 1.4rem;
-    color: #ff8f8f;
-  }
-  & {
-    flex-direction: column;
-    margin: auto;
-    max-width: 720px;
-  }
+  "li + li": {
+    marginTop: "12px",
+  },
 
-  p,
-  li {
-    color: rgb(241, 200, 146);
-    font-size: 1.2rem;
-    line-height: 170%;
-  }
+  "a:hover, a:hover > *": {
+    cursor: "pointer",
+    color: "#7d8aff",
+  },
 
-  li + li {
-    margin-top: 12px;
-  }
-
-  a:hover,
-  a:hover > * {
-    cursor: pointer;
-    color: #7d8aff;
-  }
-
-  blockquote {
-    border-left: solid 4px #ff8f8f;
-    padding-left: 1.1rem;
-    margin-left: -20px;
-    margin-right: -20px;
-    font-style: italic;
-  }
+  blockquote: {
+    borderLeft: "solid 4px #ff8f8f",
+    paddingLeft: "1.1rem",
+    marginLeft: "-20px",
+    marginRight: "-20px",
+    fontStyle: "italic",
+  },
 
   /* Bibliography */
-  a:target > * {
-    border-bottom: solid 2px #ff8f8f;
-  }
+  "a:target > *": {
+    borderBottom: "solid 2px #ff8f8f",
+  },
 
-  div:target > p {
-    border-bottom: solid 1px #ff8f8f;
-    padding-bottom: 8px;
-  }
-  sup {
-    line-height: 0;
-  }
-  hr {
-    margin: 2.2rem 0;
-    border-color: ${colours.secondary};
-  }
-`;
+  "div:target > p": {
+    borderBottom: "solid 1px #ff8f8f",
+    paddingBottom: "8px",
+  },
+  sup: {
+    lineHeight: "0",
+  },
+  hr: {
+    margin: "2.2rem 0",
+    borderColor: "$salmon",
+  },
+});
 
 const divider = css`
   border-width: 1px;
@@ -134,30 +103,37 @@ const timeToRead = (words: number) => {
   return formatDistance(0, minutesToRead * 1000 * 60, { includeSeconds: true });
 };
 
-const FrontMatterStyles = css`
-  font-size: 1rem;
-  color: ${colours.secondary};
-  font-family: "Jetbrains Mono";
-  p {
-    font-size: 1.1rem;
-    padding: 0;
-    margin: 0;
-  }
-`;
+const FrontMatterHeading = styled("h1", {
+  margin: 0,
+  padding: 0,
+
+  fontSize: "$7",
+  fontFamily: "$headingSerif",
+});
+
+const FrontMatterMeta = styled("p", {
+  margin: 0,
+  padding: 0,
+
+  fontFamily: "$mono",
+  fontSize: "$3",
+  color: "$yellow",
+});
 
 const FrontMatter = ({ title, date, wordCount }: Meta) => (
-  <div className={cx(FrontMatterStyles)}>
-    <h1>{title}</h1>
-    <p>
+  <div>
+    <FrontMatterHeading>{title}</FrontMatterHeading>
+    <VSpacer size="sm" />
+    <FrontMatterMeta>
       <Emoji symbol="⏇" label="Unicode Thingy" /> Zan. <Emoji symbol="⊱" label="Unicode Thingy" />
       {format(date, "MMMM, y")}
       <Emoji symbol="⊰" label="Unicode swoosh symbol" />
-    </p>
+    </FrontMatterMeta>
     {wordCount && (
-      <p>
+      <FrontMatterMeta>
         <Emoji symbol="⎇" label="Unicode upside down option symbol" /> {wordCount} words.{" "}
         <Emoji symbol="⪽" label="Unicode symbol for a subset with a dot" /> {timeToRead(wordCount)}
-      </p>
+      </FrontMatterMeta>
     )}
   </div>
 );
@@ -165,33 +141,38 @@ const FrontMatter = ({ title, date, wordCount }: Meta) => (
 const AllPostsButton = () => {
   return (
     <Link href="/posts">
-      <Button>{"<-"} All Posts</Button>
+      <a>
+        <Button>{"<-"} All Posts</Button>
+      </a>
     </Link>
   );
 };
 
 export default function Layout({ meta, children }: LayoutProps) {
-  const height = "40rem";
   return (
     <>
       <Head>
         <title>{meta.title} - Boundless Garden 🌸</title>
       </Head>
       <Fade>
-        <div style={{ position: "relative", height: height }}>
-          <StarBackground height="header" />
-          <div className={cx(containerStyles)}>
-            <Nav></Nav>
+        <StarBackground height="header" />
+        <div className={cx(containerStyles)}>
+          <Nav />
 
-            <div className={cx(blogStyles)}>
-              <AllPostsButton />
-              <FrontMatter {...meta} />
+          <BlogContainer>
+            <AllPostsButton />
+            <VSpacer size="xl" />
+            <FrontMatter {...meta} />
+
+            <Blog>
+              <VSpacer size="sm" />
               <div className={cx(divider)}></div>
+              <VSpacer size="sm" />
               <div>{children}</div>
               <Bibliography />
               <Subscribe />
-            </div>
-          </div>
+            </Blog>
+          </BlogContainer>
         </div>
       </Fade>
     </>
