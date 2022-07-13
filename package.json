@@ -23,6 +23,7 @@
     "date-fns": "^2.24.0",
     "framer-motion": "^4.1.17",
     "grey-matter": "^0.0.0",
+    "jotai": "^1.7.4",
     "leva": "^0.9.13",
     "next": "^11.1.0",
     "react": "17.0.2",
