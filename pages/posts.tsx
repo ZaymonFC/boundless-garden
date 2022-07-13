@@ -1,16 +1,14 @@
 import { CalendarIcon, Cross2Icon, PersonIcon } from "@radix-ui/react-icons";
-import { format } from "date-fns";
 import Head from "next/head";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "../components/Button";
 import { Fade } from "../components/Fade";
 import Nav from "../components/Nav";
 import { VSpacer } from "../components/Spacers";
-import Stack from "../components/Stack";
 import { StarBackground } from "../components/StarBackground";
-import Meta, { PostMeta } from "../data/Meta";
-import { Tag, useTag, useTags } from "../hooks/tags";
+import { PostMeta } from "../data/Meta";
+import { formatTagDate, Tag, useFilteredPostsByTags, useTag, useTags } from "../hooks/tags";
 import { styled } from "../Stitches";
 
 const IndexContainer = styled("div", {
@@ -189,7 +187,7 @@ const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => 
         {series && <PostTileSeries>{series}</PostTileSeries>}
       </div>
       <PostTagList>
-        <PostTileTagWithLabel tag={{ type: "date", tag: format(date, "MMMM yyyy") }} />
+        <PostTileTagWithLabel tag={{ type: "date", tag: formatTagDate(date) }} />
         <PostTileTagWithLabel tag={{ type: "author", tag: author }} />
         {tags?.map((tag, idx) => (
           <PostTileTagWithLabel key={idx} tag={{ tag }} />
@@ -234,8 +232,8 @@ const FilterTags = () => {
   return (
     <div>
       <PostTagList>
-        {tags.map((tag) => (
-          <PostTileTagWithLabel tag={tag} removable />
+        {tags.map((tag, idx) => (
+          <PostTileTagWithLabel key={idx} tag={tag} removable />
         ))}
       </PostTagList>
       {tags.length > 0 && (
@@ -251,6 +249,8 @@ const FilterTags = () => {
 };
 
 function Page() {
+  const posts = useFilteredPostsByTags();
+
   return (
     <>
       <Head>
@@ -264,9 +264,7 @@ function Page() {
           <h1>All Posts</h1>
           <FilterTags />
           <PostGridContainer columns={{ "@initial": "single", "@bp2": "double", "@bp3": "triple" }}>
-            {Object.entries(Meta)
-              .reverse()
-              .map(([url, meta]) => metaToPostTile(url, meta))}
+            {posts.map(([url, meta]) => metaToPostTile(url, meta))}
           </PostGridContainer>
         </IndexContainer>
       </Fade>
