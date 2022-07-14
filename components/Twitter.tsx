@@ -1,8 +1,4 @@
-import { styled } from "@stitches/react";
+import { styled } from "../Stitches";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
-export const Tweet = styled(TwitterTweetEmbed, {
-  maxWidth: 555,
-  marginLeft: "auto",
-  marginRight: "auto",
-});
+export const Tweet = styled(TwitterTweetEmbed, {});

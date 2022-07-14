@@ -16,11 +16,9 @@ import { Subscribe } from "./Subscribe";
 const containerStyles = css``;
 
 const BlogContainer = styled("div", {
-  "&": {
-    padding: "1.3rem",
-    margin: "auto",
-    maxWidth: "720px",
-  },
+  padding: "1.3rem",
+  margin: "auto",
+  maxWidth: "720px",
 });
 
 const Blog = styled("div", {
@@ -49,6 +47,9 @@ const Blog = styled("div", {
   },
   "li + li": {
     marginTop: "12px",
+  },
+  a: {
+    textDecoration: "underline",
   },
   "a:hover, a:hover > *": {
     cursor: "pointer",

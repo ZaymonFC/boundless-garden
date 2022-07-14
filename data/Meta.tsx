@@ -57,6 +57,15 @@ const Meta: { [url: string]: PostMeta } = {
     series: "⟐ Bytes",
     tags: ["courage", "awareness", "over-correction"],
   },
+
+  "conventional-wisdom": {
+    id: "3c7df420-ec74-4014-99d8-cbbb8bd5a5bc",
+    title: "Conventional Wisdom",
+    date: new Date("2022-07-12"),
+    author: "Zan",
+    wordCount: 800,
+    tags: ["wisdom", "path-finding", "alternative lifestyle"],
+  },
 };
 
 export default Meta;
