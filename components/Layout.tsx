@@ -42,22 +42,18 @@ const Blog = styled("div", {
     fontSize: "$5",
     paddingTop: "$5",
   },
-
   "p, li": {
     color: "rgb(241, 200, 146)",
     fontSize: "1.2em",
     lineHeight: "170%",
   },
-
   "li + li": {
     marginTop: "12px",
   },
-
   "a:hover, a:hover > *": {
     cursor: "pointer",
     color: "#7d8aff",
   },
-
   blockquote: {
     borderLeft: "solid 4px #ff8f8f",
     paddingLeft: "1.1rem",
@@ -65,12 +61,10 @@ const Blog = styled("div", {
     marginRight: "-20px",
     fontStyle: "italic",
   },
-
   /* Bibliography */
   "a:target > *": {
     borderBottom: "solid 2px #ff8f8f",
   },
-
   "div:target > p": {
     borderBottom: "solid 1px #ff8f8f",
     paddingBottom: "8px",
@@ -155,7 +149,7 @@ export default function Layout({ meta, children }: LayoutProps) {
         <title>{meta.title} - Boundless Garden 🌸</title>
       </Head>
       <Fade>
-        <StarBackground height="header" />
+        <StarBackground height="full" />
         <div className={cx(containerStyles)}>
           <Nav />
 

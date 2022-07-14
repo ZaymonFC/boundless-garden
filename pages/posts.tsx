@@ -1,13 +1,15 @@
-import { CalendarIcon, PersonIcon } from "@radix-ui/react-icons";
+import { CalendarIcon, Cross2Icon, PersonIcon } from "@radix-ui/react-icons";
 import Head from "next/head";
-import React from "react";
-import { StarBackground } from "../components/StarBackground";
-import Nav from "../components/Nav";
-import { styled } from "../Stitches";
-import Meta, { PostMeta } from "../data/Meta";
-import { format } from "date-fns";
 import Link from "next/link";
+import React from "react";
+import { Button } from "../components/Button";
 import { Fade } from "../components/Fade";
+import Nav from "../components/Nav";
+import { VSpacer } from "../components/Spacers";
+import { StarBackground } from "../components/StarBackground";
+import { PostMeta } from "../data/Meta";
+import { formatTagDate, Tag, useFilteredPostsByTags, useTag, useTags } from "../hooks/tags";
+import { styled } from "../Stitches";
 
 const IndexContainer = styled("div", {
   marginLeft: "auto",
@@ -92,7 +94,7 @@ const PostTagList = styled("div", {
   },
 });
 
-const PostTileTag = styled("span", {
+const PostTileTagContainer = styled("span", {
   display: "inline-block",
   paddingBlock: 1,
   paddingInline: 2,
@@ -125,29 +127,46 @@ const tagIconStyles = {
   top: 2,
 };
 
+const CrossIcon = styled(Cross2Icon, {
+  marginLeft: 2,
+  position: "relative",
+  top: 2,
+  "&:hover": { transform: "scale(1.1)" },
+});
+
 const TagCalendarIcon = styled(CalendarIcon, tagIconStyles);
 const TagAuthorIcon = styled(PersonIcon, tagIconStyles);
-
-type TagType = "author" | "date";
 
 const labels = {
   author: <TagAuthorIcon />,
   date: <TagCalendarIcon />,
 };
 
-// TODO: Eat on click and don't propagate!
-type PostTileTagProps = { type?: TagType; children: React.ReactNode };
-const PostTileTagWithLabel = ({ type, children }: PostTileTagProps) => {
+const PostTileTagInner = ({ tag: { type, tag } }: { tag: Tag }) => {
+  return (
+    <>
+      {type && <>{labels[type]}</>}
+      {tag}
+    </>
+  );
+};
+
+const PostTileTagWithLabel = ({ tag, removable }: { tag: Tag; removable?: boolean }) => {
+  const { addTag, removeTag } = useTag(tag);
+
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (removable) return;
     event.stopPropagation();
     event.preventDefault();
+
+    addTag();
   };
 
   return (
-    <PostTileTag onClick={onClick}>
-      {type && <>{labels[type]}</>}
-      {children}
-    </PostTileTag>
+    <PostTileTagContainer onClick={onClick}>
+      <PostTileTagInner tag={tag} />
+      {removable && <CrossIcon onClick={removeTag} />}
+    </PostTileTagContainer>
   );
 };
 
@@ -160,25 +179,23 @@ type PostTileProps = {
   tags?: string[];
 };
 
-const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => {
-  return (
-    <Link href={url} passHref>
-      <PostTileContainer hoverable={{ "@initial": false, "@bp1": true }}>
-        <div>
-          <PostTileHeader>{title}</PostTileHeader>
-          {series && <PostTileSeries>{series}</PostTileSeries>}
-        </div>
-        <PostTagList>
-          <PostTileTagWithLabel type="date">{format(date, "MMMM yyyy")}</PostTileTagWithLabel>
-          <PostTileTagWithLabel type="author">{author}</PostTileTagWithLabel>
-          {tags?.map((tag, idx) => (
-            <PostTileTagWithLabel key={idx}>{tag}</PostTileTagWithLabel>
-          ))}
-        </PostTagList>
-      </PostTileContainer>
-    </Link>
-  );
-};
+const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => (
+  <Link href={url} passHref>
+    <PostTileContainer hoverable={{ "@initial": false, "@bp1": true }}>
+      <div>
+        <PostTileHeader>{title}</PostTileHeader>
+        {series && <PostTileSeries>{series}</PostTileSeries>}
+      </div>
+      <PostTagList>
+        <PostTileTagWithLabel tag={{ type: "date", tag: formatTagDate(date) }} />
+        <PostTileTagWithLabel tag={{ type: "author", tag: author }} />
+        {tags?.map((tag, idx) => (
+          <PostTileTagWithLabel key={idx} tag={{ tag }} />
+        ))}
+      </PostTagList>
+    </PostTileContainer>
+  </Link>
+);
 
 const PostGridContainer = styled("div", {
   display: "grid",
@@ -209,26 +226,51 @@ const metaToPostTile = (url: string, meta: PostMeta) => {
   );
 };
 
-const Page = () => (
-  <>
-    <Head>
-      <title>Boundless.Garden - All posts</title>
-      <meta name="description" content="Step into the boundless garden" />
-    </Head>
-    <StarBackground height="full" />
-    <Nav />
-    <Fade>
-      <IndexContainer>
-        <h1>All Posts</h1>
-        <PostGridContainer columns={{ "@initial": "single", "@bp2": "double", "@bp3": "triple" }}>
-          {Object.entries(Meta)
-            .reverse()
-            .map(([url, meta]) => metaToPostTile(url, meta))}
-        </PostGridContainer>
-      </IndexContainer>
-    </Fade>
-  </>
-);
+const FilterTags = () => {
+  const { tags, clear } = useTags();
+
+  return (
+    <div>
+      <PostTagList>
+        {tags.map((tag, idx) => (
+          <PostTileTagWithLabel key={idx} tag={tag} removable />
+        ))}
+      </PostTagList>
+      {tags.length > 0 && (
+        <>
+          <Button size="sm" onClick={clear}>
+            Clear
+          </Button>
+          <VSpacer />
+        </>
+      )}
+    </div>
+  );
+};
+
+function Page() {
+  const posts = useFilteredPostsByTags();
+
+  return (
+    <>
+      <Head>
+        <title>Boundless.Garden - All posts</title>
+        <meta name="description" content="Step into the boundless garden" />
+      </Head>
+      <StarBackground height="full" />
+      <Nav />
+      <Fade>
+        <IndexContainer>
+          <h1>All Posts</h1>
+          <FilterTags />
+          <PostGridContainer columns={{ "@initial": "single", "@bp2": "double", "@bp3": "triple" }}>
+            {posts.map(([url, meta]) => metaToPostTile(url, meta))}
+          </PostGridContainer>
+        </IndexContainer>
+      </Fade>
+    </>
+  );
+}
 
 // TODO: Do something about tags wrapping when expanding on hover
 
