@@ -8,6 +8,7 @@ import { Button } from "./Button";
 import Emoji from "./Emoji";
 import { Fade } from "./Fade";
 import Nav from "./Nav";
+import NextPrevious from "./NextPrevious";
 import { Bibliography } from "./References";
 import { VSpacer } from "./Spacers";
 import { StarBackground } from "./StarBackground";
@@ -166,6 +167,8 @@ export default function Layout({ meta, children }: LayoutProps) {
               <div>{children}</div>
               <Bibliography />
               <Subscribe />
+              <VSpacer size="md" />
+              <NextPrevious currentPostId={meta.id} />
             </Blog>
           </BlogContainer>
         </div>

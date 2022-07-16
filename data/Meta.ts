@@ -1,3 +1,5 @@
+import { dec, inc } from "../utilities/Prelude";
+
 export type PostMeta = {
   id: string;
   title: string;
@@ -6,6 +8,7 @@ export type PostMeta = {
   wordCount: number;
   tags: string[];
   series?: string;
+  private?: boolean;
 };
 
 const Meta: { [url: string]: PostMeta } = {
@@ -66,6 +69,35 @@ const Meta: { [url: string]: PostMeta } = {
     wordCount: 800,
     tags: ["wisdom", "path-finding", "alternative lifestyle"],
   },
+};
+
+type PostSummary = { url: string; meta: PostMeta };
+
+const postIds: PostSummary[] = Object.entries(Meta).map(([url, meta]) => ({ url, meta }));
+
+const matcher =
+  (id: string) =>
+  ({ meta }: PostSummary) =>
+    id === meta.id;
+
+const next =
+  <T>(arr: T[], idx: number) =>
+  () =>
+    arr[inc(idx)];
+
+const previous =
+  <T>(arr: T[], idx: number) =>
+  () =>
+    arr[dec(idx)];
+
+export const surroundingPosts = (id: string): { next?: PostSummary; previous?: PostSummary } => {
+  const length = postIds.length;
+  const idx = postIds.findIndex(matcher(id));
+  const [nextPost, previousPost] = [next(postIds, idx), previous(postIds, idx)];
+
+  if (idx === length - 1) return { previous: previousPost() };
+  if (idx === 0) return { next: nextPost() };
+  return { next: nextPost(), previous: previousPost() };
 };
 
 export default Meta;
