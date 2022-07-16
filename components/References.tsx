@@ -38,7 +38,6 @@ const useCitation = (citation: string) => {
         return c === citation;
       });
 
-      console.log(source, index);
       if (source && index >= 0) {
         setSource(source);
         setPosition(index + 1);
@@ -97,7 +96,7 @@ const SourceLine = ({ citation }: SourceLineProps) => {
           {source.year ? `${source.year}, ` : ""}
           {source.author ? `${source.author}, ` : ""}
           <em>{source.title ? `${source.title}. ` : ""}</em>
-          {source.url ? <a href={source.url}>—{source.url}</a> : null}{" "}
+          {source.url ? <a href={source.url}>{source.url}</a> : null}{" "}
           <a href={`#${citation}-inline`}>
             <sup>[In text]</sup>
           </a>
