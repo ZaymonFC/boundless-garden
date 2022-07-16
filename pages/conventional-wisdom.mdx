@@ -4,21 +4,16 @@ import AtomFlower from "../components/AtomFlower";
 import Definition from "../components/Definition";
 import Meta from "../data/Meta";
 import { Tweet } from "../components/Twitter";
+import generateBoundlessReference from '../utilities/generateBoundlessReference'
 
 export const meta = Meta['conventional-wisdom']
 
 export const references = {
+  ...generateBoundlessReference('bytes/on-courage'),
   'corruption': {
     title: 'Income inequality in the Philippines',
     url: 'https://en.wikipedia.org/wiki/Income_inequality_in_the_Philippines#Connection_with_corruption'
   },
-  "on-courage": {
-    author: 'Zan',
-    title: 'On Courage',
-    year: 2022,
-    url: 'https://www.boundless.garden/bytes/on-courage',
-    publisher: 'Boundless Garden'
-  }
 }
 
 export default ({ children }) => (
@@ -65,7 +60,7 @@ We're taken advantage of for this very fact.
 "Live a *stable life* with minimal surprises or discomfort".
 Take the 'blessed' path, do your time when you can work the hardest. Then retire in comfort.
 
-Over time, I've come to realise that discomfort and fear is, *in general*, a sign that I should push myself to grow.<Inline citation="on-courage" />
+Over time, I've come to realise that discomfort and fear is, *in general*, a sign that I should push myself to grow.<Inline citation="bytes/on-courage" />
 This narrative is often sold in our media, but culturally and socially we are often primed to do the exact opposite.
 
 Take risks!

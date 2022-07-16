@@ -73,7 +73,10 @@ const Meta: { [url: string]: PostMeta } = {
 
 type PostSummary = { url: string; meta: PostMeta };
 
-const postIds: PostSummary[] = Object.entries(Meta).map(([url, meta]) => ({ url, meta }));
+export const postSummaries: PostSummary[] = Object.entries(Meta).map(([url, meta]) => ({
+  url,
+  meta,
+}));
 
 const matcher =
   (id: string) =>
@@ -91,9 +94,9 @@ const previous =
     arr[dec(idx)];
 
 export const surroundingPosts = (id: string): { next?: PostSummary; previous?: PostSummary } => {
-  const length = postIds.length;
-  const idx = postIds.findIndex(matcher(id));
-  const [nextPost, previousPost] = [next(postIds, idx), previous(postIds, idx)];
+  const length = postSummaries.length;
+  const idx = postSummaries.findIndex(matcher(id));
+  const [nextPost, previousPost] = [next(postSummaries, idx), previous(postSummaries, idx)];
 
   if (idx === length - 1) return { previous: previousPost() };
   if (idx === 0) return { next: nextPost() };
