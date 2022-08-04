@@ -1,4 +1,4 @@
-import { useParallax } from "react-scroll-parallax";
+import { useParallax } from "../hooks/useParallax";
 import { styled } from "../Stitches";
 import { ThreeWithStars } from "./ThreeWithStars";
 
@@ -18,13 +18,10 @@ const Underneath = styled("div", {
 });
 
 export const StarBackground = ({ height }: { height: "full" | "header" }) => {
-  const parallax = useParallax<HTMLDivElement>({
-    speed: 25,
-    rootMargin: { top: 0, left: 0, right: 0, bottom: 30000 },
-  });
+  const parallax = useParallax<HTMLDivElement>(0.2);
 
   return (
-    <Underneath height={height} ref={parallax.ref}>
+    <Underneath height={height} ref={parallax}>
       <ThreeWithStars />
     </Underneath>
   );

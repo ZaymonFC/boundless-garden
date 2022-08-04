@@ -4,7 +4,6 @@ import { AnimatePresence } from "framer-motion";
 import React from "react";
 import Head from "next/head";
 import "../styles/fonts.css";
-import { ParallaxProvider } from "react-scroll-parallax";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,9 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <AnimatePresence exitBeforeEnter initial={false}>
-        <ParallaxProvider>
-          <Component {...pageProps} />
-        </ParallaxProvider>
+        <Component {...pageProps} />
       </AnimatePresence>
     </>
   );
