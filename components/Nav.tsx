@@ -1,10 +1,9 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useMemo } from "react";
-import { delay, merge, Subject, throttleTime, withLatestFrom } from "rxjs";
+import { delay, merge, Subject } from "rxjs";
 import useObservable from "../hooks/useObservable";
 import { styled } from "../Stitches";
-import { clamp } from "../utilities/math";
 import AtomFlower from "./AtomFlower";
 import Stack from "./Stack";
 
@@ -47,22 +46,21 @@ const useEngageAfterScroll = (y: number) => {
 const useBop = (disabled = false) => {
   const { scrollY } = useScroll();
 
-  const clampFn = clamp(-300, 0);
-
   const xSmooth = useSpring(scrollY, { damping: 50, stiffness: 600 });
-  const inverted = useTransform(xSmooth, (v) => clampFn(-v));
-  const multiplied = useTransform(xSmooth, (v) => v * 1.4);
+  const multiplied = useTransform(xSmooth, (v) => v * 1.2);
 
-  return disabled ? multiplied : inverted;
+  const still = useMotionValue(0);
+
+  return disabled ? multiplied : still;
 };
 
 const Nav = () => {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, (s) => (s > 20 ? 0 : 1));
 
-  const engaged = useEngageAfterScroll(120);
+  const engaged = useEngageAfterScroll(100);
 
-  const opacitySpring = useSpring(opacity, { stiffness: 100 });
+  const opacitySpring = useSpring(opacity, { damping: 30, stiffness: 140 });
 
   const top = useBop(!engaged);
 
