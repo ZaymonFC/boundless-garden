@@ -18,7 +18,7 @@ const NextPrevious = ({ currentPostId }: { currentPostId: string }) => {
 
   return (
     <Stack justify={"spaceBetween"}>
-      {previous && (
+      {previous ? (
         <ProgressionButton url={previous.url}>
           <Stack spacing="sm" direction="row" align="center">
             <ArrowLeftIcon />
@@ -26,6 +26,8 @@ const NextPrevious = ({ currentPostId }: { currentPostId: string }) => {
             {previous.meta.title}
           </Stack>
         </ProgressionButton>
+      ) : (
+        <div></div>
       )}
       {next && (
         <ProgressionButton url={next.url}>
