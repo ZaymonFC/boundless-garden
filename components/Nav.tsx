@@ -30,9 +30,7 @@ const HomeLink = ({ children }: any) => (
   </Link>
 );
 
-const useEngageAfterScroll = (y: number) => {
-  const { scrollY } = useScroll();
-
+const useEngageAfterScroll = (scrollY: MotionValue<number>, y: number) => {
   const engaged$ = useMemo(() => new Subject<boolean>(), []);
   const home$ = useMemo(() => new Subject<boolean>(), []);
 
@@ -46,7 +44,7 @@ const useEngageAfterScroll = (y: number) => {
     return unsubscribe;
   }, [scrollY, home$]);
 
-  const combined = merge(engaged$.pipe(delay(150)), home$.pipe(delay(250)));
+  const combined = merge(engaged$.pipe(delay(150)), home$.pipe(delay(400)));
   return useObservable(combined, false);
 };
 
@@ -60,12 +58,10 @@ const useBop = (scrollY: MotionValue<number>, disabled = false) => {
 
 const Nav = () => {
   const { scrollY } = useScroll();
+  const engaged = useEngageAfterScroll(scrollY, 90);
+
   const opacity = useTransform(scrollY, (s) => (s > 20 ? 0 : 1));
-
-  const engaged = useEngageAfterScroll(90);
-
   const opacitySpring = useSpring(opacity, { damping: 20, stiffness: 140 });
-
   const top = useBop(scrollY, !engaged);
 
   return (
