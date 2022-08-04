@@ -1,4 +1,11 @@
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  MotionValue,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import Link from "next/link";
 import { useEffect, useMemo } from "react";
 import { delay, merge, Subject } from "rxjs";
@@ -39,30 +46,27 @@ const useEngageAfterScroll = (y: number) => {
     return unsubscribe;
   }, [scrollY, home$]);
 
-  const combined = merge(engaged$, home$.pipe(delay(250)));
+  const combined = merge(engaged$.pipe(delay(150)), home$.pipe(delay(250)));
   return useObservable(combined, false);
 };
 
-const useBop = (disabled = false) => {
-  const { scrollY } = useScroll();
-
-  const xSmooth = useSpring(scrollY, { damping: 50, stiffness: 600 });
-  const multiplied = useTransform(xSmooth, (v) => v * 1.2);
-
+const useBop = (scrollY: MotionValue<number>, disabled = false) => {
   const still = useMotionValue(0);
+  const scrollScaled = useTransform(scrollY, (v) => v * 0.5);
+  const xSmooth = useSpring(scrollScaled, { damping: 50, stiffness: 600 });
 
-  return disabled ? multiplied : still;
+  return disabled ? xSmooth : still;
 };
 
 const Nav = () => {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, (s) => (s > 20 ? 0 : 1));
 
-  const engaged = useEngageAfterScroll(100);
+  const engaged = useEngageAfterScroll(90);
 
-  const opacitySpring = useSpring(opacity, { damping: 30, stiffness: 140 });
+  const opacitySpring = useSpring(opacity, { damping: 20, stiffness: 140 });
 
-  const top = useBop(!engaged);
+  const top = useBop(scrollY, !engaged);
 
   return (
     <NavContainer style={{ top, opacity: opacitySpring }}>
