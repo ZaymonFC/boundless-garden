@@ -44,7 +44,7 @@ const useEngageAfterScroll = (scrollY: MotionValue<number>, y: number) => {
     return unsubscribe;
   }, [scrollY, home$]);
 
-  const combined = merge(engaged$.pipe(delay(150)), home$.pipe(delay(400)));
+  const combined = merge(engaged$.pipe(delay(150)), home$.pipe(delay(800)));
   return useObservable(combined, false);
 };
 
