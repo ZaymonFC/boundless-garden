@@ -5,7 +5,7 @@ import AtomFlower from "../components/AtomFlower";
 import { Button } from "../components/Button";
 import { Fade } from "../components/Fade";
 import Stack from "../components/Stack";
-import { ThreeWithStars } from "../components/ThreeWithStars";
+import { HomeBackground } from "../components/StarBackground";
 import { colors } from "../Stitches";
 import styles from "../styles/Home.module.css";
 
@@ -13,7 +13,7 @@ const Header = () => {
   const height = "100vh";
   return (
     <div style={{ position: "relative", height: height }}>
-      <ThreeWithStars />
+      <HomeBackground />
       <main
         style={{
           position: "absolute",

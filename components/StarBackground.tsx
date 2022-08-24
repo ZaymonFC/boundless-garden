@@ -1,6 +1,6 @@
 import { useParallax } from "../hooks/useParallax";
 import { styled } from "../Stitches";
-import { ThreeWithStars } from "./ThreeWithStars";
+import { HomeScene, ThreeWithStars } from "./3D";
 
 const Underneath = styled("div", {
   position: "fixed",
@@ -26,3 +26,9 @@ export const StarBackground = ({ height }: { height: "full" | "header" }) => {
     </Underneath>
   );
 };
+
+export const HomeBackground = () => (
+  <Underneath height="full">
+    <HomeScene />
+  </Underneath>
+);

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Emoji from "../components/Emoji";
 import { Fade } from "../components/Fade";
 import Nav from "../components/Nav";
-import { ThreeWithStars } from "../components/ThreeWithStars";
+import { ThreeWithStars } from "../components/3D";
 import { styled } from "../Stitches";
 
 const height = "100vh";
