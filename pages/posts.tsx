@@ -21,7 +21,7 @@ const IndexContainer = styled("div", {
 });
 
 const PostTileContainer = styled("a", {
-  padding: 16,
+  padding: 12,
   border: "solid 1px $salmon",
   borderRadius: "$2",
 

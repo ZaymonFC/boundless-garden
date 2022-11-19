@@ -69,6 +69,15 @@ const Meta: { [url: string]: PostMeta } = {
     wordCount: 800,
     tags: ["wisdom", "path-finding", "alternative lifestyle"],
   },
+
+  constraints: {
+    id: "48a6105b-d38e-43ee-8180-02e6d96d659c",
+    title: "Constraints",
+    date: new Date("2022-11-18"),
+    author: "Zan",
+    wordCount: 480,
+    tags: [],
+  },
 };
 
 type PostSummary = { url: string; meta: PostMeta };

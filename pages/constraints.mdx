@@ -1,0 +1,99 @@
+import Layout from "../components/Layout";
+import BlogImage from "../components/BlogImage";
+import cosmicEgg from "../public/cosmic-egg.png";
+import { Inline, References, ReferenceProvider } from "../components/References";
+import AtomFlower from "../components/AtomFlower";
+import Definition from "../components/Definition";
+import Meta from "../data/Meta";
+import { Tweet } from "../components/Twitter";
+import generateBoundlessReference from '../utilities/generateBoundlessReference'
+
+export const meta = Meta['constraints']
+
+export const references = {
+  ...generateBoundlessReference('conventional-wisdom'),
+  'corruption': {
+    title: 'Income inequality in the Philippines',
+    url: 'https://en.wikipedia.org/wiki/Income_inequality_in_the_Philippines#Connection_with_corruption'
+  },
+	'sascha-chapin-new-job': {
+		title: 'Stepping Away From Writing Coaching',
+		url: 'https://sashachapin.substack.com/p/stepping-away-from-writing-coaching',
+		year: 2022,
+		publisher: 'Sasha\'s Newsletter'
+	},
+	"minhd": {
+		url: 'https://minhwrites.substack.com/p/what-ive-learned-from-writing-online',
+		title: 'what i\'ve learned from writing online',
+		publisher: 'Life with MD',
+		year: 2022,
+	}
+}
+
+
+I've never been a big believer in New Year's resolutions. To me, they don't offer the right constraints.
+I've seen people go through that loop year after year with grand intentions of building new habits, shaking old ones.
+I used to live in an apartment complex with an adjoining gym underneath.
+For two weeks of the new year the gym was absolutely packed.
+I had been going to the gym in a while, so it was frustrating having to share the space with that many people.
+At the same time I was happy that these newbie gym goers were turning over a new leaf.
+Two weeks later the gym was empty. Back to the regular two or three people I had gotten used to seeing the previous year.
+
+100% attrition.
+I wonder what went wrong.
+
+It hasn't been a great writing year for me.
+The only thing that I've produced that I've been proud of is my reflection of a trip to the Philippines<Inline citation="conventional-wisdom" />.
+The desire to produce has been absent from my experience.
+My fiancé and I are moving across the world soon.
+I can feel the collective uncertainty being introduced pulling everything off alignment like natural iron deposits tugging on the needle of a compass.
+
+I need a project, structure, a framework which forces me to confront the intangible.
+To start making sense of the senseless.
+Writing is the most powerful tool I have to tame the chaos.
+
+<BlogImage src={cosmicEgg} caption="The Cosmic Egg - MidJourney V4" />
+
+As it stands, the environment of my writing is unconstrained.
+I have seen to be true that constraints are a driver of creativity.
+The unconstrained project can go anywhere. Therefore, the unconstrained project goes nowhere.
+
+<Definition word="Constrain" definitions={["compel or force (someone) to follow a particular course of action"]} />
+
+Starting with this essay I'm endeavouring to publish one every week for the near future.
+Let's see if I can sidestep the trap of the New Year's resolution.
+I'm starting in November after all!
+I'm a big believer that consistency over long periods of time leads to success and new understanding.
+I've been able to build lasting habits in other areas of my life.
+I regularly work out, do yoga, stretch and cook for myself.
+It's time to bring writing into the fold.
+
+My plan is to explore something that's been on my mind every week without falling back to writing about writing<Inline citation={"sascha-chapin-new-job"} />.
+Hopefully the social proof combined with having a deadline each week will keep me engaged and on target.
+
+---
+
+### Stuff I've been thinking about
+I've recently been reading [Life with MD](https://minhwrites.substack.com/).
+Seeing the growth in her writing over the last 42 weeks<Inline citation="minhd" /> has inspired me to reach and face my fear of pushing vibes into the void.
+
+[Why is Modern Dating so Hard?](https://mindmine.substack.com/p/why-is-modern-dating-so-hard) by Isabel is a fascinating piece that explores our relationship with optionality.
+We love to live in the position of imaging all our options and possible futures.
+We can't have it all.
+At some point you have to collapse the future to a single path with a decision.
+Isabel's writing dovetails quite nicely with this `@liminalwarmth` thread on optionality and intimacy.
+
+<Tweet tweetId="1592542553668481025" />
+
+
+
+---
+
+export default ({ children }) => (
+  <ReferenceProvider value={meta.id}>
+    <Layout meta={meta}>
+      <References references={references} />
+      {children}
+    </Layout>
+  </ReferenceProvider>
+);
