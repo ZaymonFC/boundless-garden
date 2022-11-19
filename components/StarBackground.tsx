@@ -22,7 +22,7 @@ export const StarBackground = ({ height }: { height: "full" | "header" }) => {
 
   return (
     <Underneath height={height} ref={parallax}>
-      {/* <ThreeWithStars /> */}
+      <ThreeWithStars />
     </Underneath>
   );
 };
