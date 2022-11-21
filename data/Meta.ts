@@ -76,7 +76,7 @@ const Meta: { [url: string]: PostMeta } = {
     date: new Date("2022-11-18"),
     author: "Zan",
     wordCount: 500,
-    tags: [],
+    tags: ["writing", "constraints", "creativity", "structure"],
   },
 };
 
