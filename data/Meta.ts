@@ -78,6 +78,15 @@ const Meta: { [url: string]: PostMeta } = {
     wordCount: 500,
     tags: ["writing", "constraints", "creativity", "structure"],
   },
+
+  "the-last-time": {
+    id: "d96f2596-c205-4403-8456-8a2da2822088",
+    title: "The Last Time?",
+    date: new Date("2022-11-28"),
+    author: "Zan",
+    wordCount: 550,
+    tags: [],
+  },
 };
 
 type PostSummary = { url: string; meta: PostMeta };

@@ -127,7 +127,7 @@ const FrontMatter = ({ title, date, wordCount }: Meta) => (
     </FrontMatterMeta>
     {wordCount && (
       <FrontMatterMeta>
-        <Emoji symbol="⎇" label="Unicode upside down option symbol" /> {wordCount} words.{" "}
+        {/* <Emoji symbol="⎇" label="Unicode upside down option symbol" /> {wordCount} words.{" "} */}
         <Emoji symbol="⪽" label="Unicode symbol for a subset with a dot" /> {timeToRead(wordCount)}
       </FrontMatterMeta>
     )}
