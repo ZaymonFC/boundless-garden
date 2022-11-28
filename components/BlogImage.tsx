@@ -5,8 +5,8 @@ const BlogCaption = styled("p", {
   padding: 0,
   margin: 0,
 
-  fontSize: "$2 !important",
-  fontFamily: "$headingSerif",
+  fontSize: "$1 !important",
+  fontFamily: "$mono",
   // color: "white !important",
 
   textAlign: "center",
