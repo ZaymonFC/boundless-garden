@@ -23,7 +23,7 @@ const IndexContainer = styled("div", {
 const PostTileContainer = styled("a", {
   padding: 12,
   border: "solid 1px $salmon",
-  borderRadius: "$2",
+  borderRadius: "$4",
 
   minWidth: 308,
 
@@ -39,10 +39,10 @@ const PostTileContainer = styled("a", {
         "&:hover": {
           cursor: "pointer",
 
-          border: "solid 3px $salmon",
+          border: "solid 2px $salmon",
           padding: 14, // Offset border growth with padding reduction
 
-          boxShadow: "0 0 0 100000px rgba(0, 0, 0, 0.4)",
+          boxShadow: "0 0 0 100000px rgba(0, 0, 0, 0.2)",
           zIndex: 999,
         },
       },
