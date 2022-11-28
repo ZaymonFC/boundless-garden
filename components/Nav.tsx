@@ -37,7 +37,7 @@ const useEngageAfterScroll = (scrollY: MotionValue<number>, y: number) => {
   useEffect(() => {
     const unsubscribe = scrollY.onChange((v) => v > y && engaged$.next(true));
     return unsubscribe;
-  }, [scrollY, engaged$]);
+  }, [y, scrollY, engaged$]);
 
   useEffect(() => {
     const unsubscribe = scrollY.onChange((v) => v < 10 && home$.next(false));

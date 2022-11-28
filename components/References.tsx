@@ -63,7 +63,7 @@ export const Inline = ({ citation }: InlineReferenceProps) => {
       const { left, top } = posRef.current.getBoundingClientRect();
       addInlineReferencePosition(id, [citation, [left, top]]);
     }
-  }, [id, posRef, citation]);
+  }, [id, posRef, citation, addInlineReferencePosition]);
 
   return (
     <sup ref={posRef}>
