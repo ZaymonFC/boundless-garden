@@ -40,10 +40,12 @@ const PostTileContainer = styled("a", {
           cursor: "pointer",
 
           border: "solid 2px $salmon",
-          padding: 14, // Offset border growth with padding reduction
+          padding: 11, // Offset border growth with padding reduction
 
           boxShadow: "0 0 0 100000px rgba(0, 0, 0, 0.2)",
           zIndex: 999,
+
+          transform: "scale(1.01)",
         },
       },
     },
