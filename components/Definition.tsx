@@ -28,10 +28,12 @@ const DefinitionList = ({ definitions }: { definitions: string[] }) => {
 };
 
 const DefinitionStyles = css`
-  border: solid 2px ${colours.primary};
-  border-radius: 2px;
+  border: solid 1px ${colours.primary};
+  border-radius: 4px;
 
   margin: 30px 0;
+
+  backdrop-filter: blur(1px);
 
   h2 {
     display: inline-block;

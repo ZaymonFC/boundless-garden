@@ -33,6 +33,8 @@ const PostTileContainer = styled("a", {
 
   "&:active": { transform: "scale(0.98)" },
 
+  backdropFilter: "blur(1px)",
+
   variants: {
     hoverable: {
       true: {
