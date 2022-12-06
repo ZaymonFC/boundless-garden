@@ -39,6 +39,7 @@ const Meta: { [url: string]: PostMeta } = {
     wordCount: 1100,
     series: "📖 Book Report",
     tags: ["Kurt Vonnegut"],
+    private: true,
   },
 
   "bytes/on-play": {

@@ -38,7 +38,9 @@ export const useTags = () => {
 export const useFilteredPostsByTags = () => {
   const tags = useAtomValue(uniqueLabelsAtom);
 
-  const data = Object.entries(Meta).reverse();
+  const data = Object.entries(Meta)
+    .reverse()
+    .filter(([url, meta]) => meta.private !== true);
 
   const filteredData = useMemo(() => {
     if (tags.length === 0) return data;
