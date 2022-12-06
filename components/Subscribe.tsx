@@ -5,6 +5,12 @@ import { VSpacer } from "./Spacers";
 
 const Header = styled("h2", {});
 
+const Caption = styled("p", {
+  margin: 0,
+  fontSize: "$2 !important",
+  fontFamily: "$mono",
+});
+
 const TextInput = styled("input", {
   width: "100%",
   marginBottom: 4,
@@ -55,6 +61,8 @@ export const Subscribe = () => {
   return (
     <>
       <Header>Subscribe to the Boundless.Garden</Header>
+      <Caption>Stay up to date on new posts and important announcements.</Caption>
+      <Caption>No spam. Ever.</Caption>
       <VSpacer />
       <Form></Form>
     </>
