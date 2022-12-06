@@ -5,7 +5,7 @@ export const Button = styled("button", {
   borderRadius: "$2",
   padding: "$3",
 
-  fontFamily: "JetBrains Mono",
+  fontFamily: "$mono",
 
   color: "#ff8f8f",
   backgroundColor: "rgba(0, 0, 0, 0.2)",

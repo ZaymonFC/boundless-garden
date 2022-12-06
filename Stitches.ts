@@ -59,9 +59,9 @@ export const { styled, css, getCssText } = createStitches({
       8: "4.5em",
     },
     fonts: {
-      mono: "Jetbrains Mono",
-      bodySerif: "Georgia, 'Times New Roman', Times, serif",
-      headingSerif: "Cardo",
+      mono: "'Jetbrains Mono', monospace",
+      bodySerif: "Spectral, Times, serif",
+      headingSerif: "Cardo, Georgia",
     },
     fontWeights: {},
     lineHeights: {},
