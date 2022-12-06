@@ -110,7 +110,7 @@ const PostTileTagContainer = styled("span", {
   cursor: "pointer",
 
   transitionProperty: "all",
-  transitionDuration: "200ms",
+  transitionDuration: "120ms",
 
   "&:hover": {
     color: "$salmon",

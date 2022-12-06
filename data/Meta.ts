@@ -86,7 +86,16 @@ const Meta: { [url: string]: PostMeta } = {
     date: new Date("2022-11-28"),
     author: "Zan",
     wordCount: 550,
-    tags: ["openness", "receptivity", "nature", 'path-finding'],
+    tags: ["openness", "receptivity", "nature", "path-finding"],
+  },
+
+  "i-listens-to-me": {
+    id: "dd784990-52ae-4356-8d81-a7ba0674bfd3",
+    title: "I Listens to Me",
+    date: new Date("2022-12-06"),
+    author: "Zan",
+    wordCount: 633,
+    tags: ["awareness", "receptivity", "conversation", "meditation", "maya"],
   },
 };
 
