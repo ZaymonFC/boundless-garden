@@ -115,7 +115,7 @@ const FrontMatterMeta = styled("p", {
   color: "$yellow",
 });
 
-const FrontMatter = ({ title, date, wordCount }: Meta) => (
+const FrontMatter = ({ title, date, wordCount }: PostMeta) => (
   <div>
     <FrontMatterHeading>{title}</FrontMatterHeading>
     <VSpacer size="sm" />
