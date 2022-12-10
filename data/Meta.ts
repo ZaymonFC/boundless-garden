@@ -80,7 +80,7 @@ const Meta: { [url: string]: PostMeta } = {
     author: "Zan",
     wordCount: 500,
     tags: ["writing", "constraints", "creativity", "structure"],
-    image: "cosmic-egg.png",
+    image: "cosmic-egg.jpg",
   },
 
   "the-last-time": {
