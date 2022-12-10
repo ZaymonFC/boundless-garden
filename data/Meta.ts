@@ -9,6 +9,7 @@ export type PostMeta = {
   tags: string[];
   series?: string;
   private?: boolean;
+  image?: string;
 };
 
 const Meta: { [url: string]: PostMeta } = {
@@ -69,6 +70,7 @@ const Meta: { [url: string]: PostMeta } = {
     author: "Zan",
     wordCount: 800,
     tags: ["wisdom", "path-finding", "alternative lifestyle"],
+    image: "tin-tin.jpg",
   },
 
   constraints: {
@@ -87,6 +89,7 @@ const Meta: { [url: string]: PostMeta } = {
     author: "Zan",
     wordCount: 550,
     tags: ["openness", "receptivity", "nature", "path-finding"],
+    image: "kawau-at-dusk.jpg",
   },
 
   "i-listens-to-me": {
@@ -96,6 +99,7 @@ const Meta: { [url: string]: PostMeta } = {
     author: "Zan",
     wordCount: 633,
     tags: ["awareness", "receptivity", "conversation", "meditation", "maya"],
+    image: "delta.jpeg",
   },
 };
 

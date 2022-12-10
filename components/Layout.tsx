@@ -3,6 +3,7 @@ import { format, formatDistance } from "date-fns";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+import { PostMeta } from "../data/Meta";
 import { styled } from "../Stitches";
 import { Button } from "./Button";
 import Emoji from "./Emoji";
@@ -86,10 +87,8 @@ const divider = css`
   border-style: solid;
 `;
 
-type Meta = { title: string; date: Date; id: string; wordCount?: number };
-
 type LayoutProps = {
-  meta: Meta;
+  meta: PostMeta;
   children: React.ReactNode;
 };
 
@@ -144,12 +143,38 @@ const AllPostsButton = () => {
   );
 };
 
+const PostMetadata: React.FC<{ title: string; image?: string }> = ({ title, image }) => {
+  const pageTitle = `${title} - Boundless Garden 🌸`;
+  const imageUrl = image ? `https://www.boundless.garden/${image}` : undefined;
+
+  return (
+    <Head>
+      <title>{pageTitle}</title>
+      <meta property="og:title" content={pageTitle} />
+      <meta property="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content="View post on Boundless.Garden" />
+
+      {imageUrl ? (
+        <meta property="twitter:card" content="summary_large_image" />
+      ) : (
+        <meta property="twitter:card" content="summary" />
+      )}
+
+      {imageUrl && (
+        <>
+          <meta property="og:image" content={imageUrl} />
+          <meta property="og:image:secure_url" content={imageUrl} />
+          <meta property="twitter:image" content={imageUrl} />
+        </>
+      )}
+    </Head>
+  );
+};
+
 export default function Layout({ meta, children }: LayoutProps) {
   return (
     <>
-      <Head>
-        <title>{meta.title} - Boundless Garden 🌸</title>
-      </Head>
+      <PostMetadata title={meta.title} image={meta.image} />
       <Fade>
         <StarBackground height="full" />
         <div className={cx(containerStyles)}>
