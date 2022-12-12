@@ -102,6 +102,16 @@ const Meta: { [url: string]: PostMeta } = {
     tags: ["awareness", "receptivity", "conversation", "meditation", "maya"],
     image: "delta.jpeg",
   },
+
+  "stuck-in-the-groove": {
+    id: "239f1bad-5ded-4681-a951-ba00cdb510c4",
+    title: "Stuck in the Groove",
+    date: new Date("2022-12-12"),
+    author: "Zan",
+    wordCount: 1042, // TODO: This
+    tags: ["introspection", "course-correction", "goals", "path-finding"],
+    image: "stuck-in-the-groove.jpg",
+  },
 };
 
 type PostSummary = { url: string; meta: PostMeta };
