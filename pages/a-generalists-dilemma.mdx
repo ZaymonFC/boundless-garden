@@ -1,0 +1,96 @@
+import Layout from "../components/Layout";
+import BlogImage from "../components/BlogImage";
+import headerImage from "../public/neo-matsuoka.jpeg";
+import { Inline, References, ReferenceProvider } from "../components/References";
+import Definition from "../components/Definition";
+import Meta from "../data/Meta";
+import { Tweet } from "../components/Twitter";
+import generateBoundlessReference from '../utilities/generateBoundlessReference'
+
+export const meta = Meta['a-generalists-dilemma']
+
+export const references = {
+  ...generateBoundlessReference('stuck-in-the-groove'),
+  'anemic': {
+    url: 'https://en.wikipedia.org/wiki/Anemic_domain_model',
+    title: 'Anemic domain model',
+    publisher: 'Wikipedia'
+  }
+}
+
+export default ({ children }) => (
+  <ReferenceProvider value={meta.id}>
+    <Layout meta={meta}>
+      <References references={references} />
+      {children}
+    </Layout>
+  </ReferenceProvider>
+);
+
+<BlogImage src={headerImage} caption={"by Neo Matsuoka from Photographers Index 1 (1985)"}/>
+
+I've always been an incredibly curious person.
+I was definitely a 'why?' kid.
+The way I understand the world is through analysis and deconstruction.
+I've constantly been fascinated with the mechanics of how things work.
+Then after understanding something I wonder why things work that way instead of some other way?
+Looking back it makes a lot of sense that I ended up becoming a *software person*.
+The act of building software requires one to interrogate how the thing works:
+How can I model and represent the information and processes of the domain?
+How can I visually present this in the most effective way?
+How does it make people *feel* to interact with the thing I've built?
+How do I want them to feel?
+How can we build features that compose with emergent properties to create a more than the sum of its parts dynamic?
+
+These questions cover the fields of: software engineering, programming & mathematics, design & visualisation, project management, psychology, philosophy, communication & writing, systems thinking, and aesthetics.
+I believe building any great piece of software requires deep thinking in all these fields.
+I formally studied to be a programmer and my core competencies are in software engineering but through exploring my interests in the space of software I've had the pleasure of diving into all of these fields.
+In this regard I like to consider myself a generalist.
+
+The corporate world, even in modern software development breaks down teams into narrowly defined roles.
+You're a: developer, designer, project manager, UX person, whatever.
+I've never felt that I fit in with this model.
+
+Experience has shown me that truly great software is built in a cross-discipline, holistic fashion.
+There's a level of anaemia<Inline citation="anemic" /> that comes from defining yourself narrowly.
+All knowledge cross pollinates, and we need to be able to consider the task at hand from many perspectives.
+
+Broadly defined, the aesthetics of a project are critically important.
+In big teams each individual contributor or team has a tiny slice to care about and the sum of these is often bland and unremarkable.
+Any product developed by lots of people is at serious risk of *aesthetic dilution*.
+
+It's not all bad for large teams though.
+Projects with lots of people can certainly compete on: number of features, device support and enterprise integrations, but, they can't compete on *feels*.
+A prime example of this is the Microsoft suite of products.
+Everything is fully featured and interoperable giving the ecosystem sticking power in culmination, but each individual piece feels clunky and unstable.
+The Microsoft suite is convenient for big businesses but doesn't spark joy for end-users.
+
+I'm starting to think that writing software that brings joy should be one of my life's guiding endeavours.
+I'm not content in a role where I can't have influence over the design, customer experience, product strategy and software architecture.
+Luckily there's one arena where being a generalist and thinking holistically is a huge advantage.
+Startups.
+The agile and volatile nature of startups combined with the resource constraints mean that everyone on the team has to wear many hats.
+It's not enough to be a strong programmer if you can't iterate on design and think about the customer experience.
+
+For me, this bias towards being a generalist does come with drawbacks.
+The disciplines I'm interested in have incredible depth.
+I often feel like an imposter.
+It's an incredible challenge to keep going back to square one and approach new topics with the beginner's mindset.
+I often stumble into a failure mode of overwhelm, my brain circling on thoughts like:
+"you're not smart enough",
+"it's not possible to deeply learn about this many fields",
+"taking the time to learn about X will stop you from achieving a deeper understanding of Y".
+
+If you read my last post<Inline citation={'stuck-in-the-groove'} /> you'll know that recently I've been a bit paralysed.
+I believe I'm finding more clarity now.
+I've realised that I love the challenge of learning new things.
+The thing I __need__ to remember is this: while daunting and overwhelming, the idea that I __get__ to learn about so many topics is incredibly *exciting*.
+I need to let my curiosity light the way again, to *truly* believe that wherever I follow it __I can thrive__.
+
+
+### Stuff I've been thinking about
+
+- [Conservation of Effort - Shimmering Void](https://shimmeringvoid.substack.com/p/conservation-of-effort)
+- [Keep your identity small - Paul Graham](http://www.paulgraham.com/identity.html)
+- [What is Somatic Meditation? - in the wilderless](https://inthewilderless.substack.com/p/what-is-somatic-meditation)
+

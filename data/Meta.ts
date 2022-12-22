@@ -34,7 +34,7 @@ const Meta: { [url: string]: PostMeta } = {
 
   "book-report/breakfast-of-champions": {
     id: "d8b6c66a-ea2f-429d-81c7-8dcdec84f7fb",
-    title: "Breakfast of Champions",
+    title: "Hello",
     date: new Date("2021-10"),
     author: "Zan",
     wordCount: 1100,
@@ -108,9 +108,19 @@ const Meta: { [url: string]: PostMeta } = {
     title: "Stuck in the Groove",
     date: new Date("2022-12-12"),
     author: "Zan",
-    wordCount: 1042, // TODO: This
+    wordCount: 1042,
     tags: ["introspection", "course-correction", "goals", "path-finding"],
     image: "stuck-in-the-groove.jpg",
+  },
+
+  "a-generalists-dilemma": {
+    id: "0408c7d9-6c68-4a2e-9d7c-d14c3888b793",
+    title: "A Generalists Dilemma",
+    date: new Date("2022-12-22"),
+    author: "Zan",
+    wordCount: 728,
+    tags: ["generalist", "career", "path-finding"],
+    image: "neo-matsuoka.jpeg",
   },
 };
 
