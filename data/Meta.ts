@@ -122,6 +122,16 @@ const Meta: { [url: string]: PostMeta } = {
     tags: ["generalist", "career", "path-finding"],
     image: "neo-matsuoka.jpeg",
   },
+
+  "the-call-to-adventure": {
+    id: "b65d27ff-c22e-4a55-92ae-d460a908c156",
+    title: "The Call to Adventure",
+    date: new Date("2023-08-23"),
+    author: "Zan",
+    wordCount: 500,
+    tags: ["career", "hero's journey"],
+    private: true,
+  },
 };
 
 type PostSummary = { url: string; meta: PostMeta };
