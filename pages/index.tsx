@@ -6,41 +6,80 @@ import { Button } from "../components/Button";
 import { Fade } from "../components/Fade";
 import Stack from "../components/Stack";
 import { HomeBackground } from "../components/StarBackground";
-import { colors } from "../Stitches";
+import { useFilteredPostsByTags, useLatestPosts } from "../hooks/tags";
+import { colors, styled } from "../Stitches";
 import styles from "../styles/Home.module.css";
+import { metaToPostTile, PostGridContainer, PostTile } from "./posts";
+
+const LatestPostBadge = styled("span", {
+  display: "inline-block",
+  marginBottom: "$4",
+  paddingBlock: 1,
+  paddingInline: 2,
+
+  color: "$yellow",
+
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "$yellow",
+  borderRadius: 3,
+
+  fontFamily: "Jetbrains Mono",
+  fontSize: "0.9em",
+  fontWeight: 400,
+});
+
+const Main = styled("main", {
+  position: "absolute",
+  left: 0,
+  right: 0,
+  top: 0,
+
+  padding: "5rem 2rem",
+  flex: "1",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+
+  variants: {
+    size: {
+      full: { height: "100vh" },
+      mobile: { height: undefined },
+    },
+  },
+});
 
 const Header = () => {
-  const height = "100vh";
+  const latestPosts = useLatestPosts(1);
+
   return (
-    <div style={{ position: "relative", height: height }}>
+    <div style={{ position: "relative" }}>
       <HomeBackground />
-      <main
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: 0,
-          height: height,
-        }}
-        className={styles.main}
-      >
+      <Main size={{ "@initial": "mobile", "@bp1": "full" }}>
         <AtomFlower />
         <h1 className={styles.title}>the Boundless Garden</h1>
         <p className={styles.byLine}>leaves on a fractal rose</p>
 
-        <Stack>
-          <Link href="/intro">
-            <a>
-              <Button size="sm">Begin here</Button>
-            </a>
-          </Link>
-          <Link href="/posts">
-            <a>
-              <Button size="sm">All Posts</Button>
-            </a>
-          </Link>
-        </Stack>
-      </main>
+        <div>
+          <LatestPostBadge>Latest Post</LatestPostBadge>
+          <PostGridContainer columns={"single"}>
+            {latestPosts.map((post) => metaToPostTile(...post))}
+          </PostGridContainer>
+          <Stack justify="end">
+            <Link href="/intro">
+              <a>
+                <Button size="sm">New here?</Button>
+              </a>
+            </Link>
+            <Link href="/posts">
+              <a>
+                <Button size="sm">All Posts</Button>
+              </a>
+            </Link>
+          </Stack>
+        </div>
+      </Main>
     </div>
   );
 };

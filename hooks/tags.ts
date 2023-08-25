@@ -40,7 +40,7 @@ export const useFilteredPostsByTags = () => {
 
   const data = Object.entries(Meta)
     .reverse()
-    .filter(([url, meta]) => meta.private !== true);
+    .filter(([_url, meta]) => meta.private !== true);
 
   const filteredData = useMemo(() => {
     if (tags.length === 0) return data;
@@ -52,4 +52,13 @@ export const useFilteredPostsByTags = () => {
   }, [tags]);
 
   return filteredData;
+};
+
+export const useLatestPosts = (count: number) => {
+  const data = Object.entries(Meta)
+    .reverse()
+    .filter(([_url, meta]) => meta.private !== true)
+    .slice(0, count);
+
+  return data;
 };

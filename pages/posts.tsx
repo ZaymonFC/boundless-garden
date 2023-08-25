@@ -183,7 +183,7 @@ type PostTileProps = {
   tags?: string[];
 };
 
-const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => (
+export const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => (
   <Link href={url} passHref>
     <PostTileContainer hoverable={{ "@initial": false, "@bp1": true }}>
       <div>
@@ -201,7 +201,7 @@ const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => 
   </Link>
 );
 
-const PostGridContainer = styled("div", {
+export const PostGridContainer = styled("div", {
   display: "grid",
 
   gridTemplateRows: "auto 1fr",
@@ -216,7 +216,7 @@ const PostGridContainer = styled("div", {
   },
 });
 
-const metaToPostTile = (url: string, meta: PostMeta) => {
+export const metaToPostTile = (url: string, meta: PostMeta) => {
   return (
     <PostTile
       key={url}
