@@ -48,7 +48,37 @@ const ClapContainer = styled("div", {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  gap: "$4",
+  justifyContent: "center",
+
+  border: "solid 1px $yellow",
+
+  borderRadius: "$5",
+
+  transition: "all 0.1s ease-in-out",
+  backdropFilter: "blur(1px)",
+
+  boxShadow: "0 0 0 0.5px $salmon inset",
+
+  "&:hover": {
+    boxShadow: "0 0 0 100000px rgba(0, 0, 0, 0.2)",
+    backdropFilter: "blur(0px)",
+  },
+
+  variants: {
+    mobile: {
+      true: {
+        padding: "$6 $4",
+        gap: "$6",
+      },
+      false: {
+        padding: "$6 $8",
+        gap: "$8",
+      },
+    },
+  },
+  defaultVariants: {
+    mobile: "true",
+  },
 });
 
 const PostTileTagContainer = styled("span", {
@@ -57,8 +87,6 @@ const PostTileTagContainer = styled("span", {
   paddingInline: 2,
 
   borderWidth: 1,
-  borderStyle: "solid",
-  borderColor: "$yellow",
   borderRadius: 3,
 
   fontFamily: "Jetbrains Mono",
@@ -133,7 +161,7 @@ export const Clap = ({ postId }: { postId: string }) => {
           {clapIcon}
         </BlendOverlay>
       </Relative>
-      <PostTileTagContainer>{claps + globalClaps}</PostTileTagContainer>
+      <PostTileTagContainer>This post has {claps + globalClaps} likes</PostTileTagContainer>
     </ClapContainer>
   );
 };

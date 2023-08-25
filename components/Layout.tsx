@@ -192,12 +192,15 @@ export default function Layout({ meta, children }: LayoutProps) {
               <div className={cx(divider)}></div>
               <VSpacer size="sm" />
               <div>{children}</div>
+              <VSpacer size="md" />
               <ClientOnly>
                 <Clap postId={meta.id} />
               </ClientOnly>
-              <Bibliography />
+              <VSpacer size="sm" />
               <Subscribe />
               <VSpacer size="md" />
+              <Bibliography />
+              <VSpacer size="lg" />
               <NextPrevious currentPostId={meta.id} />
             </Blog>
           </BlogContainer>
