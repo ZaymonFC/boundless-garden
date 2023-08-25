@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useCallback, useEffect, useRef } from "react";
 import { useClaps } from "../hooks/useClap";
-import { randomRange } from "../lib/math";
+import { randomRange, clamp } from "../lib/math";
 import { playSfx, sfxAtlas } from "../lib/Sounds";
 import { styled } from "../Stitches";
 import { DamageNumber, useDamageNumbers } from "./DamageNumber";
@@ -80,7 +80,10 @@ const LikeText = styled("span", {
 
 /// --- Hooks -----------------------------------------------------------------
 const calculateFillPercent = (claps: number) => {
-  return 90 - Math.round((claps / maxClaps) * 100);
+  const clamper = clamp(0, 100);
+  const fillPercent = 90 - (claps / maxClaps) * 100;
+
+  return clamper(fillPercent);
 };
 
 const useImageMaskSpring = (claps: number | undefined) => {
@@ -93,7 +96,8 @@ const useImageMaskSpring = (claps: number | undefined) => {
   }, [claps, fillPercent]);
 
   const fillPercentSpring = useSpring(fillPercent, { stiffness: 1000, damping: 30 });
-  const dynamicGradient = useTransform(fillPercentSpring, (v) => {
+  const roundedFillPercentSpring = useTransform(fillPercentSpring, (v) => Math.round(v));
+  const dynamicGradient = useTransform(roundedFillPercentSpring, (v) => {
     return `linear-gradient(to bottom, black ${v}%, transparent ${v}%)`;
   });
 

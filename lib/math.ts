@@ -5,7 +5,5 @@ export const randomRange = (min: number, max: number) => {
 };
 
 export const clamp = (min: number, max: number) => (value: number) => {
-  if (value <= min) return min;
-  if (value >= max) return max;
-  return value;
+  return Math.min(Math.max(value, min), max);
 };
