@@ -33,6 +33,7 @@
     "react-dom": "18.2.0",
     "react-twitter-embed": "^4.0.4",
     "rxjs": "^7.5.6",
+    "swr": "^2.2.1",
     "three": "^0.143.0",
     "zustand": "^3.5.7",
     "zzfx": "^1.2.0"

@@ -7,6 +7,7 @@ import { PostMeta } from "../data/Meta";
 import { styled } from "../Stitches";
 import { Button } from "./Button";
 import { Clap } from "./Clap";
+import { ClientOnly } from "./ClientOnly";
 import Emoji from "./Emoji";
 import { Fade } from "./Fade";
 import Nav from "./Nav";
@@ -191,7 +192,9 @@ export default function Layout({ meta, children }: LayoutProps) {
               <div className={cx(divider)}></div>
               <VSpacer size="sm" />
               <div>{children}</div>
-              <Clap />
+              <ClientOnly>
+                <Clap postId={meta.id} />
+              </ClientOnly>
               <Bibliography />
               <Subscribe />
               <VSpacer size="md" />

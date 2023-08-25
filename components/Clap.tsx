@@ -1,15 +1,18 @@
-import { useState, useRef } from "react";
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useCallback, useEffect, useRef } from "react";
+import { useClaps } from "../hooks/useClap";
 import { playSfx, sfxAtlas } from "../lib/Sounds";
 import { styled } from "../Stitches";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { DamageNumber, useDamageNumbers } from "./DamageNumber";
 
-const initialCount = 885;
 const maxClaps = 10;
-const clapSize = 42;
+const clapSize = 38;
 const clapIcon = "💖";
 
 const Relative = styled("div", {
   position: "relative",
+  width: clapSize,
+  height: clapSize,
 });
 
 const ClapButton = styled(motion.button, {
@@ -39,26 +42,62 @@ const BlendOverlay = styled(ClapButton, {
   filter: "grayscale(100%)",
 });
 
-export const Clap = () => {
-  const [count, setCount] = useState(0);
-  const fillPercent = useMotionValue(100);
+const randomRange = (min: number, max: number) => Math.random() * (max - min) + min;
+
+const ClapContainer = styled("div", {
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "$4",
+});
+
+const PostTileTagContainer = styled("span", {
+  display: "inline-block",
+  paddingBlock: 1,
+  paddingInline: 2,
+
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "$yellow",
+  borderRadius: 3,
+
+  fontFamily: "Jetbrains Mono",
+  fontSize: "$1.5",
+});
+
+const calculateFillPercent = (claps: number) => {
+  return 90 - Math.round((claps / maxClaps) * 100);
+};
+
+export const Clap = ({ postId }: { postId: string }) => {
+  const { globalClaps, claps, clap } = useClaps(postId);
+
+  const fillPercent = useMotionValue(Number(100));
   const clapButtonRef = useRef<HTMLButtonElement>(null);
   const overlayButtonRef = useRef<HTMLButtonElement>(null);
 
-  const handleClick = () => {
-    if (count >= maxClaps) {
+  const { damageNumbers, addDamageNumber } = useDamageNumbers(200);
+
+  useEffect(() => {
+    if (claps === undefined) return;
+
+    fillPercent.set(calculateFillPercent(claps));
+  }, [claps, fillPercent]);
+
+  const handleClick = useCallback(() => {
+    if (claps >= maxClaps) {
       playSfx(sfxAtlas.blip);
       return;
     }
 
-    setCount(count + 1);
-    playSfx(sfxAtlas.powerup, { pitch: count * 10 });
+    clap();
+    playSfx(sfxAtlas.powerup, { pitch: claps * 10 });
 
-    const newFillPercent = 90 - Math.round((count / maxClaps) * 100);
-    fillPercent.set(newFillPercent);
-
-    if (!clapButtonRef.current) return;
-  };
+    addDamageNumber(1, {
+      top: "-5px",
+      left: clapSize / 2 - 6 + randomRange(-20, 10) + "px",
+    });
+  }, [claps, addDamageNumber]);
 
   const scaleElements = (scale: number) => () => {
     if (!clapButtonRef.current || !overlayButtonRef.current) return;
@@ -66,16 +105,19 @@ export const Clap = () => {
     overlayButtonRef.current.style.transform = `scale(${scale})`;
   };
 
-  const cssSpring = useSpring(fillPercent, { stiffness: 1000, damping: 40 });
-  const css = useTransform(
-    cssSpring,
-    (v) => `linear-gradient(to bottom, black ${v}%, transparent ${v}%)`
-  );
+  const cssSpring = useSpring(fillPercent, { stiffness: 1000, damping: 30 });
+  const css = useTransform(cssSpring, (v) => {
+    return `linear-gradient(to bottom, black ${v}%, transparent ${v}%)`;
+  });
 
   return (
-    <div>
-      <span>{count + initialCount}</span>
+    <ClapContainer>
       <Relative>
+        <AnimatePresence>
+          {damageNumbers.map((damage) => (
+            <DamageNumber key={damage.id} value={damage.value} position={damage.position} />
+          ))}
+        </AnimatePresence>
         <ClapButton ref={clapButtonRef} onMouseEnter={scaleElements(1.1)}>
           {clapIcon}
         </ClapButton>
@@ -91,7 +133,7 @@ export const Clap = () => {
           {clapIcon}
         </BlendOverlay>
       </Relative>
-      <br />
-    </div>
+      <PostTileTagContainer>{claps + globalClaps}</PostTileTagContainer>
+    </ClapContainer>
   );
 };
