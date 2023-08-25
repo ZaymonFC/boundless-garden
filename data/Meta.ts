@@ -156,9 +156,11 @@ const previous =
     arr[dec(idx)];
 
 export const surroundingPosts = (id: string): { next?: PostSummary; previous?: PostSummary } => {
-  const length = postSummaries.length;
-  const idx = postSummaries.findIndex(matcher(id));
-  const [nextPost, previousPost] = [next(postSummaries, idx), previous(postSummaries, idx)];
+  const publicPosts = postSummaries.filter(({ meta }) => !meta.private);
+
+  const length = publicPosts.length;
+  const idx = publicPosts.findIndex(matcher(id));
+  const [nextPost, previousPost] = [next(publicPosts, idx), previous(publicPosts, idx)];
 
   if (idx === length - 1) return { previous: previousPost() };
   if (idx === 0) return { next: nextPost() };

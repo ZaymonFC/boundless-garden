@@ -6,6 +6,8 @@ import React from "react";
 import { PostMeta } from "../data/Meta";
 import { styled } from "../Stitches";
 import { Button } from "./Button";
+import { Clap } from "./Clap";
+import { ClientOnly } from "./ClientOnly";
 import Emoji from "./Emoji";
 import { Fade } from "./Fade";
 import Nav from "./Nav";
@@ -190,9 +192,15 @@ export default function Layout({ meta, children }: LayoutProps) {
               <div className={cx(divider)}></div>
               <VSpacer size="sm" />
               <div>{children}</div>
-              <Bibliography />
+              <VSpacer size="md" />
+              <ClientOnly>
+                <Clap postId={meta.id} />
+              </ClientOnly>
+              <VSpacer size="sm" />
               <Subscribe />
               <VSpacer size="md" />
+              <Bibliography />
+              <VSpacer size="lg" />
               <NextPrevious currentPostId={meta.id} />
             </Blog>
           </BlogContainer>
