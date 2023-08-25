@@ -22,11 +22,8 @@ const incrementClapsForPost = async (postId: string, clapsDiff: number) => {
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   const postId = req.query.postId as string;
 
-  console.log("postId", req.query);
-
   if (req.method === "GET") {
     const claps = await getClapsForPost(postId);
-    console.log(claps);
     return res.status(200).json({ claps });
   }
 
