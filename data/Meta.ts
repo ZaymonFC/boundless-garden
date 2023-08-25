@@ -130,6 +130,7 @@ const Meta: { [url: string]: PostMeta } = {
     author: "Zan",
     wordCount: 500,
     tags: ["career", "hero's journey"],
+    image: "kevin.jpg",
   },
 };
 
