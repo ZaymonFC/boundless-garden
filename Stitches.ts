@@ -23,6 +23,7 @@ export const colors = {
   yellow: "rgb(241, 200, 146)",
   salmon: "#ff8f8f",
   background: "rgb(14, 24, 65)",
+  offWhite: "#fffcf5",
 };
 
 export const { styled, css, getCssText } = createStitches({

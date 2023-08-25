@@ -1,13 +1,12 @@
-import React from "react";
 import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { styled } from "../Stitches";
+import { inc } from "../utilities/Prelude";
 
 interface DamageNumberProps {
   value: number;
   position: { top: string; left: string };
 }
-
-import { useState } from "react";
-import { styled } from "../Stitches";
 
 interface DamageNumberInfo {
   value: number;
@@ -20,13 +19,13 @@ export const useDamageNumbers = (timeout: number) => {
   const [counter, setCounter] = useState(0);
 
   const addDamageNumber = (value: number, position: { top: string; left: string }) => {
-    setCounter((prevCounter) => prevCounter + 1);
-    setDamageNumbers((prevNumbers) => [...prevNumbers, { value, position, id: counter }]);
+    let id = inc(counter);
+
+    setCounter(id);
+    setDamageNumbers((prevNumbers) => [...prevNumbers, { value, position, id }]);
 
     // Set a timeout to remove the damage number after animation
-    setTimeout(() => {
-      setDamageNumbers((prevNumbers) => prevNumbers.filter((number) => number.id !== counter));
-    }, timeout);
+    setTimeout(() => setDamageNumbers((damages) => damages.filter((d) => d.id !== id)), timeout);
   };
 
   return { damageNumbers, addDamageNumber };

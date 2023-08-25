@@ -1,13 +1,11 @@
 import { useAtom, useAtomValue } from "jotai";
 import { atomWithStorage } from "jotai/utils";
-import { useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { merge, Subject } from "rxjs";
+import { debounceTime, filter, map, scan } from "rxjs/operators";
 import useSWR from "swr";
-import { debounce, debounceTime, filter, scan, Subject, tap, windowTime, merge, map } from "rxjs";
-
-const fetcher = async (...args: [RequestInfo, RequestInit]) => {
-  const res = await fetch(...args);
-  return res.json();
-};
+import { fetcher } from "../lib/requests";
+import { useFirstDefinedValue } from "./useFirstDefinedValue";
 
 // --- Server Interaction ------------------------------------------------------
 const incrementClaps = async (postId: string, clapsDiff: number) => {
@@ -64,21 +62,9 @@ const useIncrementClaps = (postId: string) => {
   }, [claps$, reset$]);
 };
 
-function useFirstDefinedValue<T>(otherState: T) {
-  const firstDefinedRef = useRef<T>();
-
-  useEffect(() => {
-    if (otherState !== undefined && firstDefinedRef.current === undefined) {
-      firstDefinedRef.current = otherState;
-    }
-  }, [otherState]);
-
-  return firstDefinedRef.current;
-}
-
 export const useClaps = (postId: string) => {
   const [claps, setClaps] = useAtom(clapAtom);
-  const [globalClaps, setServerClaps] = useState(0);
+  const [globalClaps, setGlobalClaps] = useState(0);
   const { data } = useSWR("/api/claps?postId=" + postId, fetcher, {
     refreshInterval: 0,
     revalidateOnFocus: false,
@@ -86,11 +72,13 @@ export const useClaps = (postId: string) => {
 
   const previousClaps = useFirstDefinedValue(claps[postId]);
 
+  const adjustedClaps = globalClaps - (previousClaps || 0);
+
   useIncrementClaps(postId);
 
   useEffect(() => {
     if (data?.claps) {
-      setServerClaps(data.claps);
+      setGlobalClaps(data.claps);
     }
   }, [data]);
 
@@ -102,5 +90,5 @@ export const useClaps = (postId: string) => {
 
   const clap = () => setClaps((claps) => ({ ...claps, [postId]: claps[postId] + 1 }));
 
-  return { globalClaps: globalClaps - (previousClaps || 0), claps: claps[postId], clap };
+  return { globalClaps: adjustedClaps, claps: claps[postId], clap };
 };
