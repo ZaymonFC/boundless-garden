@@ -9,7 +9,15 @@ import { DamageNumber, useDamageNumbers } from "./DamageNumber";
 // --- Constants --------------------------------------------------------------
 const maxClaps = 10;
 const clapSize = 38;
-const clapIcon = "💖";
+
+const clapPairs = [
+  ["💖", "hearts"],
+  ["👏", "claps"],
+  ["💎", "gems"],
+  ["🥂", "toasts"],
+  ["🌸", "flowers"],
+  ["🎩", "hat tips"],
+];
 
 // --- Styled -----------------------------------------------------------------
 const Relative = styled("div", {
@@ -106,6 +114,8 @@ const useImageMaskSpring = (claps: number | undefined) => {
 
 /// --- Putting it all together -----------------------------------------------
 export const Clap = ({ postId }: { postId: string }) => {
+  const [clapIcon, clapText] = clapPairs[Math.floor(Math.random() * clapPairs.length)];
+
   const clapButtonRef = useRef<HTMLButtonElement>(null);
   const overlayButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -152,7 +162,9 @@ export const Clap = ({ postId }: { postId: string }) => {
           {clapIcon}
         </BlendOverlay>
       </Relative>
-      <LikeText>This post has {claps} hearts</LikeText>
+      <LikeText>
+        This post has {claps} {clapText}
+      </LikeText>
     </ClapContainer>
   );
 };
