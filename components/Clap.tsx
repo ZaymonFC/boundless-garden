@@ -10,13 +10,13 @@ import { DamageNumber, useDamageNumbers } from "./DamageNumber";
 const maxClaps = 10;
 const clapSize = 38;
 
-const clapPairs = [
-  ["💖", "hearts"],
-  ["👏", "claps"],
-  ["💎", "gems"],
-  ["🥂", "toasts"],
-  ["🌸", "flowers"],
-  ["🎩", "hat tips"],
+const clapChoices = [
+  ["💖", "hearts", "#EB35A4"],
+  ["👏", "claps", "#FFC107"],
+  ["💎", "gems", "#82DFFF"],
+  ["🥂", "toasts", "#FFC107"],
+  ["🌸", "flowers", "#FFC1ED"],
+  ["🎩", "hat tips", "#FFC107"],
 ];
 
 // --- Styled -----------------------------------------------------------------
@@ -114,7 +114,8 @@ const useImageMaskSpring = (claps: number | undefined) => {
 
 /// --- Putting it all together -----------------------------------------------
 export const Clap = ({ postId }: { postId: string }) => {
-  const [clapIcon, clapText] = clapPairs[Math.floor(Math.random() * clapPairs.length)];
+  const [clapIcon, clapText, clapColor] =
+    clapChoices[Math.floor(Math.random() * clapChoices.length)];
 
   const clapButtonRef = useRef<HTMLButtonElement>(null);
   const overlayButtonRef = useRef<HTMLButtonElement>(null);
@@ -146,7 +147,12 @@ export const Clap = ({ postId }: { postId: string }) => {
       <Relative>
         <AnimatePresence>
           {damageNumbers.map((damage) => (
-            <DamageNumber key={damage.id} value={damage.value} position={damage.position} />
+            <DamageNumber
+              key={damage.id}
+              value={damage.value}
+              position={damage.position}
+              color={clapColor}
+            />
           ))}
         </AnimatePresence>
         <ClapButton ref={clapButtonRef}>{clapIcon}</ClapButton>

@@ -6,6 +6,7 @@ import { inc } from "../utilities/Prelude";
 interface DamageNumberProps {
   value: number;
   position: { top: string; left: string };
+  color: string;
 }
 
 interface DamageNumberInfo {
@@ -35,17 +36,16 @@ const DamageNumberText = styled(motion.div, {
   fontFamily: "$mono",
   fontSize: "$2",
   position: "absolute",
-  color: "#EB35A4",
 });
 
-export const DamageNumber: React.FC<DamageNumberProps> = ({ value, position }) => {
+export const DamageNumber: React.FC<DamageNumberProps> = ({ value, position, color }) => {
   return (
     <DamageNumberText
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: -25 }}
       exit={{ opacity: 0, y: -50 }}
       transition={{ duration: 0.1 }}
-      style={{ ...position }}
+      style={{ ...position, color }}
     >
       +{value}
     </DamageNumberText>
