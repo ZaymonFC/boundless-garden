@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useClaps } from "../hooks/useClap";
-import { randomRange, clamp } from "../lib/math";
+import { clamp, randomRange } from "../lib/math";
 import { playSfx, sfxAtlas } from "../lib/Sounds";
 import { styled } from "../Stitches";
 import { DamageNumber, useDamageNumbers } from "./DamageNumber";
@@ -114,8 +114,9 @@ const useImageMaskSpring = (claps: number | undefined) => {
 
 /// --- Putting it all together -----------------------------------------------
 export const Clap = ({ postId }: { postId: string }) => {
-  const [clapIcon, clapText, clapColor] =
-    clapChoices[Math.floor(Math.random() * clapChoices.length)];
+  const [clapIcon, clapText, clapColor] = useMemo(() => {
+    return clapChoices[Math.floor(Math.random() * clapChoices.length)];
+  }, [postId]);
 
   const clapButtonRef = useRef<HTMLButtonElement>(null);
   const overlayButtonRef = useRef<HTMLButtonElement>(null);
