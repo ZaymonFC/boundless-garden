@@ -152,7 +152,7 @@ export const Clap = ({ postId }: { postId: string }) => {
           {clapIcon}
         </BlendOverlay>
       </Relative>
-      <LikeText>This post has {claps + globalClaps} likes</LikeText>
+      <LikeText>This post has {claps + globalClaps} hearts</LikeText>
     </ClapContainer>
   );
 };
