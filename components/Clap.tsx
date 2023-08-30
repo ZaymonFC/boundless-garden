@@ -109,7 +109,7 @@ export const Clap = ({ postId }: { postId: string }) => {
   const clapButtonRef = useRef<HTMLButtonElement>(null);
   const overlayButtonRef = useRef<HTMLButtonElement>(null);
 
-  const { globalClaps, claps, clap } = useClaps(postId);
+  const { claps, clap } = useClaps(postId);
   const css = useImageMaskSpring(claps);
   const { damageNumbers, addDamageNumber } = useDamageNumbers(200);
 
@@ -152,7 +152,7 @@ export const Clap = ({ postId }: { postId: string }) => {
           {clapIcon}
         </BlendOverlay>
       </Relative>
-      <LikeText>This post has {claps + globalClaps} hearts</LikeText>
+      <LikeText>This post has {claps} hearts</LikeText>
     </ClapContainer>
   );
 };

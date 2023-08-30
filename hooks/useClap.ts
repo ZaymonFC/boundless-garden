@@ -90,5 +90,5 @@ export const useClaps = (postId: string) => {
 
   const clap = () => setClaps((claps) => ({ ...claps, [postId]: claps[postId] + 1 }));
 
-  return { globalClaps: adjustedClaps, claps: claps[postId], clap };
+  return { claps: claps[postId] + adjustedClaps, clap };
 };
