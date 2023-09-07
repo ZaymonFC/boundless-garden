@@ -6,10 +6,10 @@ import { Button } from "../components/Button";
 import { Fade } from "../components/Fade";
 import Stack from "../components/Stack";
 import { HomeBackground } from "../components/StarBackground";
-import { useFilteredPostsByTags, useLatestPosts } from "../hooks/tags";
+import { useLatestPosts } from "../hooks/tags";
 import { colors, styled } from "../Stitches";
 import styles from "../styles/Home.module.css";
-import { metaToPostTile, PostGridContainer, PostTile } from "./posts";
+import { metaToPostTile, PostGridContainer } from "./posts";
 
 const LatestPostBadge = styled("span", {
   display: "inline-block",
@@ -45,7 +45,25 @@ const Main = styled("main", {
   variants: {
     size: {
       full: { height: "100vh" },
-      mobile: { height: undefined },
+      mobile: { height: undefined, padding: "3rem 1.5rem" },
+    },
+  },
+});
+
+const HomeH1 = styled("h1", {
+  variants: {
+    size: {
+      sm: { fontSize: "2.7rem" },
+      lg: { fontSize: "4rem" },
+    },
+  },
+});
+
+const SubTitle = styled("p", {
+  variants: {
+    size: {
+      sm: { fontSize: "1.4rem" },
+      lg: { fontSize: "2rem" },
     },
   },
 });
@@ -58,8 +76,10 @@ const Header = () => {
       <HomeBackground />
       <Main size={{ "@initial": "mobile", "@bp1": "full" }}>
         <AtomFlower />
-        <h1 className={styles.title}>the Boundless Garden</h1>
-        <p className={styles.byLine}>leaves on a fractal rose</p>
+        <HomeH1 size={{ "@initial": "sm", "@bp1": "lg" }} className={styles.title}>
+          the Boundless Garden
+        </HomeH1>
+        <SubTitle size={{ "@initial": "sm", "@bp1": "lg" }}>leaves on a fractal rose</SubTitle>
 
         <div>
           <LatestPostBadge>Latest Post</LatestPostBadge>
