@@ -11,12 +11,12 @@ const maxClaps = 10;
 const clapSize = 38;
 
 const clapChoices = [
-  ["💖", "hearts", "#EB35A4"],
-  ["👏", "claps", "#FFC107"],
-  ["💎", "gems", "#82DFFF"],
-  ["🥂", "toasts", "#FFC107"],
+  // ["💖", "hearts", "#EB35A4"],
+  // ["👏", "claps", "#FFC107"],
+  // ["💎", "gems", "#82DFFF"],
+  // ["🥂", "toasts", "#FFC107"],
+  // ["🎩", "hat tips", "#FFC107"],
   ["🌸", "flowers", "#FFC1ED"],
-  ["🎩", "hat tips", "#FFC107"],
 ];
 
 // --- Styled -----------------------------------------------------------------
