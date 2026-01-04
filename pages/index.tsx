@@ -88,14 +88,10 @@ const Header = () => {
           </PostGridContainer>
           <Stack justify="end">
             <Link href="/intro">
-              <a>
-                <Button size="sm">New here?</Button>
-              </a>
+              <Button size="sm">New here?</Button>
             </Link>
             <Link href="/posts">
-              <a>
-                <Button size="sm">All Posts</Button>
-              </a>
+              <Button size="sm">All Posts</Button>
             </Link>
           </Stack>
         </div>

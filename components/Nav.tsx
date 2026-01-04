@@ -26,7 +26,7 @@ const NavHeading = styled("h1", {
 
 const HomeLink = ({ children }: any) => (
   <Link href="/">
-    <a>{children}</a>
+    {children}
   </Link>
 );
 

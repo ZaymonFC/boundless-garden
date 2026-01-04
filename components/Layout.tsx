@@ -138,9 +138,7 @@ const FrontMatter = ({ title, date, wordCount }: PostMeta) => (
 const AllPostsButton = () => {
   return (
     <Link href="/posts">
-      <a>
-        <Button>{"<-"} All Posts</Button>
-      </a>
+      <Button>{"<-"} All Posts</Button>
     </Link>
   );
 };

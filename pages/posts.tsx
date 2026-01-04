@@ -20,7 +20,7 @@ const IndexContainer = styled("div", {
   maxWidth: 1264,
 });
 
-const PostTileContainer = styled("a", {
+const PostTileContainer = styled("div", {
   padding: 12,
   border: "solid 1px $salmon",
   borderRadius: "$4",
@@ -184,7 +184,7 @@ type PostTileProps = {
 };
 
 export const PostTile = ({ url, title, author, date, series, tags }: PostTileProps) => (
-  <Link href={url} passHref>
+  <Link href={url}>
     <PostTileContainer hoverable={{ "@initial": false, "@bp1": true }}>
       <div>
         <PostTileHeader>{title}</PostTileHeader>
