@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "postinstall": "lefthook install || echo 'Lefthook not found. Install it globally and run: lefthook install'",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
