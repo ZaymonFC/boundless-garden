@@ -51,7 +51,7 @@ const useIncrementClaps = (postId: string) => {
         filter((claps) => claps !== undefined),
         scan((acc, curr) => (curr === 0 ? 0 : acc + curr), 0),
         debounceTime(850),
-        filter((claps) => claps > 0)
+        filter((claps) => claps > 0),
       )
       .subscribe((claps) => {
         incrementClaps(postId, claps);

@@ -6,36 +6,35 @@ import AtomFlower from "../components/AtomFlower";
 import Definition from "../components/Definition";
 import Meta from "../data/Meta";
 import { Tweet } from "../components/Twitter";
-import generateBoundlessReference from '../utilities/generateBoundlessReference'
+import generateBoundlessReference from "../utilities/generateBoundlessReference";
 
-export const meta = Meta['constraints']
+export const meta = Meta["constraints"];
 
 export const references = {
-  ...generateBoundlessReference('conventional-wisdom'),
-  'corruption': {
-    title: 'Income inequality in the Philippines',
-    url: 'https://en.wikipedia.org/wiki/Income_inequality_in_the_Philippines#Connection_with_corruption'
+  ...generateBoundlessReference("conventional-wisdom"),
+  corruption: {
+    title: "Income inequality in the Philippines",
+    url: "https://en.wikipedia.org/wiki/Income_inequality_in_the_Philippines#Connection_with_corruption",
   },
-	'sascha-chapin-new-job': {
-		title: 'Stepping Away From Writing Coaching',
-		url: 'https://sashachapin.substack.com/p/stepping-away-from-writing-coaching',
-		year: 2022,
-		publisher: 'Sasha\'s Newsletter',
-	},
-	"minhd": {
-		url: 'https://minhwrites.substack.com/p/what-ive-learned-from-writing-online',
-		title: 'what i\'ve learned from writing online',
-		publisher: 'Life with MD',
-		year: 2022,
-	},
-	'dating':{
-		year: 2022,
-		url: "https://mindmine.substack.com/p/why-is-modern-dating-so-hard",
-		title: "why is modern dating so hard?",
-		publisher: "Mind Mine"
-	}
-}
-
+  "sascha-chapin-new-job": {
+    title: "Stepping Away From Writing Coaching",
+    url: "https://sashachapin.substack.com/p/stepping-away-from-writing-coaching",
+    year: 2022,
+    publisher: "Sasha's Newsletter",
+  },
+  minhd: {
+    url: "https://minhwrites.substack.com/p/what-ive-learned-from-writing-online",
+    title: "what i've learned from writing online",
+    publisher: "Life with MD",
+    year: 2022,
+  },
+  dating: {
+    year: 2022,
+    url: "https://mindmine.substack.com/p/why-is-modern-dating-so-hard",
+    title: "why is modern dating so hard?",
+    publisher: "Mind Mine",
+  },
+};
 
 I've never been a big believer in New Year's resolutions. To me, they don't offer the right constraints.
 I've seen people go through that loop year after year with grand intentions of building new habits, shaking old ones.
@@ -58,13 +57,20 @@ I need a project, structure, a framework which forces me to confront the intangi
 To start making sense of the senseless.
 Writing is the most powerful tool I have to tame the chaos.
 
-<BlogImage src={cosmicEgg} alt="The Cosmic Egg - MidJourney V4" caption="The Cosmic Egg - MidJourney V4" />
+<BlogImage
+  src={cosmicEgg}
+  alt="The Cosmic Egg - MidJourney V4"
+  caption="The Cosmic Egg - MidJourney V4"
+/>
 
 As it stands, the environment of my writing is unconstrained.
 I have seen to be true that constraints are a driver of creativity.
 The unconstrained project can go anywhere. Therefore, the unconstrained project goes nowhere.
 
-<Definition word="Constrain" definitions={["compel or force (someone) to follow a particular course of action"]} />
+<Definition
+  word="Constrain"
+  definitions={["compel or force (someone) to follow a particular course of action"]}
+/>
 
 Starting with this essay I'm endeavouring to publish one every week for the near future.
 Let's see if I can sidestep the trap of the New Year's resolution.
@@ -80,6 +86,7 @@ Hopefully the social proof combined with having a deadline each week will keep m
 ---
 
 ### Stuff I've been thinking about
+
 I've recently been reading [Life with MD](https://minhwrites.substack.com/).
 Seeing the growth in her writing over the last 42 weeks<Inline citation="minhd" /> has inspired me to reach and face my fear of pushing vibes into the void.
 
@@ -90,7 +97,6 @@ At some point you have to collapse the future to a single path with a decision.
 Isabel's writing dovetails quite nicely with this `@liminalwarmth` thread on optionality and intimacy.
 
 <Tweet tweetId="1592542553668481025" />
-
 
 export default ({ children }) => (
   <ReferenceProvider value={meta.id}>

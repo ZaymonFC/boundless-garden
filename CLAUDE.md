@@ -20,6 +20,7 @@ pnpm lint     # Run ESLint
 ### Blog Content System
 
 This is a Next.js blog built with MDX for content. Blog posts are:
+
 - Written as `.mdx` files in `/pages` directory (e.g., `pages/intro.mdx`, `pages/momentum-1.mdx`)
 - Configured via metadata in `/data/Meta.ts` which maps URL slugs to post metadata (title, date, tags, series, etc.)
 - Wrapped with the `Layout` component from `components/Layout.tsx` which provides:
@@ -30,6 +31,7 @@ This is a Next.js blog built with MDX for content. Blog posts are:
   - Next/Previous post navigation
 
 When adding a new blog post, you must:
+
 1. Create the `.mdx` file in `/pages`
 2. Add corresponding metadata entry in `/data/Meta.ts`
 3. Include any images in `/public` directory
@@ -37,6 +39,7 @@ When adding a new blog post, you must:
 ### Styling Architecture
 
 The project uses **Stitches** (CSS-in-JS) configured in `Stitches.ts`:
+
 - Theme tokens: colors, spacing (1-8), fontSizes (1-8), fonts (mono, bodySerif, headingSerif)
 - Responsive breakpoints: `bp1` (640px), `bp2` (768px), `bp3` (1024px)
 - Usage: `styled()` function to create components, `css()` for inline styles
@@ -47,12 +50,14 @@ Additionally uses `@emotion/css` for some component-specific styling (see `compo
 ### Interactive Features
 
 **Clap System** (`components/Clap.tsx` + `pages/api/claps.ts`):
+
 - Post appreciation mechanism using Vercel KV store
 - Animated clap button with fill animation based on clap count (max 10)
 - Damage numbers float up on each clap with sound effects
 - API endpoint at `/api/claps?postId=<id>` (GET to retrieve, POST to increment)
 
 **Sound Effects** (`lib/Sounds.ts`):
+
 - Uses `zzfx` library for procedural audio generation
 - Sound atlas includes: powerup, blip effects
 - Integrated with Clap component for tactile feedback
@@ -66,6 +71,7 @@ Additionally uses `@emotion/css` for some component-specific styling (see `compo
 ### 3D Graphics
 
 Components in `components/` use React Three Fiber for 3D visualizations:
+
 - `3D.tsx`, `AtomFlower.tsx`, `Atoms.tsx` - Three.js/R3F components
 - Uses `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing`
 - `StarBackground.tsx` provides animated background

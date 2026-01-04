@@ -18,7 +18,7 @@ type ZzfxParameters = [
   noise?: number,
   bitCrush?: number,
   delay?: number,
-  tremolo?: number
+  tremolo?: number,
 ];
 
 let zzfx = (..._: ZzfxParameters) => {
@@ -45,5 +45,5 @@ type ZzfxModifiers = {
 
 export const playSfx = (
   [volume, randomness, frequency, ...rest]: ZzfxParameters,
-  modifiers?: ZzfxModifiers
+  modifiers?: ZzfxModifiers,
 ) => zzfx(volume, randomness, (frequency || 0) + (modifiers?.pitch ?? 0), ...rest);

@@ -24,11 +24,7 @@ const NavHeading = styled("h1", {
   fontSize: "$5",
 });
 
-const HomeLink = ({ children }: any) => (
-  <Link href="/">
-    {children}
-  </Link>
-);
+const HomeLink = ({ children }: any) => <Link href="/">{children}</Link>;
 
 const useEngageAfterScroll = (scrollY: MotionValue<number>, y: number) => {
   const engaged$ = useMemo(() => new Subject<boolean>(), []);

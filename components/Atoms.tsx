@@ -32,11 +32,7 @@ const MyRing = () => {
 
   useFrame((state, delta) => {
     box.current.lookAt(
-      new Vector3(
-        state.mouse.x,
-        state.mouse.y,
-        state.camera.position.z
-      ).multiplyScalar(3)
+      new Vector3(state.mouse.x, state.mouse.y, state.camera.position.z).multiplyScalar(3),
     );
   });
 
@@ -99,11 +95,7 @@ const makePoints = (radius: number, t: number) => {
   return [...Array(8)]
     .map((n, i) => i)
     .map((i) => MathUtils.lerp(0, 2 * Math.PI, i / 8))
-    .map((i) => [
-      Math.cos(i + t) * radius,
-      Math.sin(i + t) * (radius / 1.5),
-      0,
-    ]);
+    .map((i) => [Math.cos(i + t) * radius, Math.sin(i + t) * (radius / 1.5), 0]);
 };
 
 const Atoms = () => {

@@ -2,13 +2,13 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Spectral, 'Times New Roman', serif;
+  font-family: Spectral, "Times New Roman", serif;
   background: rgb(14, 24, 65);
-  color: white
+  color: white;
 }
 
 h1 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   color: #ff8181;
   letter-spacing: 0.05rem;
 }

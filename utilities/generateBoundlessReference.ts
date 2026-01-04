@@ -10,7 +10,7 @@ const generateBoundlessReference = (urlOrId: string) => {
     !!post,
     "Could not find post to reference",
     urlOrId,
-    postSummaries.map((p) => p.url)
+    postSummaries.map((p) => p.url),
   );
   if (!post) return;
 
