@@ -7,7 +7,7 @@ import Stack from "./Stack";
 
 const ProgressionButton = ({ url, children }: { url: string; children: React.ReactNode }) => {
   return (
-    <Link passHref href={"/" + url}>
+    <Link href={"/" + url}>
       <Button>{children}</Button>
     </Link>
   );

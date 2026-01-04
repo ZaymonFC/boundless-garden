@@ -12,8 +12,16 @@ const BlogCaption = styled("p", {
   textAlign: "center",
 });
 
+const ImageWrapper = styled("div", {
+  width: "100%",
+  position: "relative",
+  overflow: "hidden",
+});
+
 const BlogImagePrimitive = styled(Image, {
   borderRadius: "$4",
+  width: "100%",
+  height: "auto",
 });
 
 type BlogImageProps = {
@@ -25,7 +33,7 @@ type BlogImageProps = {
 
 export default function BlogImage({ src, alt, caption, date }: BlogImageProps) {
   return (
-    <div>
+    <ImageWrapper>
       <BlogImagePrimitive src={src} alt={alt} />
       {caption && (
         <BlogCaption>
@@ -33,6 +41,6 @@ export default function BlogImage({ src, alt, caption, date }: BlogImageProps) {
           {date && <em> {date}</em>}
         </BlogCaption>
       )}
-    </div>
+    </ImageWrapper>
   );
 }
